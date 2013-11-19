@@ -19,6 +19,7 @@ The purpose of `lakemorpho` is to provide a suite of tools that can be used to c
 (instructions borrowed from [ROpenSci](https://github.com/ropensci))
 
 Install development version of rdryad from GitHub:
+
 Note: Not currently functional as of 11/19/2013
 
 ```coffee
