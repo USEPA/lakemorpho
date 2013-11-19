@@ -1,1 +1,3 @@
-exportPattern("^[[:alpha:]]+")
+export(lakeMorpho)
+export(lakeSurfaceArea)
+export(lakeSurroundTopo)

@@ -1,10 +1,12 @@
-#Default printing of information included in lakeMorpho Class
+#' Default printing of information included in lakeMorpho Class
 print.lakeMorpho<-function(){}
 
-#Default summary of information in lakeMorpho Class
+#' Default summary of information in lakeMorpho Class
 summary.lakeMorpho<-function(){}
 
-#Default plotting of a lakeMorpho object
+#' Default plotting of a lakeMorpho object
+#' @param inLakeMorpho input lakeMorpho class to plot
+
 plot.lakeMorpho<-function(inLakeMorpho,...)
 {
   plot(inLakeMorpho[[3]])

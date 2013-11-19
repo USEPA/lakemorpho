@@ -1,11 +1,30 @@
+#' Calculate surrounding topography for lake
+#' 
+#' This function combines all input datasets into a \code{\link{lakeMorpho}}.
+#' As a part of this combination, the surrounding topography is also determined.
+#' If no input catchements are used, it is assumed that a buffer equal to the
+#' maximum in lake distance is used. If an input catchement is used, then the 
+#' surrounding topography is the land area represented by the  catchements that 
+#' intersect the lake. 
+#' 
+#' 
+#' @param inLake a SpatialPolygons representing the input lake
+#' @param inElev a RasterLayer representing the elevation around the lake
+#' @param inCatch Optional defualt is NULL wich uses a buffer equal to the
+#'        maximum in lake distance.  
+#' @param reso Optional resolution for raster output (e.g. lake distance).  
+#'        Defaults to the resolution of inElev
+#'          
+#' @export
+#' @return lakeMorpho
+
 #function to select out elevation, catchements, etc.
 #TO DO:
-#change inElevDir to inElev as raster
+
 #fix lake on edge
 
-lakeSurroundTopo<-function(inLake,inElev,inCatch=NULL,reso=30)
+lakeSurroundTopo<-function(inLake,inElev,inCatch = NULL,reso = res(exampleElev)[1])
 {
-  browser()
   lakeOnEdge=F
   slot(inLake, "polygons") <- lapply(slot(inLake, "polygons"),checkPolygonsHoles)
   #Ignores lakes smaller that 3X3 30 m pixels 
