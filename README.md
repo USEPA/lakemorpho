@@ -18,7 +18,8 @@ The purpose of `lakemorpho` is to provide a suite of tools that can be used to c
 # To install 
 (instructions borrowed from [ROpenSci](https://github.com/ropensci))
 
-Or install development version of rdryad from GitHub:
+Install development version of rdryad from GitHub:
+Note: Not currently functional as of 11/19/2013
 
 ```coffee
 install.packages("devtools")
