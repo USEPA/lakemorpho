@@ -1,0 +1,84 @@
+#' Function to calculate fetch along four cardinal directions
+#' 
+#' The function calculates the maximum in lake distnace 
+#' 
+#' @param inLakeMorpho An object of \code{\link{lakeMorphoClass}}.  Output of the 
+#'        \code{\link{lakeSurroundTopo}} function would be appropriate as input
+#' @param bearing Character that indicates the bearing of the desired fetch
+#' @param pointDens numeric value that determines number of lines along the 
+#'        specificed bearing for which to check the distance  
+#' @param addLine Boolean to determine if the selected max length line should be 
+#'        added to the inLakeMorpho object.  Defaults to True
+#' @export
+#' @return numeric
+#' 
+#' @references Florida LAKEWATCH (2001). A Beginner's guide to water management
+#'             - Lake Morphometry (2nd ed.). Gainesville: Florida LAKEWATCH, 
+#'             Department of Fisheries and Aquatic Sciences.
+#'             \href{http://edis.ifas.ufl.edu/pdffiles/FA/FA08100.pdf}{Link}
+#' 
+#' @export
+#' @return numeric
+#' 
+# TO DO: check for null lake
+
+# Function to calculate fetch for four cardinal directions TO DO: check for null lake
+# re-write to use an acutal bearing???
+lakeFetch <- function(inLakeMorpho, bearing = c("N", "NE", "E", "SE"), pointDens, addLine = T) {
+    temp <- inLakeMorpho
+    # can use lakeMaxWidth, just replace maxLengthLine, with line = to line
+    # perpedndicular to the bearing slope 0 may be a problem...
+    if (bearing == "N") {
+        x0 <- inLakeMorpho$lake@bbox[1, 1]
+        y0 <- inLakeMorpho$lake@bbox[2, 1] + (inLakeMorpho$lake@bbox[2, 2] - inLakeMorpho$lake@bbox[2, 
+            1])/2
+        x1 <- inLakeMorpho$lake@bbox[1, 2]
+        y1 <- y0
+    }
+    if (bearing == "SE") {
+        x0 <- inLakeMorpho$lake@bbox[1, 1]
+        y0 <- inLakeMorpho$lake@bbox[2, 1]
+        x1 <- inLakeMorpho$lake@bbox[1, 2]
+        y1 <- inLakeMorpho$lake@bbox[2, 2]
+    }
+    if (bearing == "E") {
+        x0 <- inLakeMorpho$lake@bbox[1, 1] + (inLakeMorpho$lake@bbox[1, 2] - inLakeMorpho$lake@bbox[1, 
+            1])/2
+        y0 <- inLakeMorpho$lake@bbox[2, 1]
+        x1 <- x0
+        y1 <- inLakeMorpho$lake@bbox[2, 2]
+    }
+    if (bearing == "NE") {
+        x0 <- inLakeMorpho$lake@bbox[1, 1]
+        y1 <- inLakeMorpho$lake@bbox[2, 1]
+        x1 <- inLakeMorpho$lake@bbox[1, 2]
+        y0 <- inLakeMorpho$lake@bbox[2, 2]
+    }
+    temp$maxLengthLine <- SpatialLines(list(Lines(list(Line(matrix(c(x0, x1, y0, y1), 
+        2, 2))), "1")), proj4string = CRS(proj4string(inLakeMorpho$lake)))
+    
+    result <- lakeMaxWidth(temp, pointDens)
+    
+    if (addLine) {
+        myName <- paste(substitute(inLakeMorpho))
+        if (bearing == "N") {
+            inLakeMorpho$maxFetchLine_N <- NULL
+            inLakeMorpho <- c(inLakeMorpho, maxFetchLine_N = temp$maxWidthLine)
+        }
+        if (bearing == "NE") {
+            inLakeMorpho$maxFetchLine_NE <- NULL
+            inLakeMorpho <- c(inLakeMorpho, maxFetchLine_NE = temp$maxWidthLine)
+        }
+        if (bearing == "E") {
+            inLakeMorpho$maxFetchLine_E <- NULL
+            inLakeMorpho <- c(inLakeMorpho, maxFetchLine_E = temp$maxWidthLine)
+        }
+        if (bearing == "SE") {
+            inLakeMorpho$maxFetchLine_SE <- NULL
+            inLakeMorpho <- c(inLakeMorpho, maxFetchLine_SE = temp$maxWidthLine)
+        }
+        class(inLakeMorpho) <- "lakeMorpho"
+        assign(myName, inLakeMorpho, envir = parent.frame())
+    }
+    return(result)
+} 

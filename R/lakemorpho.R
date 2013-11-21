@@ -1,31 +1,23 @@
-#' Function to create a lakeMorpho class - this is input to all other methods
+#' Lake Morphometry in R
 #' 
-#' This is a helper function that creates a lakeMorpho class object
+#' Lakemorpho provides a number of functions to calculate a standard suite of 
+#' lake morphometry metrics.  Most of the metrics are measurements of the 
+#' shape of the lake.  Metrics that rely on depth have traditionally been 
+#' calculated with bathymetry data.  In the absence of bathymetry data it is
+#' possible to estimate maximum depth from surrounding topography.  Lakemorpho
+#' uses this approach to also estimate maximum depth, mean depth, and volume.
 #' 
-#' @param inLake input lake SpatialPolygons object
-#' @param inElev input elevation model raster object
-#' @param inCatch input catchement SpatialPolygons object, can be buffer
-#'        around lake
-#' @param inLakeDist input euclidean distance raster that measures distance
-#'        from shore to any pixel in the lake
-#' @param lakeOnEdge Boolean indicating if inCatch (or lake Buffer) extends 
-#'        beyond extent of elevation data
-#'          
-#' @export
-#' @return lakeMorpho 
-#' @seealso lakeSurroundTopo    
-
-
-#May need to be done as a method (i.e. no need to @export)
-#TO DO:
-#Add null place holders for all possible lakeMorpho metrics (eg various lines)
-lakeMorpho<-function(inLake,inElev,inCatch,inLakeDist,lakeOnEdge=F)
-{
-  lmorpho<-list(lake=inLake,
-                elev=inElev,
-                surround=inCatch,
-                lakeDistance=inLakeDist,
-                lakeOnEdge=lakeOnEdge)
-  class(lmorpho)<-"lakeMorpho"
-  return(lmorpho)
-}
+#' @references Florida LAKEWATCH (2001). A Beginner's guide to water management
+#'             - Lake Morphometry (2nd ed.). Gainesville: Florida LAKEWATCH, 
+#'             Department of Fisheries and Aquatic Sciences.
+#'             \href{http://edis.ifas.ufl.edu/pdffiles/FA/FA08100.pdf}{Link}
+#' @references Hollister, J. W., W.B. Milstead (2010). Using GIS to Estimate 
+#'             Lake Volume from Limited Data. Lake and Reservoir Management. 
+#'             26(3)194-199.
+#'             \href{http://dx.doi.org/10.1080/07438141.2010.504321}{Link}
+#' @references Hollister, J. W., W.B. Milstead, M.A. Urrutia (2011). Predicting 
+#'             Maximum Lake Depth from Surrounding Topography. PLoS ONE 6(9).
+#'             \href{http://dx.doi.org/10.1371/journal.pone.0025764}{link}           
+#'             
+#' @name lakemorpho
+NULL 

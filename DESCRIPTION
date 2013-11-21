@@ -1,7 +1,6 @@
 Package: lakemorpho
 Type: Package
-Title: This package calculates multiple lake morphometric metrics from a lake
-    polygon and elevation data
+Title: Lake morphometry in R
 Version: 1.0
 Date: 2013-11-19
 Authors@R: person(given = "Jeffrey", family = "Hollister",
@@ -10,7 +9,7 @@ Authors@R: person(given = "Jeffrey", family = "Hollister",
 URL: http://www.github.com/USEPA/lakemorpho
 BugReports: https://www.github.com/USEPA/lakemorpho/issues
 Maintainer: Jeffrey W. Hollister <hollister.jeff@epa.gov>
-License: CC0
+License: file LICENSE
 Description: Lake morphometry metrics are used by limnologists to understand,
     among other things, the ecologial processes in a lake.  This
     package provides the tools to calculate a typical suite of these
@@ -23,6 +22,17 @@ Depends:
     maptools
 Collate:
     'default.lakemorpho.R'
-    'lakemorpho.R'
     'lakeSurfaceArea.R'
     'lakeSurroundTopo.R'
+    'lakeVolume.R'
+    'lakeFetch.R'
+    'lakeMaxDepth.R'
+    'lakeMaxLength.R'
+    'lakeMaxWidth.R'
+    'lakeMeanDepth.R'
+    'lakeMeanWidth.R'
+    'lakeShorelineDevelopment.R'
+    'lakeShorelineLength.R'
+    'lakeMorphoClass.R'
+    'lakemorpho.R'
+    'lakes.R'

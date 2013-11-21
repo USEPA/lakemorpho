@@ -1,11 +1,11 @@
-\name{lakeSurfaceArea}
-\alias{lakeSurfaceArea}
-\title{Return lake surface area}
+\name{lakeShorelineLength}
+\alias{lakeShorelineLength}
+\title{Function to calculate shoreline length}
 \usage{
-  lakeSurfaceArea(inLakeMorpho)
+  lakeShorelineLength(inLakeMorpho)
 }
 \arguments{
-  \item{inLakeMorpho}{an object of
+  \item{inLakeMorpho}{An object of
   \code{\link{lakeMorphoClass}}.  Output of the
   \code{\link{lakeSurroundTopo}} function would be
   appropriate as input}
@@ -14,9 +14,9 @@
   numeric
 }
 \description{
-  This function simply retruns the area of the lake
-  SpatialPolygons that is part of the
-  \code{\link{lakeMorphoClass}} class.
+  This function returns the length of the shoreline of the
+  lake and is simply the perimeter of the input lake
+  polyogn.
 }
 \references{
   Florida LAKEWATCH (2001). A Beginner's guide to water

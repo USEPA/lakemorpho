@@ -1,11 +1,11 @@
-\name{lakeSurfaceArea}
-\alias{lakeSurfaceArea}
-\title{Return lake surface area}
+\name{lakeShorelineDevelopment}
+\alias{lakeShorelineDevelopment}
+\title{Function to calculate shoreline development}
 \usage{
-  lakeSurfaceArea(inLakeMorpho)
+  lakeShorelineDevelopment(inLakeMorpho)
 }
 \arguments{
-  \item{inLakeMorpho}{an object of
+  \item{inLakeMorpho}{An object of
   \code{\link{lakeMorphoClass}}.  Output of the
   \code{\link{lakeSurroundTopo}} function would be
   appropriate as input}
@@ -14,9 +14,10 @@
   numeric
 }
 \description{
-  This function simply retruns the area of the lake
-  SpatialPolygons that is part of the
-  \code{\link{lakeMorphoClass}} class.
+  Shoreline development is a measure of the complexity of
+  the lake shoreline. It is simply the ratio of the
+  shoreline length (i.e. perimeter) to the perimeter of an
+  equally sized circle.
 }
 \references{
   Florida LAKEWATCH (2001). A Beginner's guide to water
