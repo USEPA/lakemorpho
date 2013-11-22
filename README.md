@@ -16,7 +16,6 @@ The purpose of `lakemorpho` is to provide a suite of tools that can be used to c
 - Fetch from a specified bearing
 
 # To install 
-(instructions borrowed from [ROpenSci](https://github.com/ropensci))
 
 Install development version of lakemorpho from GitHub:
 
