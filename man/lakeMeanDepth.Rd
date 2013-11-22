@@ -17,6 +17,13 @@
   Calculates average depth of lake as a mean of lake volume
   divided by lake surface area
 }
+\examples{
+data(lakes)
+exLake<-exampleLakes[95,]
+inputLM<-lakeSurroundTopo(exLake,exampleElev)
+plot(inputLM)
+lakeMeanDepth(inputLM)
+}
 \references{
   Florida LAKEWATCH (2001). A Beginner's guide to water
   management - Lake Morphometry (2nd ed.). Gainesville:

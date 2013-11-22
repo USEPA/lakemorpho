@@ -19,6 +19,13 @@
   shoreline length (i.e. perimeter) to the perimeter of an
   equally sized circle.
 }
+\examples{
+data(lakes)
+exLake<-exampleLakes[95,]
+inputLM<-lakeSurroundTopo(exLake,exampleElev)
+plot(inputLM)
+lakeShorelineDevelopment(inputLM)
+}
 \references{
   Florida LAKEWATCH (2001). A Beginner's guide to water
   management - Lake Morphometry (2nd ed.). Gainesville:

@@ -36,3 +36,4 @@ Collate:
     'lakeMorphoClass.R'
     'lakemorpho.R'
     'lakes.R'
+    'calcLakeMetrics.R'

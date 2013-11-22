@@ -13,7 +13,19 @@
 #'             \href{http://edis.ifas.ufl.edu/pdffiles/FA/FA08100.pdf}{Link}
 #' 
 #' 
+#' @examples
+#' data(lakes)
+#' exLake<-exampleLakes[95,]
+#' inputLM<-lakeSurroundTopo(exLake,exampleElev)
+#' plot(inputLM)
+#' lakeMeanWidth(inputLM)
 # TO DO: Add test for null lake Add test fo null maxLengthLine
 lakeMeanWidth <- function(inLakeMorpho) {
+    if (class(inLakeMorpho) != "lakeMorpho") {
+        return(warning("Input data is not of class 'lakeMorpho'.  Run lakeSurroundTopo first."))
+    }
+    if (is.null(inLakeMorpho$maxLengthLine)) {
+        return(warning("Input 'lakeMorpho' does not contain a Maximum Length Line.  Run lakeMaxLength  first."))
+    }
     return(lakeSurfaceArea(inLakeMorpho)/gLength(inLakeMorpho$maxLengthLine))
 } 

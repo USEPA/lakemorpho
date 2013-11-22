@@ -17,6 +17,13 @@
   Mean lake width is the result of lake surface area divded
   by the maximum length.
 }
+\examples{
+data(lakes)
+exLake<-exampleLakes[95,]
+inputLM<-lakeSurroundTopo(exLake,exampleElev)
+plot(inputLM)
+lakeMeanWidth(inputLM)
+}
 \references{
   Florida LAKEWATCH (2001). A Beginner's guide to water
   management - Lake Morphometry (2nd ed.). Gainesville:

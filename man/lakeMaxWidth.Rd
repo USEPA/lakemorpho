@@ -29,6 +29,13 @@
   perpendicular line and repeats that line \code{pointDens}
   number of times and returns the longest of those lines.
 }
+\examples{
+data(lakes)
+exLake<-exampleLakes[95,]
+inputLM<-lakeSurroundTopo(exLake,exampleElev)
+plot(inputLM)
+lakeMaxWidth(inputLM,100)
+}
 \references{
   Florida LAKEWATCH (2001). A Beginner's guide to water
   management - Lake Morphometry (2nd ed.). Gainesville:

@@ -14,8 +14,16 @@
 #'             Department of Fisheries and Aquatic Sciences.
 #'             \href{http://edis.ifas.ufl.edu/pdffiles/FA/FA08100.pdf}{Link}
 #' 
-
+#' @examples
+#' data(lakes)
+#' exLake<-exampleLakes[95,]
+#' inputLM<-lakeSurroundTopo(exLake,exampleElev)
+#' plot(inputLM)
+#' lakeShorelineLength(inputLM)
 # TO DO: check for null lake
 lakeShorelineLength <- function(inLakeMorpho) {
+    if (class(inLakeMorpho) != "lakeMorpho") {
+        return(warning("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo first."))
+    }
     return(gLength(inLakeMorpho$lake))
 } 

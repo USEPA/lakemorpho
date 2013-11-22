@@ -31,6 +31,13 @@
 \description{
   The function calculates the maximum in lake distnace
 }
+\examples{
+data(lakes)
+exLake<-exampleLakes[95,]
+inputLM<-lakeSurroundTopo(exLake,exampleElev)
+plot(inputLM)
+lakeFetch(inputLM,'N',100)
+}
 \references{
   Florida LAKEWATCH (2001). A Beginner's guide to water
   management - Lake Morphometry (2nd ed.). Gainesville:

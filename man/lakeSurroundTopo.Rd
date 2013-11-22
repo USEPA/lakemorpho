@@ -31,4 +31,10 @@
   the surrounding topography is the land area represented
   by the catchements that intersect the lake.
 }
+\examples{
+data(lakes)
+exLake<-exampleLakes[95,]
+inputLM<-lakeSurroundTopo(exLake,exampleElev)
+plot(inputLM)
+}
 

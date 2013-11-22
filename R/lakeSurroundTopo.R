@@ -17,13 +17,20 @@
 #'          
 #' @export
 #' @return lakeMorphoClass
+#' @examples
+#' data(lakes)
+#' exLake<-exampleLakes[95,]
+#' inputLM<-lakeSurroundTopo(exLake,exampleElev)
+#' plot(inputLM)
+
 
 # function to select out elevation, catchements, etc. TO DO:
 
-# fix lake on edge
+# fix lake on edge assignment to True - not currently in there
 
 lakeSurroundTopo <- function(inLake, inElev, inCatch = NULL, reso = res(inElev)[1]) {
-    lakeOnEdge = F
+    
+    lakeOnEdge <- F
     slot(inLake, "polygons") <- lapply(slot(inLake, "polygons"), checkPolygonsHoles)
     # Ignores lakes smaller that 3X3 30 m pixels
     if (gArea(inLake) <= 8100) {
@@ -32,8 +39,7 @@ lakeSurroundTopo <- function(inLake, inElev, inCatch = NULL, reso = res(inElev)[
     tmpBuff <- gBuffer(inLake, width = 180)
     nc <- round((extent(tmpBuff)@xmax - extent(tmpBuff)@xmin)/reso)
     nr <- round((extent(tmpBuff)@ymax - extent(tmpBuff)@ymin)/reso)
-    # deals with very small lakes (not sure all of these are 'real' lakes), but keeps in
-    # anyway
+    # deals with very small lakes (not sure all of these are 'real' lakes), but keeps in anyway
     if (nc <= 20 || nr <= 20) {
         reso <- 10
         nc <- round((extent(tmpBuff)@xmax - extent(tmpBuff)@xmin)/reso)
@@ -43,8 +49,8 @@ lakeSurroundTopo <- function(inLake, inElev, inCatch = NULL, reso = res(inElev)[
     ymax <- extent(tmpBuff)@ymax
     xmin <- extent(tmpBuff)@xmin
     ymin <- extent(tmpBuff)@ymin
-    lakepr <- rasterize(SpatialPolygons(inLake@polygons), raster(xmn = xmin, xmx = xmax, 
-        ymn = ymin, ymx = ymax, nrows = nr, ncols = nc, crs = CRS(proj4string(inLake))))
+    lakepr <- rasterize(SpatialPolygons(inLake@polygons), raster(xmn = xmin, xmx = xmax, ymn = ymin, ymx = ymax, 
+        nrows = nr, ncols = nc, crs = CRS(proj4string(inLake))))
     lakepr2 <- lakepr
     lakepr2[is.na(lakepr2)] <- 0
     lakepr2[lakepr2 == 1] <- NA
@@ -62,24 +68,8 @@ lakeSurroundTopo <- function(inLake, inElev, inCatch = NULL, reso = res(inElev)[
         xSurround <- xBuffer
     }
     
-    # Grabs needed elevation data
-    bboxPoints <- rbind(bbox(xSurround)[, 1], bbox(xSurround)[, 2])
-    bboxPoints <- SpatialPoints(bboxPoints, CRS(proj4string(xSurround)))
-    bboxPointsGeo <- spTransform(bboxPoints, CRS("+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +no_defs"))
-    corners <- abs(trunc(coordinates(bboxPointsGeo))) + 1
+    # Crops out elevation data
+    xElev <- mask(crop(inElev, xSurround), xSurround)
     
-    if (is.null(intersect(extent(inElev), extent(xSurround))) == F) {
-        outputR <- raster(extent(xSurround), ncols = round((extent(xSurround)@xmax - 
-            extent(xSurround)@xmin)/res(inElev)[1]), nrows = round((extent(xSurround)@ymax - 
-            extent(xSurround)@ymin)/res(inElev)[1]), crs = CRS(proj4string(xSurround)))
-        xElev <- resample(inElev, outputR)
-        xElev2 <- resample(mask(crop(inElev, xSurround), xSurround), outputR)
-        xElev <- merge(xElev, xElev2)
-    } else {
-        xElev <- mask(crop(inElev, xSurround), xSurround)
-    }
-    if (is.null(intersect(extent(inElev), extent(xSurround))) == F) {
-        lakeOnEdge <- T
-    }
     return(lakeMorphoClass(inLake, xElev, xSurround, xLakeDist, lakeOnEdge))
 } 

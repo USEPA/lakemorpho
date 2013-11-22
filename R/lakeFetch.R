@@ -19,19 +19,28 @@
 #' 
 #' @export
 #' @return numeric
+#' @examples
+#' data(lakes)
+#' exLake<-exampleLakes[95,]
+#' inputLM<-lakeSurroundTopo(exLake,exampleElev)
+#' plot(inputLM)
+#' lakeFetch(inputLM,'N',100)
+#' 
 #' 
 # TO DO: check for null lake
 
-# Function to calculate fetch for four cardinal directions TO DO: check for null lake
-# re-write to use an acutal bearing???
+# Function to calculate fetch for four cardinal directions TO DO: check for null lake re-write to use an
+# acutal bearing???
 lakeFetch <- function(inLakeMorpho, bearing = c("N", "NE", "E", "SE"), pointDens, addLine = T) {
+    if (class(inLakeMorpho) != "lakeMorpho") {
+        return(warning("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo first."))
+    }
     temp <- inLakeMorpho
-    # can use lakeMaxWidth, just replace maxLengthLine, with line = to line
-    # perpedndicular to the bearing slope 0 may be a problem...
+    # can use lakeMaxWidth, just replace maxLengthLine, with line = to line perpedndicular to the bearing
+    # slope 0 may be a problem...
     if (bearing == "N") {
         x0 <- inLakeMorpho$lake@bbox[1, 1]
-        y0 <- inLakeMorpho$lake@bbox[2, 1] + (inLakeMorpho$lake@bbox[2, 2] - inLakeMorpho$lake@bbox[2, 
-            1])/2
+        y0 <- inLakeMorpho$lake@bbox[2, 1] + (inLakeMorpho$lake@bbox[2, 2] - inLakeMorpho$lake@bbox[2, 1])/2
         x1 <- inLakeMorpho$lake@bbox[1, 2]
         y1 <- y0
     }
@@ -42,8 +51,7 @@ lakeFetch <- function(inLakeMorpho, bearing = c("N", "NE", "E", "SE"), pointDens
         y1 <- inLakeMorpho$lake@bbox[2, 2]
     }
     if (bearing == "E") {
-        x0 <- inLakeMorpho$lake@bbox[1, 1] + (inLakeMorpho$lake@bbox[1, 2] - inLakeMorpho$lake@bbox[1, 
-            1])/2
+        x0 <- inLakeMorpho$lake@bbox[1, 1] + (inLakeMorpho$lake@bbox[1, 2] - inLakeMorpho$lake@bbox[1, 1])/2
         y0 <- inLakeMorpho$lake@bbox[2, 1]
         x1 <- x0
         y1 <- inLakeMorpho$lake@bbox[2, 2]
@@ -54,8 +62,7 @@ lakeFetch <- function(inLakeMorpho, bearing = c("N", "NE", "E", "SE"), pointDens
         x1 <- inLakeMorpho$lake@bbox[1, 2]
         y0 <- inLakeMorpho$lake@bbox[2, 2]
     }
-    temp$maxLengthLine <- SpatialLines(list(Lines(list(Line(matrix(c(x0, x1, y0, y1), 
-        2, 2))), "1")), proj4string = CRS(proj4string(inLakeMorpho$lake)))
+    temp$maxLengthLine <- SpatialLines(list(Lines(list(Line(matrix(c(x0, x1, y0, y1), 2, 2))), "1")), proj4string = CRS(proj4string(inLakeMorpho$lake)))
     
     result <- lakeMaxWidth(temp, pointDens)
     

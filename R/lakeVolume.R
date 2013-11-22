@@ -22,11 +22,19 @@
 #'             Department of Fisheries and Aquatic Sciences.
 #'             \href{http://edis.ifas.ufl.edu/pdffiles/FA/FA08100.pdf}{Link}
 #' 
-
+#' @examples
+#' data(lakes)
+#' exLake<-exampleLakes[95,]
+#' inputLM<-lakeSurroundTopo(exLake,exampleElev)
+#' plot(inputLM)
+#' lakeVolume(inputLM)
 
 # TO DO: Add test for null lake, lakeDistance
 
 lakeVolume <- function(inLakeMorpho, correctFactor = 1) {
+    if (class(inLakeMorpho) != "lakeMorpho") {
+        return(warning("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo first."))
+    }
     Dmax <- max(inLakeMorpho$lakeDistance@data@values, na.rm = T)
     Zmax <- lakeMaxDepth(inLakeMorpho, correctFactor)
     lakevol <- sum((inLakeMorpho$lakeDistance@data@values * Zmax/Dmax) * res(inLakeMorpho$lakeDistance)[1] * 

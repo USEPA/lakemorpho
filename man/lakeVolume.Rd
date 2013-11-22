@@ -24,6 +24,13 @@
   distances, to an estimated depth.  These depths are
   multiplied by the area of the pixel and summed.
 }
+\examples{
+data(lakes)
+exLake<-exampleLakes[95,]
+inputLM<-lakeSurroundTopo(exLake,exampleElev)
+plot(inputLM)
+lakeVolume(inputLM)
+}
 \references{
   Hollister, J. W., W.B. Milstead (2010). Using GIS to
   Estimate Lake Volume from Limited Data. Lake and

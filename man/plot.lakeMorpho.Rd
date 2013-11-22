@@ -11,6 +11,7 @@
   (although I am not sure this is true)}
 }
 \description{
-  Default plotting of a lakeMorpho object
+  Plots the lakeMorpho class by showing lake, surround
+  topography and in lake distance
 }
 

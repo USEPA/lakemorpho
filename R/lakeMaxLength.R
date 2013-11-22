@@ -20,6 +20,7 @@
 #'        in practice is usually significant less.
 #' @param addLine Boolean to determine if the selected max length line should be 
 #'        added to the inLakeMorpho object.  Defaults to True
+#' 
 #' @export
 #' @return numeric
 #' 
@@ -27,23 +28,27 @@
 #'             - Lake Morphometry (2nd ed.). Gainesville: Florida LAKEWATCH, 
 #'             Department of Fisheries and Aquatic Sciences.
 #'             \href{http://edis.ifas.ufl.edu/pdffiles/FA/FA08100.pdf}{Link}
-#' 
+#' @examples
+#' data(lakes)
+#' exLake<-exampleLakes[95,]
+#' inputLM<-lakeSurroundTopo(exLake,exampleElev)
+#' plot(inputLM)
+#' lakeMaxLength(inputLM,100)
 
 # TO DO: Add test for null lake Implement as binary search???
 lakeMaxLength <- function(inLakeMorpho, pointDens, addLine = T) {
+    if (class(inLakeMorpho) != "lakeMorpho") {
+        return(warning("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo first."))
+    }
     result <- NA
     lakeShorePoints <- spsample(as(inLakeMorpho$lake, "SpatialLines"), pointDens, "regular")@coords
     dm <- dist(lakeShorePoints)
     dm2 <- as.matrix(dm)
     md <- nrow(lakeShorePoints)
-    x0 <- lakeShorePoints[which(lower.tri(matrix(1, md, md)) == 1, arr.ind = T)[, 1], 
-        ][, 1][order(dm, decreasing = T)]  #[30:md]
-    y0 <- lakeShorePoints[which(lower.tri(matrix(1, md, md)) == 1, arr.ind = T)[, 1], 
-        ][, 2][order(dm, decreasing = T)]  #[30:md]
-    x1 <- lakeShorePoints[which(lower.tri(matrix(1, md, md)) == 1, arr.ind = T)[, 2], 
-        ][, 1][order(dm, decreasing = T)]  #[30:md]
-    y1 <- lakeShorePoints[which(lower.tri(matrix(1, md, md)) == 1, arr.ind = T)[, 2], 
-        ][, 2][order(dm, decreasing = T)]  #[30:md]
+    x0 <- lakeShorePoints[which(lower.tri(matrix(1, md, md)) == 1, arr.ind = T)[, 1], ][, 1][order(dm, decreasing = T)]  #[30:md]
+    y0 <- lakeShorePoints[which(lower.tri(matrix(1, md, md)) == 1, arr.ind = T)[, 1], ][, 2][order(dm, decreasing = T)]  #[30:md]
+    x1 <- lakeShorePoints[which(lower.tri(matrix(1, md, md)) == 1, arr.ind = T)[, 2], ][, 1][order(dm, decreasing = T)]  #[30:md]
+    y1 <- lakeShorePoints[which(lower.tri(matrix(1, md, md)) == 1, arr.ind = T)[, 2], ][, 2][order(dm, decreasing = T)]  #[30:md]
     xydf <- data.frame(x0, x1, y0, y1)
     # Test the longest 5% of lines first.  Fastest way to find on more circular lakes
     for (i in 1:round(length(x0) * 0.05)) {
@@ -60,14 +65,13 @@ lakeMaxLength <- function(inLakeMorpho, pointDens, addLine = T) {
     if (is.na(result)) {
         xydf2 <- xydf[i + 1:nrow(xydf) - i, ]
         xylist <- split(xydf2, rownames(xydf2))
-        myLines <- SpatialLines(lapply(xylist, function(x) Lines(list(Line(matrix(as.numeric(x), 
-            2, 2))), row.names(x))), proj4string = CRS(proj4string(inLakeMorpho$lake)))
+        myLines <- SpatialLines(lapply(xylist, function(x) Lines(list(Line(matrix(as.numeric(x), 2, 2))), 
+            row.names(x))), proj4string = CRS(proj4string(inLakeMorpho$lake)))
         myInd <- gWithin(myLines, inLakeMorpho$lake, byid = T)
         if (sum(myInd) == 0) {
             return(NA)
         }
-        myLine <- myLines[myInd][gLength(myLines[myInd], byid = T) == max(gLength(myLines[myInd], 
-            byid = T))]
+        myLine <- myLines[myInd][gLength(myLines[myInd], byid = T) == max(gLength(myLines[myInd], byid = T))]
         result <- gLength(myLine)
     }
     if (addLine) {

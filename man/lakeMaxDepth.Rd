@@ -25,6 +25,13 @@
   the surrounding topography is similar to the bathymetry
   of the lake (Hollister et. al 2011).
 }
+\examples{
+data(lakes)
+exLake<-exampleLakes[95,]
+inputLM<-lakeSurroundTopo(exLake,exampleElev)
+plot(inputLM)
+lakeMaxDepth(inputLM)
+}
 \references{
   Hollister, J. W., W.B. Milstead, M.A. Urrutia (2011).
   Predicting Maximum Lake Depth from Surrounding

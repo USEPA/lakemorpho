@@ -7,14 +7,19 @@ summary.lakeMorpho <- function() {
 }
 
 #' Default plotting of a lakeMorpho object
-#' @param inLakeMorpho input lakeMorpho class to plot
+#' 
+#' Plots the lakeMorpho class by showing lake, surround topography and in lake distance
+#' 
+#' @param x input lakeMorpho class to plot
 #' @param ... allows for passing of other plot parameters (although I am not sure
 #'        this is true)
+#' @export
 
-plot.lakeMorpho <- function(inLakeMorpho, ...) {
-    plot(inLakeMorpho[[3]])
-    plot(inLakeMorpho[[2]], add = T)
-    image(inLakeMorpho[[4]], add = T)
-    plot(inLakeMorpho[[3]], add = T)
-    plot(inLakeMorpho[[1]], add = T)
+plot.lakeMorpho <- function(x, ...) {
+    plot(x[[3]])
+    plot(x[[2]], add = T)
+    image(x[[4]], add = T)
+    plot(x[[3]], add = T)
+    plot(x[[1]], add = T)
+    
 } 

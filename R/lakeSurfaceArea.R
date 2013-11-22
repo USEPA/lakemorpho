@@ -12,8 +12,17 @@
 #'             - Lake Morphometry (2nd ed.). Gainesville: Florida LAKEWATCH, 
 #'             Department of Fisheries and Aquatic Sciences.
 #'             \href{http://edis.ifas.ufl.edu/pdffiles/FA/FA08100.pdf}{Link}
+#' @examples
+#' data(lakes)
+#' exLake<-exampleLakes[95,]
+#' inputLM<-lakeSurroundTopo(exLake,exampleElev)
+#' plot(inputLM)
+#' lakeSurfaceArea(inputLM)
 
 # function to return lake area of an inLakeMorpho Class TO DO: Add test for null lake
 lakeSurfaceArea <- function(inLakeMorpho) {
+    if (class(inLakeMorpho) != "lakeMorpho") {
+        return(warning("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo first."))
+    }
     return(gArea(inLakeMorpho$lake))
 } 
