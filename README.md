@@ -16,6 +16,10 @@ The purpose of `lakemorpho` is to provide a suite of tools that can be used to c
 - Fetch from a specified bearing
 
 # To install 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 50a7886b9e1ab53ffa2467c81ad4954b89d6ae1d
 Install development version of lakemorpho from GitHub:
 
 ```
