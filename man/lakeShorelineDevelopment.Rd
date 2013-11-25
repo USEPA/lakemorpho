@@ -23,7 +23,6 @@
 data(lakes)
 exLake<-exampleLakes[95,]
 inputLM<-lakeSurroundTopo(exLake,exampleElev)
-plot(inputLM)
 lakeShorelineDevelopment(inputLM)
 }
 \references{

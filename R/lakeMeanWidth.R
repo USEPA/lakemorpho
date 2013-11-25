@@ -17,9 +17,8 @@
 #' data(lakes)
 #' exLake<-exampleLakes[95,]
 #' inputLM<-lakeSurroundTopo(exLake,exampleElev)
-#' plot(inputLM)
 #' lakeMeanWidth(inputLM)
-# TO DO: Add test for null lake Add test fo null maxLengthLine
+
 lakeMeanWidth <- function(inLakeMorpho) {
     if (class(inLakeMorpho) != "lakeMorpho") {
         return(warning("Input data is not of class 'lakeMorpho'.  Run lakeSurroundTopo first."))

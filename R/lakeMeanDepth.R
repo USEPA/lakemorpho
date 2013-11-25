@@ -16,9 +16,8 @@
 #' data(lakes)
 #' exLake<-exampleLakes[95,]
 #' inputLM<-lakeSurroundTopo(exLake,exampleElev)
-#' plot(inputLM)
 #' lakeMeanDepth(inputLM)
-# TO DO: Add test for null lake
+
 
 lakeMeanDepth <- function(inLakeMorpho) {
     if (class(inLakeMorpho) != "lakeMorpho") {

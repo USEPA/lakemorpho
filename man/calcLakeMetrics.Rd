@@ -41,7 +41,6 @@
 data(lakes)
 exLake<-exampleLakes[95,]
 inputLM<-lakeSurroundTopo(exLake,exampleElev)
-plot(inputLM)
 calcLakeMetrics(inputLM,'N',250)
 }
 \references{

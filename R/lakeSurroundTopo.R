@@ -21,10 +21,7 @@
 #' data(lakes)
 #' exLake<-exampleLakes[95,]
 #' inputLM<-lakeSurroundTopo(exLake,exampleElev)
-#' plot(inputLM)
-
-
-# function to select out elevation, catchements, etc. TO DO:
+#' inputLM
 
 # fix lake on edge assignment to True - not currently in there
 

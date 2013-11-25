@@ -35,7 +35,6 @@
 data(lakes)
 exLake<-exampleLakes[95,]
 inputLM<-lakeSurroundTopo(exLake,exampleElev)
-plot(inputLM)
 lakeFetch(inputLM,'N',100)
 }
 \references{

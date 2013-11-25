@@ -28,7 +28,6 @@
 data(lakes)
 exLake<-exampleLakes[95,]
 inputLM<-lakeSurroundTopo(exLake,exampleElev)
-plot(inputLM)
 lakeVolume(inputLM)
 }
 \references{

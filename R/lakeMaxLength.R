@@ -32,7 +32,6 @@
 #' data(lakes)
 #' exLake<-exampleLakes[95,]
 #' inputLM<-lakeSurroundTopo(exLake,exampleElev)
-#' plot(inputLM)
 #' lakeMaxLength(inputLM,100)
 
 # TO DO: Add test for null lake Implement as binary search???

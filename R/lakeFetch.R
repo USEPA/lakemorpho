@@ -23,11 +23,8 @@
 #' data(lakes)
 #' exLake<-exampleLakes[95,]
 #' inputLM<-lakeSurroundTopo(exLake,exampleElev)
-#' plot(inputLM)
 #' lakeFetch(inputLM,'N',100)
-#' 
-#' 
-# TO DO: check for null lake
+
 
 # Function to calculate fetch for four cardinal directions TO DO: check for null lake re-write to use an
 # acutal bearing???

@@ -26,10 +26,7 @@
 #' data(lakes)
 #' exLake<-exampleLakes[95,]
 #' inputLM<-lakeSurroundTopo(exLake,exampleElev)
-#' plot(inputLM)
 #' lakeVolume(inputLM)
-
-# TO DO: Add test for null lake, lakeDistance
 
 lakeVolume <- function(inLakeMorpho, correctFactor = 1) {
     if (class(inLakeMorpho) != "lakeMorpho") {

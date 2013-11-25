@@ -2,16 +2,21 @@
 \alias{plot.lakeMorpho}
 \title{Default plotting of a lakeMorpho object}
 \usage{
-  plot.lakeMorpho(inLakeMorpho, ...)
+  plot.lakeMorpho(x, ...)
 }
 \arguments{
-  \item{inLakeMorpho}{input lakeMorpho class to plot}
+  \item{x}{input lakeMorpho class to plot}
 
-  \item{...}{allows for passing of other plot parameters
-  (although I am not sure this is true)}
+  \item{...}{allows for passing of other plot parameters}
 }
 \description{
   Plots the lakeMorpho class by showing lake, surround
   topography and in lake distance
+}
+\examples{
+data(lakes)
+exLake<-exampleLakes[95,]
+inputLM<-lakeSurroundTopo(exLake,exampleElev)
+plot(inputLM)
 }
 

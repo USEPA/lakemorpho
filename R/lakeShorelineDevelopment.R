@@ -17,9 +17,8 @@
 #' data(lakes)
 #' exLake<-exampleLakes[95,]
 #' inputLM<-lakeSurroundTopo(exLake,exampleElev)
-#' plot(inputLM)
 #' lakeShorelineDevelopment(inputLM)
-# TO DO: check for null lake
+
 lakeShorelineDevelopment <- function(inLakeMorpho) {
     if (class(inLakeMorpho) != "lakeMorpho") {
         return(warning("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo first."))
