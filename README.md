@@ -1,8 +1,8 @@
 # lakemorpho
-The purpose of `lakemorpho` is to provide a suite of tools that can be used to calculate basic lake morphometry metrics from an input SpatialPolygonsDataframe of a lake and a digital elevation model for the terrain surrounding that lake.  These tools are being used to calculate lake morphometry metrics for all "lakepond" waterbodies in the [NHDPlus V2](http://www.horizon-systems.com/nhdplus/NHDPlusV2_home.php).
+The purpose of `lakemorpho` is to provide a suite of tools that can be used to calculate basic lake morphometry metrics from an input SpatialPolygonsDataframe of a lake and a digital elevation model, as a RasterLayer, for the terrain surrounding that lake.  These tools are being used to calculate lake morphometry metrics for all "lakepond" waterbodies in the [NHDPlus V2](http://www.horizon-systems.com/nhdplus/NHDPlusV2_home.php).
 
 # Metrics Included
-'lakemorpho'calculates the following metrics
+`lakemorpho` calculates the following metrics
 
 - Surface Area
 - Shoreline Length
@@ -16,12 +16,20 @@ The purpose of `lakemorpho` is to provide a suite of tools that can be used to c
 - Fetch from a specified bearing
 
 # To install 
-Install development version of lakemorpho from GitHub:
+Install version 1.0 of `lakemorpho` from CRAN:
+Note: Not currently available from CRAN
+
+```
+install.packages("lakemorpho")
+require(lakemorpho)
+```
+
+Install development version of `lakemorpho` from GitHub:
 
 ```
 install.packages("devtools")
 require(devtools)
-install_github("lakemorpho", "USEPA")
+install_github("USEPA/lakemorpho,auth_user="",password="")
 require(lakemorpho)
 ```
 

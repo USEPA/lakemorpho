@@ -23,11 +23,10 @@
 #' inputLM<-lakeSurroundTopo(exLake,exampleElev)
 #' inputLM
 
-# fix lake on edge assignment to True - not currently in there
-
 lakeSurroundTopo <- function(inLake, inElev, inCatch = NULL, reso = res(inElev)[1]) {
-    
-    lakeOnEdge <- F
+    if (dim(inLake)[1] > 1) {
+      return(warning(paste(dim(inLake)[1],"polygons input. Select a single lake as input.")))
+    }
     slot(inLake, "polygons") <- lapply(slot(inLake, "polygons"), checkPolygonsHoles)
     # Ignores lakes smaller that 3X3 30 m pixels
     if (gArea(inLake) <= 8100) {
@@ -67,6 +66,9 @@ lakeSurroundTopo <- function(inLake, inElev, inCatch = NULL, reso = res(inElev)[
     
     # Crops out elevation data
     xElev <- mask(crop(inElev, xSurround), xSurround)
+    if (any(is.na(getValues(xElev)))) {
+      lakeOnEdge<-T
+    } else {lakeOnEdge <- F}
     
     return(lakeMorphoClass(inLake, xElev, xSurround, xLakeDist, lakeOnEdge))
 } 

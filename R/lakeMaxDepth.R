@@ -14,7 +14,7 @@
 #'        slope of the line would then be used as the correction 
 #'        factor(Hollister et. al, 2011).
 #' @export
-#' 
+#' @return numeric
 #' @references Hollister, J. W., W.B. Milstead, M.A. Urrutia (2011). Predicting 
 #'             Maximum Lake Depth from Surrounding Topography. PLoS ONE 6(9).
 #'             \href{http://dx.doi.org/10.1371/journal.pone.0025764}{link}

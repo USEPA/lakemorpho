@@ -18,7 +18,7 @@
 #'             \href{http://edis.ifas.ufl.edu/pdffiles/FA/FA08100.pdf}{Link}
 #' 
 #' @export
-#' @return numeric
+#' 
 #' @examples
 #' data(lakes)
 #' exLake<-exampleLakes[95,]
