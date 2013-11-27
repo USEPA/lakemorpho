@@ -34,7 +34,7 @@
 #' inputLM<-lakeSurroundTopo(exLake,exampleElev)
 #' lakeMaxLength(inputLM,100)
 
-# TO DO: Add test for null lake Implement as binary search???
+# TO DO: Implement as binary search???
 lakeMaxLength <- function(inLakeMorpho, pointDens, addLine = T) {
     if (class(inLakeMorpho) != "lakeMorpho") {
         return(warning("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo first."))

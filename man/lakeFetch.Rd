@@ -25,8 +25,6 @@
 }
 \value{
   numeric
-
-  numeric
 }
 \description{
   The function calculates the maximum in lake distnace

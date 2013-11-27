@@ -19,6 +19,9 @@
   zero.  The slope of the line would then be used as the
   correction factor(Hollister et. al, 2011).}
 }
+\value{
+  numeric
+}
 \description{
   This function uses slope and distance to estimate max
   depth.  This is based on the assumption that the slope of

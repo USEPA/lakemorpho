@@ -1,11 +1,3 @@
-#' Default printing of information included in lakeMorpho Class
-print.lakeMorpho <- function() {
-}
-
-#' Default summary of information in lakeMorpho Class
-summary.lakeMorpho <- function() {
-}
-
 #' Default plotting of a lakeMorpho object
 #' 
 #' Plots the lakeMorpho class by showing lake, surround topography and in lake distance

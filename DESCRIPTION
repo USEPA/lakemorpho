@@ -21,7 +21,6 @@ Depends:
     sp,
     maptools
 Collate:
-    'default.lakemorpho.R'
     'lakeSurfaceArea.R'
     'lakeSurroundTopo.R'
     'lakeVolume.R'
@@ -37,3 +36,4 @@ Collate:
     'lakemorpho.R'
     'lakes.R'
     'calcLakeMetrics.R'
+    'plot.lakemorpho.R'
