@@ -14,8 +14,7 @@
 #'             \href{http://edis.ifas.ufl.edu/pdffiles/FA/FA08100.pdf}{Link}
 #' @examples
 #' data(lakes)
-#' exLake<-exampleLakes[95,]
-#' inputLM<-lakeSurroundTopo(exLake,exampleElev)
+#' inputLM<-lakeSurroundTopo(exampleLake,exampleElev)
 #' lakeSurfaceArea(inputLM)
 
 lakeSurfaceArea <- function(inLakeMorpho) {

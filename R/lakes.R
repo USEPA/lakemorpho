@@ -9,7 +9,7 @@
 #' @keywords datasets
 #' @format SpatialPolygonDataframe with 115 lakes, each with 13 variables
 #'         
-#' @name exampleLakes
+#' @name exampleLake
 
 NULL
 

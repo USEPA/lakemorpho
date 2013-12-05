@@ -30,8 +30,7 @@
 #'             \href{http://edis.ifas.ufl.edu/pdffiles/FA/FA08100.pdf}{Link}
 #' @examples
 #' data(lakes)
-#' exLake<-exampleLakes[95,]
-#' inputLM<-lakeSurroundTopo(exLake,exampleElev)
+#' inputLM<-lakeSurroundTopo(exampleLake,exampleElev)
 #' lakeMaxLength(inputLM,100)
 
 # TO DO: Implement as binary search???
