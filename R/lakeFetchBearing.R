@@ -33,6 +33,7 @@ lakeFetch <- function(inLakeMorpho, bearing = c("N", "NE", "E", "SE"), pointDens
     }
     temp <- inLakeMorpho
     
+    
     if (addLine) {
         myName <- paste(substitute(inLakeMorpho))
         if (bearing == "N") {
