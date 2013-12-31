@@ -48,11 +48,11 @@ lakeFetch <- function(inLakeMorpho, bearing, addLine = T) {
     l2 <- distCosine(origMinMin, origMinMax)
     # get new points to make the extent square
     if (l1 > l2) {
-        minPt <- destPoint(origMinMin, 270, (l1 - l2)/2)
-        maxPt <- destPoint(origMaxMax, 90, (l1 - l2)/2)
+        minPt <- SpatialPoints(destPoint(origMinMin, 180, (l1 - l2)/2), proj4string = CRS("+proj=longlat"))
+        maxPt <- SpatialPoints(destPoint(origMaxMax, 0, (l1 - l2)/2), proj4string = CRS("+proj=longlat"))
     } else {
-        minPt <- destPoint(origMinMin, 180, (l1 - l2)/2)
-        maxPt <- destPoint(origMaxMax, 0, (l1 - l2)/2)
+        minPt <- SpatialPoints(destPoint(origMinMin, 270, (l2 - l1)/2), proj4string = CRS("+proj=longlat"))
+        maxPt <- SpatialPoints(destPoint(origMaxMax, 90, (l2 - l1)/2), proj4string = CRS("+proj=longlat"))
     }
     maxDist <- distCosine(minPt, maxPt)
     
@@ -101,7 +101,6 @@ lakeFetch <- function(inLakeMorpho, bearing, addLine = T) {
         allLines[[i]] <- Lines(list(Line(rbind(destPoint(centPts[[i]], bearing, maxDist), 
             destPoint(centPts[[i]], bearing + 180, maxDist)))), as.character(i))
     }
-    
     allLinesSL <- SpatialLines(allLines, proj4string = CRS("+proj=longlat"))
     
     # clip out lines that are inside lake
