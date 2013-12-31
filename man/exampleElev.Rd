@@ -4,8 +4,8 @@
 \title{Elevation Data for \code{lakemorpho} examples}
 \format{RasterLayer of 1094 x 1419 and 30 meter resolution}
 \description{
-  This example data is a RasterLayer of a small subset of
-  the National Elevation Dataset named exampleElev.
+This example data is a RasterLayer of a small subset of the
+National Elevation Dataset named exampleElev.
 }
 \keyword{datasets}
 

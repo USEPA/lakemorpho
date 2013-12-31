@@ -2,8 +2,7 @@
 \alias{lakeMorphoClass}
 \title{Function to create a lakeMorpho class - this is input to all other methods}
 \usage{
-  lakeMorphoClass(inLake, inElev, inCatch, inLakeDist,
-    lakeOnEdge = F)
+lakeMorphoClass(inLake, inElev, inCatch, inLakeDist, lakeOnEdge = F)
 }
 \arguments{
   \item{inLake}{input lake SpatialPolygons object}
@@ -20,13 +19,13 @@
   Buffer) extends beyond extent of elevation data}
 }
 \value{
-  lakeMorpho
+lakeMorpho
 }
 \description{
-  This is a helper function that creates a lakeMorpho class
-  object
+This is a helper function that creates a lakeMorpho class
+object
 }
 \seealso{
-  lakeSurroundTopo
+lakeSurroundTopo
 }
 

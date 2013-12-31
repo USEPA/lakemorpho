@@ -2,7 +2,7 @@
 \alias{lakeMeanDepth}
 \title{Function to return lake Mean Depth}
 \usage{
-  lakeMeanDepth(inLakeMorpho)
+lakeMeanDepth(inLakeMorpho)
 }
 \arguments{
   \item{inLakeMorpho}{An object of
@@ -11,11 +11,11 @@
   appropriate as input}
 }
 \value{
-  numeric
+numeric
 }
 \description{
-  Calculates average depth of lake as a mean of lake volume
-  divided by lake surface area
+Calculates average depth of lake as a mean of lake volume
+divided by lake surface area
 }
 \examples{
 data(lakes)
@@ -23,10 +23,10 @@ inputLM<-lakeSurroundTopo(exampleLake,exampleElev)
 lakeMeanDepth(inputLM)
 }
 \references{
-  Florida LAKEWATCH (2001). A Beginner's guide to water
-  management - Lake Morphometry (2nd ed.). Gainesville:
-  Florida LAKEWATCH, Department of Fisheries and Aquatic
-  Sciences.
-  \href{http://edis.ifas.ufl.edu/pdffiles/FA/FA08100.pdf}{Link}
+Florida LAKEWATCH (2001). A Beginner's guide to water
+management - Lake Morphometry (2nd ed.). Gainesville:
+Florida LAKEWATCH, Department of Fisheries and Aquatic
+Sciences.
+\href{http://edis.ifas.ufl.edu/pdffiles/FA/FA08100.pdf}{Link}
 }
 

@@ -14,12 +14,11 @@ Description: Lake morphometry metrics are used by limnologists to understand,
     among other things, the ecologial processes in a lake.  This
     package provides the tools to calculate a typical suite of these
     metrics from an input elevation model and lake polygon.
-Depends: rgdal, raster, rgeos, sp, maptools
-Collate: 'lakeSurfaceArea.R' 'lakeSurroundTopo.R' 'lakeVolume.R'
-        'lakeFetch.R' 'lakeMaxDepth.R' 'lakeMaxLength.R'
-        'lakeMaxWidth.R' 'lakeMeanDepth.R' 'lakeMeanWidth.R'
-        'lakeShorelineDevelopment.R' 'lakeShorelineLength.R'
-        'lakeMorphoClass.R' 'lakemorpho.R' 'lakes.R'
-        'calcLakeMetrics.R' 'plot.lakemorpho.R'
+Depends:
+    rgdal,
+    raster,
+    rgeos,
+    sp,
+    maptools
 Packaged: 2013-12-02 18:39:11 UTC; JHollist
 Author: Jeffrey Hollister [aut, cre]

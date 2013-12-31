@@ -38,14 +38,16 @@
 #' inputLM<-lakeSurroundTopo(exampleLake,exampleElev)
 #' calcLakeMetrics(inputLM,'N',250)
 
-calcLakeMetrics <- function(inLakeMorpho, bearing = c("N", "NE", "E", "SE"), pointDens, correctFactor = 1) {
+calcLakeMetrics <- function(inLakeMorpho, bearing = c("N", "NE", "E", "SE"), pointDens, 
+    correctFactor = 1) {
     if (class(inLakeMorpho) != "lakeMorpho") {
         return(warning("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo first."))
     }
     allMet <- list(surfaceArea = lakeSurfaceArea(inLakeMorpho), shorelineLength = lakeShorelineLength(inLakeMorpho), 
         shorelinDevelopment = lakeShorelineDevelopment(inLakeMorpho), maxDepth = lakeMaxDepth(inLakeMorpho, 
             correctFactor), volume = lakeVolume(inLakeMorpho, correctFactor), meanDepth = lakeMeanDepth(inLakeMorpho), 
-        maxLength = lakeMaxLength(inLakeMorpho, pointDens), maxWidth = lakeMaxWidth(inLakeMorpho, pointDens), 
-        meanWidth = lakeMeanWidth(inLakeMorpho), fetch = lakeFetch(inLakeMorpho, bearing, pointDens))
+        maxLength = lakeMaxLength(inLakeMorpho, pointDens), maxWidth = lakeMaxWidth(inLakeMorpho, 
+            pointDens), meanWidth = lakeMeanWidth(inLakeMorpho), fetch = lakeFetch(inLakeMorpho, 
+            bearing, pointDens))
     return(allMet)
 } 
