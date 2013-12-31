@@ -1,10 +1,8 @@
 \name{lakeFetch}
 \alias{lakeFetch}
-\title{Function to calculate fetch along four cardinal directions}
+\title{Function to calculate fetch along an input bearing}
 \usage{
-  lakeFetch(inLakeMorpho,
-    bearing = c("N", "NE", "E", "SE"), pointDens,
-    addLine = T)
+lakeFetch(inLakeMorpho, bearing, addLine = T)
 }
 \arguments{
   \item{inLakeMorpho}{An object of
@@ -15,30 +13,30 @@
   \item{bearing}{Character that indicates the bearing of
   the desired fetch}
 
-  \item{pointDens}{numeric value that determines number of
-  lines along the specificed bearing for which to check the
-  distance}
-
   \item{addLine}{Boolean to determine if the selected max
   length line should be added to the inLakeMorpho object.
-  Defaults to True}
+  Defaults to True.  Note that the line is returned in the
+  same projection as the input data.}
 }
 \value{
-  numeric
+This returns a numeric value indicating the length of the
+longest line in the lake along the input bearing. Units are
+the same as the input data.
 }
 \description{
-  The function calculates the maximum in lake distnace
+The function calculates the maximum in lake distance of a
+line along an input bearing.
 }
 \examples{
 data(lakes)
 inputLM<-lakeSurroundTopo(exampleLake,exampleElev)
-lakeFetch(inputLM,'N',100)
+lakeFetch(inputLM,45)
 }
 \references{
-  Florida LAKEWATCH (2001). A Beginner's guide to water
-  management - Lake Morphometry (2nd ed.). Gainesville:
-  Florida LAKEWATCH, Department of Fisheries and Aquatic
-  Sciences.
-  \href{http://edis.ifas.ufl.edu/pdffiles/FA/FA08100.pdf}{Link}
+Florida LAKEWATCH (2001). A Beginner's guide to water
+management - Lake Morphometry (2nd ed.). Gainesville:
+Florida LAKEWATCH, Department of Fisheries and Aquatic
+Sciences.
+\href{http://edis.ifas.ufl.edu/pdffiles/FA/FA08100.pdf}{Link}
 }
 

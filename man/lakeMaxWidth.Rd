@@ -2,7 +2,7 @@
 \alias{lakeMaxWidth}
 \title{Function to find line representing maximum lake Width}
 \usage{
-  lakeMaxWidth(inLakeMorpho, pointDens, addLine = T)
+lakeMaxWidth(inLakeMorpho, pointDens, addLine = T)
 }
 \arguments{
   \item{inLakeMorpho}{An object of
@@ -20,14 +20,14 @@
   Defaults to True}
 }
 \value{
-  numeric
+numeric
 }
 \description{
-  Maximum lake width is defined as the maximum in lake
-  distance that is perpendicular to the maximum lake
-  length.  This function calculates the equation of the
-  perpendicular line and repeats that line \code{pointDens}
-  number of times and returns the longest of those lines.
+Maximum lake width is defined as the maximum in lake
+distance that is perpendicular to the maximum lake length.
+This function calculates the equation of the perpendicular
+line and repeats that line \code{pointDens} number of times
+and returns the longest of those lines.
 }
 \examples{
 data(lakes)
@@ -35,10 +35,10 @@ inputLM<-lakeSurroundTopo(exampleLake,exampleElev)
 lakeMaxWidth(inputLM,100)
 }
 \references{
-  Florida LAKEWATCH (2001). A Beginner's guide to water
-  management - Lake Morphometry (2nd ed.). Gainesville:
-  Florida LAKEWATCH, Department of Fisheries and Aquatic
-  Sciences.
-  \href{http://edis.ifas.ufl.edu/pdffiles/FA/FA08100.pdf}{Link}
+Florida LAKEWATCH (2001). A Beginner's guide to water
+management - Lake Morphometry (2nd ed.). Gainesville:
+Florida LAKEWATCH, Department of Fisheries and Aquatic
+Sciences.
+\href{http://edis.ifas.ufl.edu/pdffiles/FA/FA08100.pdf}{Link}
 }
 

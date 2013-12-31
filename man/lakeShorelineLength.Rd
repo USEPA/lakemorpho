@@ -2,7 +2,7 @@
 \alias{lakeShorelineLength}
 \title{Function to calculate shoreline length}
 \usage{
-  lakeShorelineLength(inLakeMorpho)
+lakeShorelineLength(inLakeMorpho)
 }
 \arguments{
   \item{inLakeMorpho}{An object of
@@ -11,12 +11,11 @@
   appropriate as input}
 }
 \value{
-  numeric
+numeric
 }
 \description{
-  This function returns the length of the shoreline of the
-  lake and is simply the perimeter of the input lake
-  polyogn.
+This function returns the length of the shoreline of the
+lake and is simply the perimeter of the input lake polyogn.
 }
 \examples{
 data(lakes)
@@ -24,10 +23,10 @@ inputLM<-lakeSurroundTopo(exampleLake,exampleElev)
 lakeShorelineLength(inputLM)
 }
 \references{
-  Florida LAKEWATCH (2001). A Beginner's guide to water
-  management - Lake Morphometry (2nd ed.). Gainesville:
-  Florida LAKEWATCH, Department of Fisheries and Aquatic
-  Sciences.
-  \href{http://edis.ifas.ufl.edu/pdffiles/FA/FA08100.pdf}{Link}
+Florida LAKEWATCH (2001). A Beginner's guide to water
+management - Lake Morphometry (2nd ed.). Gainesville:
+Florida LAKEWATCH, Department of Fisheries and Aquatic
+Sciences.
+\href{http://edis.ifas.ufl.edu/pdffiles/FA/FA08100.pdf}{Link}
 }
 
