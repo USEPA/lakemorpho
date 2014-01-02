@@ -42,8 +42,7 @@ lakeMaxWidth <- function(inLakeMorpho, pointDens, addLine = T) {
     lakeMaxx <- bbox(inLakeMorpho$lake)[1, 2]
     lakeMiny <- bbox(inLakeMorpho$lake)[2, 1]
     lakeMaxy <- bbox(inLakeMorpho$lake)[2, 2]
-    while (!(max(x) > lakeMaxx && min(x) < lakeMinx) && !(max(y) > lakeMaxy && min(y) < 
-        lakeMiny)) {
+    while (!(max(x) > lakeMaxx && min(x) < lakeMinx) && !(max(y) > lakeMaxy && min(y) < lakeMiny)) {
         if (x[1] - x[2] >= 0) {
             x <- c(x, x[length(x)] - xdiff)
             x <- c(x[1] + xdiff, x)
@@ -81,8 +80,7 @@ lakeMaxWidth <- function(inLakeMorpho, pointDens, addLine = T) {
         ypred_min <- (mylm2_slope * xmin) + mylm2_int
         ypred_max <- (mylm2_slope * xmax) + mylm2_int
     }
-    mydf <- data.frame(xmin, xmax, ypred_min, ypred_max, ID = 1:length(longlinedata[, 
-        2]))
+    mydf <- data.frame(xmin, xmax, ypred_min, ypred_max, ID = 1:length(longlinedata[, 2]))
     createSL <- function(x) {
         mat <- matrix(as.numeric(x[1:4]), 2, 2)
         id <- as.numeric(x[5])
@@ -90,16 +88,15 @@ lakeMaxWidth <- function(inLakeMorpho, pointDens, addLine = T) {
     }
     mylinelist <- apply(mydf, 1, createSL)
     mylines <- SpatialLines(mylinelist, proj4string = CRS(proj4string(inLakeMorpho$lake)))
-    myInter <- gIntersection(mylines[gCrosses(mylines, inLakeMorpho$lake, byid = T), 
-        ], inLakeMorpho$lake, byid = T)
+    myInter <- gIntersection(mylines[gCrosses(mylines, inLakeMorpho$lake, byid = T), ], inLakeMorpho$lake, byid = T)
     lineInter <- unlist(lapply(myInter@lines, function(x) slot(x, "Lines")))
     myInter2 <- list()
     for (i in 1:length(lineInter)) {
         myInter2 <- c(myInter2, Lines(lineInter[i], i))
     }
     myInter2Lines <- SpatialLines(myInter2, proj4string = CRS(proj4string(inLakeMorpho$lake)))
-    maxWidthLine <- myInter2Lines[gLength(myInter2Lines, byid = T) == max(gLength(myInter2Lines, 
-        byid = T)), ]
+    maxWidthLine <- myInter2Lines[gLength(myInter2Lines, byid = T) == max(gLength(myInter2Lines, byid = T)), 
+        ]
     if (addLine) {
         myName <- paste(substitute(inLakeMorpho))
         inLakeMorpho$maxWidthLine <- NULL

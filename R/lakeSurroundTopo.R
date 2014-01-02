@@ -35,8 +35,7 @@ lakeSurroundTopo <- function(inLake, inElev, inCatch = NULL, reso = res(inElev)[
     tmpBuff <- gBuffer(inLake, width = 180)
     nc <- round((extent(tmpBuff)@xmax - extent(tmpBuff)@xmin)/reso)
     nr <- round((extent(tmpBuff)@ymax - extent(tmpBuff)@ymin)/reso)
-    # deals with very small lakes (not sure all of these are 'real' lakes), but keeps
-    # in anyway
+    # deals with very small lakes (not sure all of these are 'real' lakes), but keeps in anyway
     if (nc <= 20 || nr <= 20) {
         reso <- 10
         nc <- round((extent(tmpBuff)@xmax - extent(tmpBuff)@xmin)/reso)
@@ -46,12 +45,14 @@ lakeSurroundTopo <- function(inLake, inElev, inCatch = NULL, reso = res(inElev)[
     ymax <- extent(tmpBuff)@ymax
     xmin <- extent(tmpBuff)@xmin
     ymin <- extent(tmpBuff)@ymin
-    lakepr <- rasterize(SpatialPolygons(inLake@polygons), raster(xmn = xmin, xmx = xmax, 
-        ymn = ymin, ymx = ymax, nrows = nr, ncols = nc, crs = CRS(proj4string(inLake))))
+    lakepr <- rasterize(SpatialPolygons(inLake@polygons), raster(xmn = xmin, xmx = xmax, ymn = ymin, ymx = ymax, 
+        nrows = nr, ncols = nc, crs = CRS(proj4string(inLake))))
     lakepr2 <- lakepr
     lakepr2[is.na(lakepr2)] <- 0
     lakepr2[lakepr2 == 1] <- NA
-    xLakeDist <- mask(distance(lakepr2), lakepr)
+    
+    xLakeDist <- distance(lakepr2)
+    xLakeDist <- mask(xLakeDist, lakepr)
     inLakeMaxDist <- max(xLakeDist@data@values, na.rm = T)  #conditional to make at least 100m
     if (inLakeMaxDist < 100) {
         inLakeMaxDist <- 100
@@ -65,8 +66,12 @@ lakeSurroundTopo <- function(inLake, inElev, inCatch = NULL, reso = res(inElev)[
         xSurround <- xBuffer
     }
     
-    # Crops out elevation data
-    xElev <- mask(crop(inElev, xSurround), xSurround)
+    # Function to crops out elevation data - function provided some speed improvement
+    maskCrop <- function(myRast, myCrop) {
+        xSurroundr <- rasterize(myCrop, inElev)
+        return(mask(crop(inElev, xSurroundr), xSurroundr))
+    }
+    xElev <- maskCrop(xElev1, xSurround)
     if (any(is.na(getValues(xElev)))) {
         lakeOnEdge <- T
     } else {
