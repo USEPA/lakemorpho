@@ -29,7 +29,7 @@ Install development version of `lakemorpho` from GitHub:
 ```
 install.packages("devtools")
 require(devtools)
-install_github("USEPA/lakemorpho,auth_user="",password="")
+install_github("USEPA/lakemorpho")
 require(lakemorpho)
 ```
 
