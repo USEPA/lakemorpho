@@ -19,7 +19,7 @@ lakeMorphoClass(inLake, inElev, inCatch, inLakeDist, lakeOnEdge = F)
   Buffer) extends beyond extent of elevation data}
 }
 \value{
-lakeMorpho
+Returns an objec of class 'lakeMorpho'
 }
 \description{
 This is a helper function that creates a lakeMorpho class

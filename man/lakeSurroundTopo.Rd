@@ -18,7 +18,8 @@ lakeSurroundTopo(inLake, inElev, inCatch = NULL, reso = res(inElev)[1])
   lake distance).  Defaults to the resolution of inElev}
 }
 \value{
-lakeMorphoClass
+Returns an object of class 'lakemorpho' that includes the
+surrounding topography of the lake.
 }
 \description{
 This function combines all input datasets into a

@@ -7,7 +7,7 @@
 #'        \code{\link{lakeSurroundTopo}} function would be appropriate as input
 #' 
 #' @export
-#' @return numeric
+#' @return Returns a numeric value for the length of the lake shoreline
 #' 
 #' @references Florida LAKEWATCH (2001). A Beginner's guide to water management
 #'             - Lake Morphometry (2nd ed.). Gainesville: Florida LAKEWATCH, 

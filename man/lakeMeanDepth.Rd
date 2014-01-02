@@ -11,7 +11,7 @@ lakeMeanDepth(inLakeMorpho)
   appropriate as input}
 }
 \value{
-numeric
+Returns a numerica value for the mean depth of the lake
 }
 \description{
 Calculates average depth of lake as a mean of lake volume

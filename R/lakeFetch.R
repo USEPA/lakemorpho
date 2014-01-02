@@ -10,7 +10,7 @@
 #'        added to the inLakeMorpho object.  Defaults to True.  Note that the 
 #'        line is returned in the same projection as the input data.  
 #' @export
-#' @return This returns a numeric value indicating the length of the longest 
+#' @return Returns a numeric value indicating the length of the longest 
 #'         line in the lake along the input bearing. Units are the same as the 
 #'         input data.
 #' 
@@ -34,8 +34,8 @@ lakeFetch <- function(inLakeMorpho, bearing, addLine = T) {
     result <- NA
     # convert to dd
     lakedd <- spTransform(inLakeMorpho$lake, CRS = CRS("+proj=longlat"))
-    # get min/max distance: converts original extent to square.  ensures full coverage
-    # of possible lines
+    # get min/max distance: converts original extent to square.  ensures full
+    # coverage of possible lines
     origMinMin <- SpatialPoints(matrix(bbox(lakedd)[, 1], 1, 2), proj4string = CRS("+proj=longlat"))
     origMaxMax <- SpatialPoints(matrix(bbox(lakedd)[, 2], 1, 2), proj4string = CRS("+proj=longlat"))
     origMinMax <- SpatialPoints(matrix(c(bbox(lakedd)[1, 1], bbox(lakedd)[2, 2]), 

@@ -20,7 +20,7 @@ lakeMaxDepth(inLakeMorpho, correctFactor = 1)
   correction factor(Hollister et. al, 2011).}
 }
 \value{
-numeric
+Returns a numeric value of the predicited maximum depth
 }
 \description{
 This function uses slope and distance to estimate max

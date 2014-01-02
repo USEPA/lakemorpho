@@ -22,7 +22,8 @@
 #'        added to the inLakeMorpho object.  Defaults to True
 #' 
 #' @export
-#' @return numeric
+#' @return This returns a numeric value indicating the length of the longest 
+#'         line possible in the lake. Units are the same as the input data.
 #' 
 #' @references Florida LAKEWATCH (2001). A Beginner's guide to water management
 #'             - Lake Morphometry (2nd ed.). Gainesville: Florida LAKEWATCH, 
@@ -55,8 +56,8 @@ lakeMaxLength <- function(inLakeMorpho, pointDens, addLine = T) {
     xydf <- data.frame(x0, x1, y0, y1)
     # Test the longest 5% of lines first.  Fastest way to find on more circular lakes
     for (i in 1:round(length(x0) * 0.05)) {
-        x <- matrix(lakeShorePoints[which(dm2 == max(dm2), arr.ind = T)[1, ], ], 2, 
-            2)
+        x <- matrix(lakeShorePoints[which(dm2 == max(dm2), arr.ind = T)[1, ], ], 
+            2, 2)
         myLine <- SpatialLines(list(Lines(list(Line(x)), "1")), proj4string = CRS(proj4string(inLakeMorpho$lake)))
         myIntersect <- gIntersection(myLine, inLakeMorpho$lake)
         if (gWithin(myLine, inLakeMorpho$lake)) {

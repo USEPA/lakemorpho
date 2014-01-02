@@ -13,7 +13,8 @@
 #' @param addLine Boolean to determine if the selected max length line should be 
 #'        added to the inLakeMorpho object.  Defaults to True
 #' @export
-#' @return numeric
+#' @return Returns a numeric value indicating the length of the longest
+#'         line perpndicular to the maximum length line.
 #' 
 #' @references Florida LAKEWATCH (2001). A Beginner's guide to water management
 #'             - Lake Morphometry (2nd ed.). Gainesville: Florida LAKEWATCH, 

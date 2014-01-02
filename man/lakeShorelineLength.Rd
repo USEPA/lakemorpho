@@ -11,7 +11,8 @@ lakeShorelineLength(inLakeMorpho)
   appropriate as input}
 }
 \value{
-numeric
+Returns a numeric value for the length of the lake
+shoreline
 }
 \description{
 This function returns the length of the shoreline of the

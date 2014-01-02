@@ -11,7 +11,8 @@ lakeShorelineDevelopment(inLakeMorpho)
   appropriate as input}
 }
 \value{
-numeric
+Returns a numeric value for the shoreline development of
+the lake
 }
 \description{
 Shoreline development is a measure of the complexity of the

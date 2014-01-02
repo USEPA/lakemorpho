@@ -11,7 +11,7 @@ lakeMeanWidth(inLakeMorpho)
   appropriate as input}
 }
 \value{
-numeric
+Returns a numeric value for the mean width of the lake
 }
 \description{
 Mean lake width is the result of lake surface area divded

@@ -2,8 +2,7 @@
 \alias{calcLakeMetrics}
 \title{Calculate all Lake Morphometry Metrics}
 \usage{
-calcLakeMetrics(inLakeMorpho, bearing = c("N", "NE", "E", "SE"), pointDens,
-  correctFactor = 1)
+calcLakeMetrics(inLakeMorpho, bearing, pointDens, correctFactor = 1)
 }
 \arguments{
   \item{inLakeMorpho}{an object of
@@ -29,7 +28,8 @@ calcLakeMetrics(inLakeMorpho, bearing = c("N", "NE", "E", "SE"), pointDens,
   correction factor(Hollister et. al, 2011).}
 }
 \value{
-list
+Returns a list with all lake metrics calculated for a given
+input lakemorpho object
 }
 \description{
 This function is a wrapper function for all of the metrics.

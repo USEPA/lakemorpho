@@ -15,7 +15,7 @@ lakeVolume(inLakeMorpho, correctFactor = 1)
   maximum lake depth.  Defaults to 1.}
 }
 \value{
-numeric
+Returns a numeric value for the total volume of the lake
 }
 \description{
 This function returns lake volume for the input lake.  The

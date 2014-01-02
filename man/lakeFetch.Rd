@@ -19,7 +19,7 @@ lakeFetch(inLakeMorpho, bearing, addLine = T)
   same projection as the input data.}
 }
 \value{
-This returns a numeric value indicating the length of the
+Returns a numeric value indicating the length of the
 longest line in the lake along the input bearing. Units are
 the same as the input data.
 }

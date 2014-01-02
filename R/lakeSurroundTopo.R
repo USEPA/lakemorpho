@@ -16,7 +16,8 @@
 #'        Defaults to the resolution of inElev
 #'          
 #' @export
-#' @return lakeMorphoClass
+#' @return Returns an object of class 'lakemorpho' that includes the surrounding
+#'         topography of the lake.
 #' @examples
 #' data(lakes)
 #' inputLM<-lakeSurroundTopo(exampleLake,exampleElev)

@@ -10,7 +10,7 @@
 #' @param correctFactor This a factor used by \code{\link{lakeMaxDepth}} to 
 #'        correct the predicted maximum lake depth.  Defaults to 1.
 #' @export
-#' @return numeric
+#' @return Returns a numeric value for the total volume of the lake
 #' 
 #' @references Hollister, J. W., W.B. Milstead (2010). Using GIS to Estimate 
 #'             Lake Volume from Limited Data. Lake and Reservoir Management. 

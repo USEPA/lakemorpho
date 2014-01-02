@@ -31,15 +31,15 @@
 #'             Maximum Lake Depth from Surrounding Topography. PLoS ONE 6(9).
 #'             \href{http://dx.doi.org/10.1371/journal.pone.0025764}{link} 
 #' @export
-#' @return list
+#' @return Returns a list with all lake metrics calculated for a given input
+#'         lakemorpho object
 #' 
 #' @examples
 #' data(lakes)
 #' inputLM<-lakeSurroundTopo(exampleLake,exampleElev)
 #' calcLakeMetrics(inputLM,'N',250)
 
-calcLakeMetrics <- function(inLakeMorpho, bearing = c("N", "NE", "E", "SE"), pointDens, 
-    correctFactor = 1) {
+calcLakeMetrics <- function(inLakeMorpho, bearing, pointDens, correctFactor = 1) {
     if (class(inLakeMorpho) != "lakeMorpho") {
         return(warning("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo first."))
     }

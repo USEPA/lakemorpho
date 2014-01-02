@@ -21,7 +21,9 @@ lakeMaxLength(inLakeMorpho, pointDens, addLine = T)
   Defaults to True}
 }
 \value{
-numeric
+This returns a numeric value indicating the length of the
+longest line possible in the lake. Units are the same as
+the input data.
 }
 \description{
 Maximum lake length is defined as the longest open water

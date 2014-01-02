@@ -20,7 +20,8 @@ lakeMaxWidth(inLakeMorpho, pointDens, addLine = T)
   Defaults to True}
 }
 \value{
-numeric
+Returns a numeric value indicating the length of the
+longest line perpndicular to the maximum length line.
 }
 \description{
 Maximum lake width is defined as the maximum in lake

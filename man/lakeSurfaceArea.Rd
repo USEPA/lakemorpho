@@ -11,7 +11,8 @@ lakeSurfaceArea(inLakeMorpho)
   appropriate as input}
 }
 \value{
-numeric
+Returns a numeric value for the total surface area of the
+lake
 }
 \description{
 This function simply retruns the area of the lake

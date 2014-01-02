@@ -12,7 +12,7 @@
 #'        beyond extent of elevation data
 #'          
 #' @export
-#' @return lakeMorpho 
+#' @return Returns an objec of class 'lakeMorpho' 
 #' @seealso lakeSurroundTopo    
 
 
