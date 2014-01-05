@@ -4,6 +4,7 @@
 #' 
 #' @param x input lakeMorpho class to plot
 #' @param ... allows for passing of other plot parameters
+#' @method plot lakeMorpho
 #' @export
 #' @examples
 #' data(lakes)

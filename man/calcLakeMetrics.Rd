@@ -39,7 +39,7 @@ This returns a list of all metrics
 \examples{
 data(lakes)
 inputLM<-lakeSurroundTopo(exampleLake,exampleElev)
-calcLakeMetrics(inputLM,'N',250)
+calcLakeMetrics(inputLM,45,250)
 }
 \references{
 Florida LAKEWATCH (2001). A Beginner's guide to water

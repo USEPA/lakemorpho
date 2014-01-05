@@ -88,7 +88,8 @@ lakeMaxWidth <- function(inLakeMorpho, pointDens, addLine = T) {
     }
     mylinelist <- apply(mydf, 1, createSL)
     mylines <- SpatialLines(mylinelist, proj4string = CRS(proj4string(inLakeMorpho$lake)))
-    myInter <- gIntersection(mylines[gCrosses(mylines, inLakeMorpho$lake, byid = T), ], inLakeMorpho$lake, byid = T)
+    myInter <- gIntersection(mylines[gCrosses(mylines, inLakeMorpho$lake, byid = T), ], inLakeMorpho$lake, 
+        byid = T)
     lineInter <- unlist(lapply(myInter@lines, function(x) slot(x, "Lines")))
     myInter2 <- list()
     for (i in 1:length(lineInter)) {

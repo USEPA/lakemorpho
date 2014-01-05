@@ -33,23 +33,23 @@ lakeFetch <- function(inLakeMorpho, bearing, addLine = T) {
     }
     result <- NA
     # convert to dd
-    lakedd <- spTransform(inLakeMorpho$lake, CRS = CRS("+proj=longlat"))
+    lakedd <- spTransform(inLakeMorpho$lake, CRS = CRS("+proj=longlat +datum=WGS84"))
     # get min/max distance: converts original extent to square.  ensures full coverage of possible lines
-    origMinMin <- SpatialPoints(matrix(bbox(lakedd)[, 1], 1, 2), proj4string = CRS("+proj=longlat"))
-    origMaxMax <- SpatialPoints(matrix(bbox(lakedd)[, 2], 1, 2), proj4string = CRS("+proj=longlat"))
-    origMinMax <- SpatialPoints(matrix(c(bbox(lakedd)[1, 1], bbox(lakedd)[2, 2]), 1, 2), proj4string = CRS("+proj=longlat"))
-    origMaxMin <- SpatialPoints(matrix(c(bbox(lakedd)[1, 2], bbox(lakedd)[2, 1]), 1, 2), proj4string = CRS("+proj=longlat"))
+    origMinMin <- SpatialPoints(matrix(bbox(lakedd)[, 1], 1, 2), proj4string = CRS("+proj=longlat +datum=WGS84"))
+    origMaxMax <- SpatialPoints(matrix(bbox(lakedd)[, 2], 1, 2), proj4string = CRS("+proj=longlat +datum=WGS84"))
+    origMinMax <- SpatialPoints(matrix(c(bbox(lakedd)[1, 1], bbox(lakedd)[2, 2]), 1, 2), proj4string = CRS("+proj=longlat +datum=WGS84"))
+    origMaxMin <- SpatialPoints(matrix(c(bbox(lakedd)[1, 2], bbox(lakedd)[2, 1]), 1, 2), proj4string = CRS("+proj=longlat +datum=WGS84"))
     
     # Get distances for each side of bounding box
     l1 <- distCosine(origMinMin, origMaxMin)
     l2 <- distCosine(origMinMin, origMinMax)
     # get new points to make the extent square
     if (l1 > l2) {
-        minPt <- SpatialPoints(destPoint(origMinMin, 180, (l1 - l2)/2), proj4string = CRS("+proj=longlat"))
-        maxPt <- SpatialPoints(destPoint(origMaxMax, 0, (l1 - l2)/2), proj4string = CRS("+proj=longlat"))
+        minPt <- SpatialPoints(destPoint(origMinMin, 180, (l1 - l2)/2), proj4string = CRS("+proj=longlat +datum=WGS84"))
+        maxPt <- SpatialPoints(destPoint(origMaxMax, 0, (l1 - l2)/2), proj4string = CRS("+proj=longlat +datum=WGS84"))
     } else {
-        minPt <- SpatialPoints(destPoint(origMinMin, 270, (l2 - l1)/2), proj4string = CRS("+proj=longlat"))
-        maxPt <- SpatialPoints(destPoint(origMaxMax, 90, (l2 - l1)/2), proj4string = CRS("+proj=longlat"))
+        minPt <- SpatialPoints(destPoint(origMinMin, 270, (l2 - l1)/2), proj4string = CRS("+proj=longlat +datum=WGS84"))
+        maxPt <- SpatialPoints(destPoint(origMaxMax, 90, (l2 - l1)/2), proj4string = CRS("+proj=longlat +datum=WGS84"))
     }
     maxDist <- distCosine(minPt, maxPt)
     
@@ -72,27 +72,29 @@ lakeFetch <- function(inLakeMorpho, bearing, addLine = T) {
     colnames(centPts[[1]]) <- c("lon", "lat")
     centPts[[2]] <- destPoint(centPts[[1]], perpbear1, max(res(inLakeMorpho$lakeDistance)) * 3)
     i <- length(centPts)
-    while (centPts[[i]][, 1] < coordinates(maxPt)[, 1] & centPts[[i]][, 1] > coordinates(minPt)[, 1] & centPts[[i]][, 
-        2] < coordinates(maxPt)[, 2] & centPts[[i]][, 2] > coordinates(minPt)[, 2]) {
+    while (centPts[[i]][, 1] < coordinates(maxPt)[, 1] & centPts[[i]][, 1] > coordinates(minPt)[, 1] & 
+        centPts[[i]][, 2] < coordinates(maxPt)[, 2] & centPts[[i]][, 2] > coordinates(minPt)[, 2]) {
         i <- length(centPts) + 1
-        centPts[[i]] <- destPoint(centPts[[i - 1]], perpbear1, round(max(res(inLakeMorpho$lakeDistance)) * 3))
+        centPts[[i]] <- destPoint(centPts[[i - 1]], perpbear1, round(max(res(inLakeMorpho$lakeDistance)) * 
+            3))
     }
     # Build list of center points for perpbear2
     i <- length(centPts) + 1
     centPts[[i]] <- destPoint(centPts[[1]], perpbear2, max(res(inLakeMorpho$lakeDistance)) * 3)
-    while (centPts[[i]][, 1] < coordinates(maxPt)[, 1] & centPts[[i]][, 1] > coordinates(minPt)[, 1] & centPts[[i]][, 
-        2] < coordinates(maxPt)[, 2] & centPts[[i]][, 2] > coordinates(minPt)[, 2]) {
+    while (centPts[[i]][, 1] < coordinates(maxPt)[, 1] & centPts[[i]][, 1] > coordinates(minPt)[, 1] & 
+        centPts[[i]][, 2] < coordinates(maxPt)[, 2] & centPts[[i]][, 2] > coordinates(minPt)[, 2]) {
         i <- length(centPts) + 1
-        centPts[[i]] <- destPoint(centPts[[i - 1]], perpbear2, round(max(res(inLakeMorpho$lakeDistance)) * 3))
+        centPts[[i]] <- destPoint(centPts[[i - 1]], perpbear2, round(max(res(inLakeMorpho$lakeDistance)) * 
+            3))
     }
-    # calc point for centroid, max distance, bearing + 180 (if bearing is less that 180) or - 180 (if bearing is
-    # more than 180)
+    # calc point for centroid, max distance, bearing + 180 (if bearing is less that 180) or - 180 (if
+    # bearing is more than 180)
     allLines <- list()
     for (i in 1:length(centPts)) {
         allLines[[i]] <- Lines(list(Line(rbind(destPoint(centPts[[i]], bearing, maxDist), destPoint(centPts[[i]], 
             bearing + 180, maxDist)))), as.character(i))
     }
-    allLinesSL <- SpatialLines(allLines, proj4string = CRS("+proj=longlat"))
+    allLinesSL <- SpatialLines(allLines, proj4string = CRS("+proj=longlat +datum=WGS84"))
     
     # clip out lines that are inside lake
     lakeLinesSL <- gIntersection(lakedd, allLinesSL, byid = TRUE)

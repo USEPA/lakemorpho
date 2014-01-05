@@ -19,6 +19,7 @@ Depends:
     raster,
     rgeos,
     sp,
-    maptools
+    maptools,
+    geosphere
 Packaged: 2013-12-02 18:39:11 UTC; JHollist
 Author: Jeffrey Hollister [aut, cre]

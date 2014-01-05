@@ -2,7 +2,7 @@
 \alias{plot.lakeMorpho}
 \title{Default plotting of a lakeMorpho object}
 \usage{
-plot.lakeMorpho(x, ...)
+\method{plot}{lakeMorpho}(x, ...)
 }
 \arguments{
   \item{x}{input lakeMorpho class to plot}

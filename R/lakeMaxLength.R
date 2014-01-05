@@ -34,7 +34,6 @@
 #' inputLM<-lakeSurroundTopo(exampleLake,exampleElev)
 #' lakeMaxLength(inputLM,100)
 
-# TO DO: Implement as binary search???
 lakeMaxLength <- function(inLakeMorpho, pointDens, addLine = T) {
     if (class(inLakeMorpho) != "lakeMorpho") {
         return(warning("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo first."))
@@ -42,37 +41,26 @@ lakeMaxLength <- function(inLakeMorpho, pointDens, addLine = T) {
     result <- NA
     lakeShorePoints <- spsample(as(inLakeMorpho$lake, "SpatialLines"), pointDens, "regular")@coords
     dm <- dist(lakeShorePoints)
-    dm2 <- as.matrix(dm)
     md <- nrow(lakeShorePoints)
-    x0 <- lakeShorePoints[which(lower.tri(matrix(1, md, md)) == 1, arr.ind = T)[, 1], ][, 1][order(dm, decreasing = T)]  #[30:md]
-    y0 <- lakeShorePoints[which(lower.tri(matrix(1, md, md)) == 1, arr.ind = T)[, 1], ][, 2][order(dm, decreasing = T)]  #[30:md]
-    x1 <- lakeShorePoints[which(lower.tri(matrix(1, md, md)) == 1, arr.ind = T)[, 2], ][, 1][order(dm, decreasing = T)]  #[30:md]
-    y1 <- lakeShorePoints[which(lower.tri(matrix(1, md, md)) == 1, arr.ind = T)[, 2], ][, 2][order(dm, decreasing = T)]  #[30:md]
+    x0 <- lakeShorePoints[which(lower.tri(matrix(1, md, md)) == 1, arr.ind = T)[, 1], ][, 1][order(dm, 
+        decreasing = T)]  #[30:md]
+    y0 <- lakeShorePoints[which(lower.tri(matrix(1, md, md)) == 1, arr.ind = T)[, 1], ][, 2][order(dm, 
+        decreasing = T)]  #[30:md]
+    x1 <- lakeShorePoints[which(lower.tri(matrix(1, md, md)) == 1, arr.ind = T)[, 2], ][, 1][order(dm, 
+        decreasing = T)]  #[30:md]
+    y1 <- lakeShorePoints[which(lower.tri(matrix(1, md, md)) == 1, arr.ind = T)[, 2], ][, 2][order(dm, 
+        decreasing = T)]  #[30:md]
     xydf <- data.frame(x0, x1, y0, y1)
-    # Test the longest 5% of lines first.  Fastest way to find on more circular lakes
-    for (i in 1:round(length(x0) * 0.05)) {
-        x <- matrix(lakeShorePoints[which(dm2 == max(dm2), arr.ind = T)[1, ], ], 2, 2)
-        myLine <- SpatialLines(list(Lines(list(Line(x)), "1")), proj4string = CRS(proj4string(inLakeMorpho$lake)))
-        myIntersect <- gIntersection(myLine, inLakeMorpho$lake)
-        if (gWithin(myLine, inLakeMorpho$lake)) {
-            result <- gLength(myLine)
-            (break)()
-        }
-        dm2[dm2 == max(dm2)] <- 0
+    xylist <- split(xydf, rownames(xydf))
+    myLines <- SpatialLines(lapply(xylist, function(x) Lines(list(Line(matrix(as.numeric(x), 2, 2))), 
+        row.names(x))), proj4string = CRS(proj4string(inLakeMorpho$lake)))
+    myInd <- gWithin(myLines, inLakeMorpho$lake, byid = T)
+    if (sum(myInd) == 0) {
+        return(NA)
     }
-    # If it gets to here, the first 5% were outside and then it tests all lines
-    if (is.na(result)) {
-        xydf2 <- xydf[i + 1:nrow(xydf) - i, ]
-        xylist <- split(xydf2, rownames(xydf2))
-        myLines <- SpatialLines(lapply(xylist, function(x) Lines(list(Line(matrix(as.numeric(x), 2, 2))), row.names(x))), 
-            proj4string = CRS(proj4string(inLakeMorpho$lake)))
-        myInd <- gWithin(myLines, inLakeMorpho$lake, byid = T)
-        if (sum(myInd) == 0) {
-            return(NA)
-        }
-        myLine <- myLines[myInd][gLength(myLines[myInd], byid = T) == max(gLength(myLines[myInd], byid = T))]
-        result <- gLength(myLine)
-    }
+    myLine <- myLines[myInd][gLength(myLines[myInd], byid = T) == max(gLength(myLines[myInd], byid = T))]
+    result <- gLength(myLine)
+    
     if (addLine) {
         myName <- paste(substitute(inLakeMorpho))
         inLakeMorpho$maxLengthLine <- NULL
