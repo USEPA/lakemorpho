@@ -28,12 +28,6 @@ lakeSurroundTopo <- function(inLake, inElev, inCatch = NULL, reso = res(inElev)[
         return(warning(paste(dim(inLake)[1], "polygons input. Select a single lake as input.")))
     }
     
-    # Function to crops out elevation data - function provided some speed improvement
-    maskCrop <- function(myRast, myCrop) {
-      xSurroundr <- rasterize(myCrop, inElev)
-      return(mask(crop(inElev, xSurroundr), xSurroundr))
-    }
-    
     slot(inLake, "polygons") <- lapply(slot(inLake, "polygons"), checkPolygonsHoles)
     # Ignores lakes smaller that 3X3 30 m pixels
     if (gArea(inLake) <= 8100) {
@@ -52,8 +46,8 @@ lakeSurroundTopo <- function(inLake, inElev, inCatch = NULL, reso = res(inElev)[
     ymax <- extent(tmpBuff)@ymax
     xmin <- extent(tmpBuff)@xmin
     ymin <- extent(tmpBuff)@ymin
-    lakepr <- rasterize(SpatialPolygons(inLake@polygons), raster(xmn = xmin, xmx = xmax, ymn = ymin, 
-        ymx = ymax, nrows = nr, ncols = nc, crs = CRS(proj4string(inLake))))
+    lakepr <- rasterize(SpatialPolygons(inLake@polygons), raster(xmn = xmin, xmx = xmax, ymn = ymin, ymx = ymax, 
+        nrows = nr, ncols = nc, crs = CRS(proj4string(inLake))))
     lakepr2 <- lakepr
     lakepr2[is.na(lakepr2)] <- 0
     lakepr2[lakepr2 == 1] <- NA
@@ -73,8 +67,9 @@ lakeSurroundTopo <- function(inLake, inElev, inCatch = NULL, reso = res(inElev)[
         xSurround <- xBuffer
     }
     
+    xSurroundr <- rasterize(xSurround, inElev)
+    xElev <- mask(inElev, xSurroundr)
     
-    xElev <- maskCrop(xElev1, xSurround)
     if (any(is.na(getValues(xElev)))) {
         lakeOnEdge <- T
     } else {

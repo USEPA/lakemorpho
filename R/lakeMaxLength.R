@@ -42,18 +42,14 @@ lakeMaxLength <- function(inLakeMorpho, pointDens, addLine = T) {
     lakeShorePoints <- spsample(as(inLakeMorpho$lake, "SpatialLines"), pointDens, "regular")@coords
     dm <- dist(lakeShorePoints)
     md <- nrow(lakeShorePoints)
-    x0 <- lakeShorePoints[which(lower.tri(matrix(1, md, md)) == 1, arr.ind = T)[, 1], ][, 1][order(dm, 
-        decreasing = T)]  #[30:md]
-    y0 <- lakeShorePoints[which(lower.tri(matrix(1, md, md)) == 1, arr.ind = T)[, 1], ][, 2][order(dm, 
-        decreasing = T)]  #[30:md]
-    x1 <- lakeShorePoints[which(lower.tri(matrix(1, md, md)) == 1, arr.ind = T)[, 2], ][, 1][order(dm, 
-        decreasing = T)]  #[30:md]
-    y1 <- lakeShorePoints[which(lower.tri(matrix(1, md, md)) == 1, arr.ind = T)[, 2], ][, 2][order(dm, 
-        decreasing = T)]  #[30:md]
+    x0 <- lakeShorePoints[which(lower.tri(matrix(1, md, md)) == 1, arr.ind = T)[, 1], ][, 1][order(dm, decreasing = T)]  #[30:md]
+    y0 <- lakeShorePoints[which(lower.tri(matrix(1, md, md)) == 1, arr.ind = T)[, 1], ][, 2][order(dm, decreasing = T)]  #[30:md]
+    x1 <- lakeShorePoints[which(lower.tri(matrix(1, md, md)) == 1, arr.ind = T)[, 2], ][, 1][order(dm, decreasing = T)]  #[30:md]
+    y1 <- lakeShorePoints[which(lower.tri(matrix(1, md, md)) == 1, arr.ind = T)[, 2], ][, 2][order(dm, decreasing = T)]  #[30:md]
     xydf <- data.frame(x0, x1, y0, y1)
     xylist <- split(xydf, rownames(xydf))
-    myLines <- SpatialLines(lapply(xylist, function(x) Lines(list(Line(matrix(as.numeric(x), 2, 2))), 
-        row.names(x))), proj4string = CRS(proj4string(inLakeMorpho$lake)))
+    myLines <- SpatialLines(lapply(xylist, function(x) Lines(list(Line(matrix(as.numeric(x), 2, 2))), row.names(x))), 
+        proj4string = CRS(proj4string(inLakeMorpho$lake)))
     myInd <- gWithin(myLines, inLakeMorpho$lake, byid = T)
     if (sum(myInd) == 0) {
         return(NA)

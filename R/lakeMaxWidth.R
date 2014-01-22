@@ -27,6 +27,7 @@
 #' lakeMaxWidth(inputLM,100)
 
 lakeMaxWidth <- function(inLakeMorpho, pointDens, addLine = T) {
+    myName <- paste(substitute(inLakeMorpho))
     if (class(inLakeMorpho) != "lakeMorpho") {
         return(warning("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo first."))
     }
@@ -99,7 +100,7 @@ lakeMaxWidth <- function(inLakeMorpho, pointDens, addLine = T) {
     maxWidthLine <- myInter2Lines[gLength(myInter2Lines, byid = T) == max(gLength(myInter2Lines, byid = T)), 
         ]
     if (addLine) {
-        myName <- paste(substitute(inLakeMorpho))
+        
         inLakeMorpho$maxWidthLine <- NULL
         inLakeMorpho <- c(inLakeMorpho, maxWidthLine = maxWidthLine)
         class(inLakeMorpho) <- "lakeMorpho"
