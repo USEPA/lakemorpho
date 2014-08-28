@@ -9,7 +9,7 @@ Authors@R: person(given = "Jeffrey", family = "Hollister",
 URL: http://www.github.com/USEPA/lakemorpho
 BugReports: https://www.github.com/USEPA/lakemorpho/issues
 Maintainer: Jeffrey W. Hollister <hollister.jeff@epa.gov>
-License: file LICENSE
+License: cc0
 Description: Lake morphometry metrics are used by limnologists to understand,
     among other things, the ecologial processes in a lake.  This
     package provides the tools to calculate a typical suite of these
