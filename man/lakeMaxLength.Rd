@@ -36,8 +36,7 @@ in the estimates.
 }
 \examples{
 data(lakes)
-inputLM<-lakeSurroundTopo(exampleLake,exampleElev)
-lakeMaxLength(inputLM,100)
+lakeMaxLength(inputLM,50)
 }
 \references{
 Florida LAKEWATCH (2001). A Beginner's guide to water management

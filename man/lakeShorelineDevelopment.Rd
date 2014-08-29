@@ -19,7 +19,6 @@ perimeter of an equally sized circle.
 }
 \examples{
 data(lakes)
-inputLM<-lakeSurroundTopo(exampleLake,exampleElev)
 lakeShorelineDevelopment(inputLM)
 }
 \references{

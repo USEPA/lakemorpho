@@ -26,7 +26,6 @@ bearing.
 }
 \examples{
 data(lakes)
-inputLM<-lakeSurroundTopo(exampleLake,exampleElev)
 lakeFetch(inputLM,45)
 }
 \references{

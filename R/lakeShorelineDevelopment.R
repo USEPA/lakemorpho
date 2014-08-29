@@ -17,7 +17,6 @@
 #' 
 #' @examples
 #' data(lakes)
-#' inputLM<-lakeSurroundTopo(exampleLake,exampleElev)
 #' lakeShorelineDevelopment(inputLM)
 
 lakeShorelineDevelopment <- function(inLakeMorpho) {

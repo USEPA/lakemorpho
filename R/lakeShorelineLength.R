@@ -16,7 +16,6 @@
 #' @import rgeos
 #' @examples
 #' data(lakes)
-#' inputLM<-lakeSurroundTopo(exampleLake,exampleElev)
 #' lakeShorelineLength(inputLM)
 
 lakeShorelineLength <- function(inLakeMorpho) {

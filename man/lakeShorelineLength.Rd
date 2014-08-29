@@ -18,7 +18,6 @@ the perimeter of the input lake polyogn.
 }
 \examples{
 data(lakes)
-inputLM<-lakeSurroundTopo(exampleLake,exampleElev)
 lakeShorelineLength(inputLM)
 }
 \references{

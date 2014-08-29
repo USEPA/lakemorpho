@@ -11,7 +11,7 @@ BugReports: https://www.github.com/USEPA/lakemorpho/issues
 Maintainer: Jeffrey W. Hollister <hollister.jeff@epa.gov>
 License: CC0
 Description: Lake morphometry metrics are used by limnologists to understand,
-    among other things, the ecologial processes in a lake.  This
+    among other things, the ecological processes in a lake.  This
     package provides the tools to calculate a typical suite of these
     metrics from an input elevation model and lake polygon.
 Depends:

@@ -28,7 +28,6 @@
 #' 
 #' @examples
 #' data(lakes)
-#' inputLM<-lakeSurroundTopo(exampleLake,exampleElev)
 #' lakeMaxDepth(inputLM)             
 
 lakeMaxDepth <- function(inLakeMorpho, correctFactor = 1) {

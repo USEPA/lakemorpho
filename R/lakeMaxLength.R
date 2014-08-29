@@ -32,8 +32,7 @@
 #' @import sp rgeos
 #' @examples
 #' data(lakes)
-#' inputLM<-lakeSurroundTopo(exampleLake,exampleElev)
-#' lakeMaxLength(inputLM,100)
+#' lakeMaxLength(inputLM,50)
 
 lakeMaxLength <- function(inLakeMorpho, pointDens, addLine = T) {
     if (class(inLakeMorpho) != "lakeMorpho") {

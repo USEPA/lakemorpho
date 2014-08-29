@@ -23,7 +23,6 @@ multiplied by the area of the pixel and summed.
 }
 \examples{
 data(lakes)
-inputLM<-lakeSurroundTopo(exampleLake,exampleElev)
 lakeVolume(inputLM)
 }
 \references{

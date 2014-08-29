@@ -24,8 +24,7 @@
 #' 
 #' @examples
 #' data(lakes)
-#' inputLM<-lakeSurroundTopo(exampleLake,exampleElev)
-#' lakeMaxWidth(inputLM,100)
+#' lakeMaxWidth(inputLM,50)
 
 lakeMaxWidth <- function(inLakeMorpho, pointDens, addLine = T) {
     myName <- paste(substitute(inLakeMorpho))

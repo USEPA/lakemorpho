@@ -18,7 +18,6 @@ length.
 }
 \examples{
 data(lakes)
-inputLM<-lakeSurroundTopo(exampleLake,exampleElev)
 lakeMeanWidth(inputLM)
 }
 \references{

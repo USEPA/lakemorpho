@@ -35,7 +35,6 @@ metrics
 \examples{
 \dontrun{
 data(lakes)
-inputLM<-lakeSurroundTopo(exampleLake,exampleElev)
 calcLakeMetrics(inputLM,45,250)}
 }
 \references{

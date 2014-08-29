@@ -14,7 +14,6 @@
 #' 
 #' @examples
 #' data(lakes)
-#' inputLM<-lakeSurroundTopo(exampleLake,exampleElev)
 #' lakeMeanDepth(inputLM)
 
 

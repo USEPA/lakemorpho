@@ -20,9 +20,10 @@
 #' @return Returns an object of class 'lakemorpho' that includes the surrounding
 #'         topography of the lake.
 #' @examples
+#' \dontrun{
 #' data(lakes)
 #' inputLM<-lakeSurroundTopo(exampleLake,exampleElev)
-#' inputLM
+#' inputLM}
 
 lakeSurroundTopo <- function(inLake, inElev, inCatch = NULL, reso = res(inElev)[1]) {
     if (dim(inLake)[1] > 1) {

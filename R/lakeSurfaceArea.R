@@ -15,7 +15,6 @@
 #' @import rgeos
 #' @examples
 #' data(lakes)
-#' inputLM<-lakeSurroundTopo(exampleLake,exampleElev)
 #' lakeSurfaceArea(inputLM)
 
 lakeSurfaceArea <- function(inLakeMorpho) {

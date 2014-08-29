@@ -18,7 +18,6 @@ of the \code{\link{lakeMorphoClass}} class.
 }
 \examples{
 data(lakes)
-inputLM<-lakeSurroundTopo(exampleLake,exampleElev)
 lakeSurfaceArea(inputLM)
 }
 \references{

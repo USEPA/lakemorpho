@@ -29,8 +29,9 @@ surrounding topography is the land area represented by the  catchements that
 intersect the lake.
 }
 \examples{
+\dontrun{
 data(lakes)
 inputLM<-lakeSurroundTopo(exampleLake,exampleElev)
-inputLM
+inputLM}
 }
 

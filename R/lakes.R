@@ -24,3 +24,15 @@ NULL
 #' @name exampleElev
 
 NULL 
+
+#' lakemorpho class data for \code{lakemorpho} examples
+#' 
+#' This example lakemorpho class was generated using lakeSurroundTopo with the 
+#' included exampleElev and exampleLake data.
+#' 
+#' @docType data
+#' @keywords datasets
+#' @format lakemorpho class
+#' @name inputLM
+
+NULL 

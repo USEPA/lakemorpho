@@ -27,7 +27,6 @@ to the bathymetry of the lake (Hollister et. al 2011).
 }
 \examples{
 data(lakes)
-inputLM<-lakeSurroundTopo(exampleLake,exampleElev)
 lakeMaxDepth(inputLM)
 }
 \references{

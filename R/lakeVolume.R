@@ -24,7 +24,6 @@
 #' @import raster
 #' @examples
 #' data(lakes)
-#' inputLM<-lakeSurroundTopo(exampleLake,exampleElev)
 #' lakeVolume(inputLM)
 
 lakeVolume <- function(inLakeMorpho, correctFactor = 1) {
