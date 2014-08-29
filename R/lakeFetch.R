@@ -19,6 +19,8 @@
 #'             Department of Fisheries and Aquatic Sciences.
 #'             \href{http://edis.ifas.ufl.edu/pdffiles/FA/FA08100.pdf}{Link}
 #' 
+#' @import sp geosphere rgeos rgdal maptools
+#' 
 #' @export
 #' 
 #' @examples

@@ -21,7 +21,7 @@
 #'             - Lake Morphometry (2nd ed.). Gainesville: Florida LAKEWATCH, 
 #'             Department of Fisheries and Aquatic Sciences.
 #'             \href{http://edis.ifas.ufl.edu/pdffiles/FA/FA08100.pdf}{Link}
-#' 
+#' @import raster
 #' @examples
 #' data(lakes)
 #' inputLM<-lakeSurroundTopo(exampleLake,exampleElev)

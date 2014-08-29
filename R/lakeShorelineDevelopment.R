@@ -13,6 +13,8 @@
 #'             Department of Fisheries and Aquatic Sciences.
 #'             \href{http://edis.ifas.ufl.edu/pdffiles/FA/FA08100.pdf}{Link}
 #' 
+#' @import rgeos
+#' 
 #' @examples
 #' data(lakes)
 #' inputLM<-lakeSurroundTopo(exampleLake,exampleElev)
