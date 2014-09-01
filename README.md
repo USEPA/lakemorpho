@@ -17,7 +17,6 @@ The purpose of `lakemorpho` is to provide a suite of tools that can be used to c
 
 # To install 
 Install version 1.0 of `lakemorpho` from CRAN:
-Note: Not currently available from CRAN
 
 ```
 install.packages("lakemorpho")
