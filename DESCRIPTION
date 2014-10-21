@@ -14,12 +14,14 @@ Description: Lake morphometry metrics are used by limnologists to understand,
     among other things, the ecological processes in a lake.  This
     package provides the tools to calculate a typical suite of these
     metrics from an input elevation model and lake polygon.
-Depends:
+Depends: 
     maptools
-Imports:
+Imports: 
     rgdal,
     raster,
     rgeos,
     sp,
     geosphere
 Author: Jeffrey W. Hollister [aut, cre]
+Suggests: knitr
+VignetteBuilder: knitr
