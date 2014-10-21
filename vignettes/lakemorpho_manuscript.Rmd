@@ -66,7 +66,7 @@ knit_hooks$set(output = function(x, options) {
 
 \vspace{2mm}\hrule
 
-Metrics describing the shape and size of lakes, known as lake morphometry, are important for any limnological study.  In cases where a lake has long been the subject of study this data is often already collected and the data is openly available.  Many other lakes have this data collected, but access to the data is challenging as it is often stored on indiviudal computers (or worse in filing cabinets) and is available only to the primary investigators.  The vast majority of lakes fall into a third category in which the data is not available.  This makes broad scale modelling of lake ecology a challenge as some of the key information about in-lake processes are unavailable.     
+Metrics describing the shape and size of lakes, known as lake morphometry, are important for any limnological study.  In cases where a lake has long been the subject of study this data is often already collected and the data is openly available.  Many other lakes have this data collected, but access to the data is challenging as it is often stored on individual computers (or worse in filing cabinets) and is available only to the primary investigators.  The vast majority of lakes fall into a third category in which the data is not available.  This makes broad scale modelling of lake ecology a challenge as some of the key information about in-lake processes are unavailable.  While this valuable *in situ* information may be difficult to obtain, several national datasets exist that may be used to model     
 
 \vspace{3mm}\hrule
 \doublespace
