@@ -1,0 +1,84 @@
+---
+title: 'lakemorpho: Calculating lake morphometry metrics in R'
+author:  
+- name: Jeffrey W. Hollister
+  affilnum: '1'
+affiliation:
+- affilnum: 1
+  affil: US Environmental Protection Agency, Office of Research and Development, National Health and Environmental Effects Research Laboratory, Atlantic Ecology Division, 27 Tarzwell Drive  Narragansett, RI, 02882, USA
+output:
+  pdf_document:
+    fig_caption: yes
+    keep_tex: yes
+    number_sections: yes
+    template: components/manuscript.latex
+  html_document: null
+  word_document: null
+fontsize: 11pt
+capsize: normalsize
+csl: components/plos.csl
+documentclass: article
+spacing: doublespacing
+linenumbers: no
+bibliography: components/lakemorpho_manuscript.bib
+abstract: no
+---
+<!--
+%\VignetteEngine{knitr::rmarkdown}
+%\VignetteIndexEntry{lakemorpho: Calculating lake morphometry metrics in R}
+-->
+
+```{r setup, include=FALSE, echo=FALSE}
+#Put whatever you normally put in a setup chunk.
+#I usually at least include:
+#devtools::install_github("manuscriptPackage","jhollist")
+#library("manuscriptPackage")
+#Didn't do that here to expedite building of the example vignette
+library("knitr")
+
+opts_chunk$set(dev = 'pdf', fig.width=6, fig.height=5)
+
+# Table Captions from @DeanK on http://stackoverflow.com/questions/15258233/using-table-caption-on-r-markdown-file-using-knitr-to-use-in-pandoc-to-convert-t
+#Figure captions are handled by LaTeX
+
+knit_hooks$set(tab.cap = function(before, options, envir) {
+                  if(!before) { 
+                    paste('\n\n:', options$tab.cap, sep='') 
+                  }
+                })
+default_output_hook = knit_hooks$get("output")
+knit_hooks$set(output = function(x, options) {
+  if (is.null(options$tab.cap) == FALSE) {
+    x
+  } else
+    default_output_hook(x,options)
+})
+```
+
+```{r analysis , include=FALSE, echo=FALSE, cache=FALSE}
+#All analysis in here, that way all bits of the paper have access to the final objects
+#Place tables and figures and numerical results where they need to go.
+```
+
+<!-- Abstract is being wrapped in latex here so that all analysis can be run in the chunk above and the results reproducibly referenced in the abstract. -->
+
+\singlespace
+
+\vspace{2mm}\hrule
+
+Metrics describing the shape and size of lakes, known as lake morphometry, are important for any limnological study.  In cases where a lake has long been the subject of study this data is often already collected and the data is openly available.  Many other lakes have this data collected, but access to the data is challenging as it is often stored on indiviudal computers (or worse in filing cabinets) and is available only to the primary investigators.  The vast majority of lakes fall into a third category in which the data is not available.  This makes broad scale modelling of lake ecology a challenge as some of the key information about in-lake processes are unavailable.     
+
+\vspace{3mm}\hrule
+\doublespace
+
+#Introduction
+
+#Implementation in R
+
+#Typical Use Case
+
+#Discussion
+
+#Software Availability
+
+#References
