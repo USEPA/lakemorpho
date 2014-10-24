@@ -66,7 +66,7 @@ knit_hooks$set(output = function(x, options) {
 
 \vspace{2mm}\hrule
 
-Metrics describing the shape and size of lakes, known as lake morphometry, are important for any limnological study.  In cases where a lake has long been the subject of study this data is often already collected and the data is openly available.  Many other lakes have this data collected, but access to the data is challenging as it is often stored on individual computers (or worse in filing cabinets) and is available only to the primary investigators.  The vast majority of lakes fall into a third category in which the data is not available.  This makes broad scale modelling of lake ecology a challenge as some of the key information about in-lake processes are unavailable.  While this valuable *in situ* information may be difficult to obtain, several national datasets exist that may be used to model     
+Metrics describing the shape and size of lakes, known as lake morphometry metrics, are important for any limnological study.  In cases where a lake has long been the subject of study these data are often already collected and the data is openly available.  Many other lakes have this data collected, but access to the data is challenging as it is often stored on individual computers (or worse in filing cabinets) and is available only to the primary investigators.  The vast majority of lakes fall into a third category in which the data is not available.  This makes broad scale modelling of lake ecology a challenge as some of the key information about in-lake processes are unavailable.  While this valuable *in situ* information may be difficult to obtain, several national datasets exist that may be used to model and estimate lake morphometry.  In particular digital elevation models and hydrography have been shown to be predicitive of several lake morphometry metrics.  The R package `lakemorpho` has been developed to utilize this data and estimate the following morphometry metrics: surface area, shoreline length, shoreline development, maximum depth, mean depth, volume, maximum lake length, mean lake width, maximum lake width, and fetch. In this software note I describe the motivation behind developing `lakemorpho`, discuss the implementation in R, and describe the use of `lakemorpho` with an example of a typical use case.    
 
 \vspace{3mm}\hrule
 \doublespace
@@ -76,8 +76,6 @@ Metrics describing the shape and size of lakes, known as lake morphometry, are i
 #Implementation in R
 
 #Typical Use Case
-
-#Discussion
 
 #Software Availability
 
