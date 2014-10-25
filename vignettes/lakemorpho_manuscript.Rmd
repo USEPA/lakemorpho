@@ -73,6 +73,16 @@ Metrics describing the shape and size of lakes, known as lake morphometry metric
 
 #Introduction
 
+- limnology background
+- morphometry traditionaly built from paper maps and detailed bathymetry
+- detailed bathy still gold standard, but only feasible (now) for a relatively small number of lakes.  
+- regional and national studies/models of lakes are difficult as the key information on lakes is not readily available
+- Possible to model most of this information
+ - for instance depth/volume
+- First cut of tools for these were one-off and developed with ArcGIS.
+- Need to have open source tools
+- I developed `lakemorpho` to provide open source tools in R to calculate the metrics
+
 #Implementation in R
 
 #Typical Use Case
