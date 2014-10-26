@@ -73,7 +73,10 @@ Metrics describing the shape and size of lakes, known as lake morphometry metric
 
 #Introduction
 
-- limnology background
+The study of  lake shape, lake morphology, and the quantificaiton of lake shape, lake morphometry is one of the foundations of limnology.  It is widely accepted that the morphometry of lakes and ponds is a primary driver of lake and pond productivity.  For instance, vollenweider...
+
+JEFF START HERE
+
 - morphometry traditionaly built from paper maps and detailed bathymetry
 - detailed bathy still gold standard, but only feasible (now) for a relatively small number of lakes.  
 - regional and national studies/models of lakes are difficult as the key information on lakes is not readily available
