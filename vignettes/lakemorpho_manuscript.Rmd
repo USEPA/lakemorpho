@@ -88,7 +88,35 @@ JEFF START HERE
 
 #Implementation in R
 
+- Why an R package?
+- Dependencies
+ - required packages
+ - required libraries
+- Included functions
+ - calcLakeMetrics  Calculate all Lake Morphometry Metrics
+ - inputLM	lakemorpho class data for 'lakemorpho' examples
+ - lakeFetch	Function to calculate fetch along an input bearing
+ - lakeMaxDepth	Estimate maximum lake depth
+ - lakeMaxLength	Caluclate maximum lake length
+ - lakeMaxWidth	Function to find line representing maximum lake Width
+ - lakeMeanDepth	Function to return lake Mean Depth
+ - lakeMeanWidth	Function to return lake Mean Width
+ - lakemorpho	Lake Morphometry in R
+ - lakeMorphoClass	Function to create a lakeMorpho class - this is input to all other methods
+ - lakeShorelineDevelopment	Function to calculate shoreline development
+ - lakeShorelineLength	Function to calculate shoreline length
+ - lakeSurfaceArea	Return lake surface area
+ - lakeSurroundTopo	Calculate surrounding topography for lake
+ - lakeVolume	Caluclates Lake Volume in R
+ - plot.lakeMorpho	Default plotting of a lakeMorpho object
+
+- Included Data
+ - exampleElev  Elevation Data for 'lakemorpho' examples
+ - exampleLake	Lake Data for 'lakemorpho' examples
+
 #Typical Use Case
+
+
 
 #Software Availability
 
