@@ -86,7 +86,7 @@ JEFF START HERE
 - Need to have open source tools
 - I developed `lakemorpho` to provide open source tools in R to calculate the metrics
 
-#Implementation in R
+#Implementation and Use in R
 
 - Why an R package?
 - Dependencies
@@ -114,10 +114,25 @@ JEFF START HERE
  - exampleElev  Elevation Data for 'lakemorpho' examples
  - exampleLake	Lake Data for 'lakemorpho' examples
 
-#Typical Use Case
-
-
-
 #Software Availability
+
+The `lakemorpho` package is currently available directly from the Comprehensive R Archive Network (CRAN) and may simply be installed and loaded in R via:
+
+```{r, eval=FALSE}
+install.packages('lakemorpho')
+library('lakemorpho')
+```
+
+To access the help pages (including a version of this manuscript) use `r help(packages='lakemorpho')`.  
+
+There are tentative plans to continue developing new functions for `lakemorpho` and these new features will be available first through the development version on GitHub at [http://github.com/usepa/lakemorpho](http://github.com/USEPA/lakemorpho).  To install and load the development version requires use of the `devtools` package.  This may be done with:
+
+```{r, eval=FALSE}
+install.packages('devtools')
+library('devtools')
+install_github('USEPA/lakemorpho')
+library(lakemorpho)
+```
+
 
 #References
