@@ -20,7 +20,7 @@ csl: components/plos.csl
 documentclass: article
 spacing: doublespacing
 linenumbers: no
-bibliography: components/lakemorpho_manuscript.bib
+bibliography: components/manuscript.bib
 abstract: no
 ---
 <!--
@@ -73,7 +73,7 @@ Metrics describing the shape and size of lakes, known as lake morphometry metric
 
 #Introduction
 
-The study and quantificaiton of lake shape (i.e. lake morphology and morphometry) is one of the foundations of limnology.  It is widely accepted that the morphometry of lakes and ponds is a primary driver of lake and pond productivity.  For instance, vollenweider...
+The study and quantificaiton of lake shape (i.e. lake morphology and morphometry) is one of the foundations of limnology and it is widely accepted that the morphometry of lakes and ponds can impact available nutrients and thus overall productivity.  For students of limnology, some of the first lessons are centered around a typical suite of metrics and how to calculate them [e.g. @wetzel2001limnology].  Also, the widely used Vollenweider input-output models that are used to estimate nutrient concentrations rely on hydraulic residence time and sometimes mean depth, both of which are derived from total lake volume [@vollenweider1975input; @milstead2013estimating]. Lastly, clear water versus turbid water states in lakes have been linked, in part to lake morphometry, in particular mean depth [@genkai2005eutrophication].
 
 JEFF START HERE
 
