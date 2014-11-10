@@ -73,15 +73,13 @@ Metrics describing the shape and size of lakes, known as lake morphometry metric
 
 #Introduction
 
-The study and quantificaiton of lake shape (i.e. lake morphology and morphometry) is one of the foundations of limnology and it is widely accepted that the morphometry of lakes and ponds can impact available nutrients and thus overall productivity.  For students of limnology, some of the first lessons are centered around a typical suite of metrics and how to calculate them [e.g. @wetzel2001limnology].  Also, the widely used Vollenweider input-output models that are used to estimate nutrient concentrations rely on hydraulic residence time and sometimes mean depth, both of which are derived from total lake volume [@vollenweider1975input; @milstead2013estimating]. Lastly, clear water versus turbid water states in lakes have been linked, in part to lake morphometry, in particular mean depth [@genkai2005eutrophication].
+The study and quantificaiton of lake shape (i.e. lake morphology and morphometry) is one of the foundations of limnology and for students of limnology, some of the first lessons are centered around a typical suite of metrics and how to calculate them [e.g. @wetzel2001limnology].  It is also widely accepted that the morphometry of lakes and ponds can impact available nutrients and thus overall productivity.  For instance, the widely used Vollenweider input-output models that are used to estimate nutrient concentrations rely on hydraulic residence time and sometimes mean depth, both of which are derived from total lake volume [@vollenweider1975input; @milstead2013estimating]. Also, clear water versus turbid water states in lakes have been linked in part to lake morphometry, in particular mean depth [@genkai2005eutrophication].  In short, limnologists have long recognized the importance of lake morphology as one factor controlling a variety of ecological processes in lakes.
 
-JEFF START HERE
+Traditional methods for calculating lake morphometry metrics have relied upon the use of paper bathymetry maps, planimeters, or unnecessary assumptions [@kalff2002limnology; @welch1935limnology; @wetzel2000limnological; @hollister2010volume]. In addition, detailed bathymetry is a requirement for most of these methods, but it's collection is only available for a relatively small number of lakes.    
 
-- morphometry traditionaly built from paper maps and detailed bathymetry
-- detailed bathy still gold standard, but only feasible (now) for a relatively small number of lakes.  
-- regional and national studies/models of lakes are difficult as the key information on lakes is not readily available
-- Possible to model most of this information
+- regional and national studies/models of lakes are difficult as the key information on lakes is not readily available  - Possible to model most of this information
  - for instance depth/volume
+
 - First cut of tools for these were one-off and developed with ArcGIS.
 - Need to have open source tools
 - I developed `lakemorpho` to provide open source tools in R to calculate the metrics
