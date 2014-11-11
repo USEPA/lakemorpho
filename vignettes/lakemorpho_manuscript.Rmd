@@ -77,7 +77,7 @@ The study and quantificaiton of lake shape (i.e. lake morphology and morphometry
 
 Traditional methods for calculating lake morphometry metrics have relied upon the use of paper bathymetry maps, planimeters, or unnecessary assumptions [@kalff2002limnology; @welch1935limnology; @wetzel2000limnological; @hollister2010volume]. In addition, detailed bathymetry is a requirement for most of these methods, but it's collection is only available for a relatively small number of lakes.  This is not a problem when the focus of a study is a single lake, a small number of lakes or on well studied lakes.  Relying on complete bathymetry becomes a limitation when attempting to conduct regional or national studies of lakes as bathymetry is at best difficult to find or does not exist for all lakes of interest.  In these cases alternative approaches for estimating lake morphometry are required.  
 
-Recent work has demonstrated the ability to estimate many of these metrics from ubiquitous spatial data.  For instance, maximum depth and lake volume may be predicted using the lake polygon and surrounding topography [@hollister2010volume; @hollister2011predicting].
+Recent work has demonstrated the ability to estimate many of these metrics from ubiquitous spatial data.  For instance, maximum depth and lake volume may be predicted using the lake polygon and surrounding topography [@hollister2010volume; @hollister2011predicting]. The initial development of these tools were developed with proprietary tools thus limiting their use.  In an effort to 
  
 
 - First cut of tools for these were one-off and developed with ArcGIS.
