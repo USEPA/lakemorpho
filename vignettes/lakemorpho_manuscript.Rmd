@@ -81,6 +81,12 @@ Recent work has demonstrated the ability to estimate many of these metrics from 
 
 #Implementation and Use in R
 
+Using R as a Geographic Information System is now possible as several packages provide spatial data handling, geospatial analysis, and visualization.  It is becuase of these pacakges that I chose to implement `lakemorpho` as an R package.  In particular,`lakemorpho` relies on the following packages:
+
+List here:
+
+In addition to these packages two external libraries are needed and their availability to R varies by operating system.
+
 - Why an R package?
 - Dependencies
  - required packages
