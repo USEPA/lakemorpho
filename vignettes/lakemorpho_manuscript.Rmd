@@ -35,6 +35,7 @@ abstract: no
 #library("manuscriptPackage")
 #Didn't do that here to expedite building of the example vignette
 library("knitr")
+library("lakemorpho")
 
 opts_chunk$set(dev = 'pdf', fig.width=6, fig.height=5)
 
@@ -122,7 +123,7 @@ install.packages('lakemorpho')
 library('lakemorpho')
 ```
 
-To access the help pages (including a version of this manuscript) use `r help(packages='lakemorpho')`.  
+To access the help pages (including a version of this manuscript) use `r help(package='lakemorpho')`.  
 
 There are tentative plans to continue developing new functions for `lakemorpho` and these new features will be available first through the development version on GitHub at [http://github.com/usepa/lakemorpho](http://github.com/USEPA/lakemorpho).  To install and load the development version requires use of the `devtools` package.  This may be done with:
 
