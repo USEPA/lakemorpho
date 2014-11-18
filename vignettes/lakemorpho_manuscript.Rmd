@@ -222,12 +222,8 @@ Using R as a Geographic Information System is now possible as several packages p
 
 List here:
 
-In addition to these packages two external libraries, Geospatial Data Abstraction Library (GDAL) and the Geometry Engine, Open Source(GEOS), are needed and their availability to R varies by operating system [@GDAL;@GEOS]. 
+In addition to these packages two external libraries, Geospatial Data Abstraction Library (GDAL) and the Geometry Engine, Open Source(GEOS), are needed and their availability to R and installation varies by operating system [@GDAL2012;@GEOS2013].   
 
-- Why an R package?
-- Dependencies
- - required packages
- - required libraries
 - Included functions
  - calcLakeMetrics  Calculate all Lake Morphometry Metrics
  - inputLM	lakemorpho class data for 'lakemorpho' examples
