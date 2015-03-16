@@ -131,11 +131,11 @@ To calulcate the fetch of an input lake use:
 
 ```{r lakeFetchExample}
 #Fetch for North
-lakeFetch(example_lakeMorpho,0)
-lakeFetch(example_lakeMorpho,360)
+lakeFetch(example_lakeMorpho, 0)
+lakeFetch(example_lakeMorpho, 360)
 
 #Fetch for West
-lakeFetch(example_lakeMorpho,270)
+lakeFetch(example_lakeMorpho, 270)
 ```
 
 
