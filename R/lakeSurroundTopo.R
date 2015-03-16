@@ -8,10 +8,11 @@
 #' intersect the lake. 
 #' 
 #' 
-#' @param inLake a SpatialPolygons representing the input lake
+#' @param inLake a SpatialPolygons or SpatialPolygonsDataFrame representing the input lake
 #' @param inElev a RasterLayer representing the elevation around the lake
-#' @param inCatch Optional defualt is NULL wich uses a buffer equal to the
-#'        maximum in lake distance.  
+#' @param inCatch Optional SpatialPolygons or SpatialPolygonsDataFrame defining the
+#'                Surrounding Topography.  Default is NULL wich uses a buffer equal to the
+#'                maximum in lake distance.  
 #' @param reso Optional resolution for raster output (e.g. lake distance).  
 #'        Defaults to the resolution of inElev
 #'

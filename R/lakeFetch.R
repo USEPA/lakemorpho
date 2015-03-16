@@ -5,7 +5,7 @@
 #' 
 #' @param inLakeMorpho An object of \code{\link{lakeMorphoClass}}.  Output of the 
 #'        \code{\link{lakeSurroundTopo}} function would be appropriate as input
-#' @param bearing Character that indicates the bearing of the desired fetch 
+#' @param bearing Numeric that indicates the bearing of the desired fetch 
 #' @param addLine Boolean to determine if the selected max length line should be 
 #'        added to the inLakeMorpho object.  Defaults to True.  Note that the 
 #'        line is returned in the same projection as the input data.  

@@ -6,7 +6,7 @@
 #' 
 #' @param inLakeMorpho an object of \code{\link{lakeMorphoClass}}.  Output of the 
 #'        \code{\link{lakeSurroundTopo}} function would be appropriate as input
-#' @param bearing Character that indicates the bearing of the desired fetch
+#' @param bearing Numeric that indicates the bearing of the desired fetch.  
 #' @param pointDens Number of points to place equidistant along shoreline for 
 #'        \code{\link{lakeMaxLength}} or density of lines to test for 
 #'        \code{\link{lakeMaxWidth}} and \code{\link{lakeFetch}}.
