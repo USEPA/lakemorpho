@@ -129,18 +129,18 @@ Fetch is the maximum open water distance in a given direction and can be used an
 
 To calulcate the fetch of an input lake use:
 
-```{r lakeFetchExample}
-#Fetch for North
-lakeFetch(example_lakeMorpho, 0)
-lakeFetch(example_lakeMorpho, 360)
 
-#Fetch for West
-lakeFetch(example_lakeMorpho, 270)
-```
 
 
 ####lakeMaxDepth	
-Estimate maximum lake depth
+Maximum lake depth provides information that may be used to, along with flow rates, estimate the residence time of a lake.  While there is no substitute for field verifed measurements, maximum lake depth may be estimated with the surrounding topography. The `lakeMaxDepth()` function uses the methods outlined in Hollister *et al* [-@hollister2011predicting] to provide an estimate of the maximum lake depth.  It requires only a `lakeMorpho` object as input.  Optionally a correction factor based off of verified depth data may be specified is one is known.
+
+The usage for `lakeMaxDepth()` is:
+
+```{r lakeFetchExample}
+#Fetch for North
+lakeMaxDepth(example_lakeMorpho)
+```
 
 ####lakeMaxLength
 Caluclate maximum lake length
