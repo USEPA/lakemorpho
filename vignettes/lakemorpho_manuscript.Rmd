@@ -129,7 +129,14 @@ Fetch is the maximum open water distance in a given direction and can be used an
 
 To calulcate the fetch of an input lake use:
 
+```{r lakeFetchExample}
+#Fetch for North
+lakeFetch(example_lakeMorpho, 0)
+lakeFetch(example_lakeMorpho, 360)
 
+#Fetch for West
+lakeFetch(example_lakeMorpho, 270)
+```
 
 
 ####lakeMaxDepth	
@@ -137,13 +144,22 @@ Maximum lake depth provides information that may be used to, along with flow rat
 
 The usage for `lakeMaxDepth()` is:
 
-```{r lakeFetchExample}
+```{r lakeMaxDepthExample}
 #Fetch for North
 lakeMaxDepth(example_lakeMorpho)
 ```
 
 ####lakeMaxLength
-Caluclate maximum lake length
+Maximum lake length is the longest open water distance within a lake and, similar to fetch, is a metric that can be used to estimate mixing potential [@lakewatch2001department].  The current implementation of this in `lakemorpho` places points at equal distances apart along the shoreline of the lake and then finds the longest point-to-point distance that also does not intersect land.  This value is returned as the maximum lake length.  An optional parameter allows the `SpatialLines` object to be stored on the input `lakeMorpho` object.
+
+To caluclate maximum lake length requires a `lakeMorpho` object and total number of points to use to find the maximum point-to-point distance.  
+
+```{r lakeMaxLengthExample}
+#Fetch for North
+lakeMaxLength(example_lakeMorpho, 1000)
+```
+
+The `pointDens` parameter can have an impact on both the processing time and the resulting value.  START HERE
 
 ####lakeMaxWidth
 Function to find line representing maximum lake Width
