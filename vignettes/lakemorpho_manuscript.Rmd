@@ -159,7 +159,7 @@ To caluclate maximum lake length requires a `lakeMorpho` object and total number
 lakeMaxLength(example_lakeMorpho, 1000)
 ```
 
-The `pointDens` parameter can have an impact on both the processing time and the resulting value.  START HERE
+The `pointDens` parameter can have an impact on both the processing time and the resulting value and both of these can vary as a function of the complexity of the shape of the lake with less complex lakes providing more consistent lake length across a range of number of points (Figure \ref{fig:pointdens}).  Given this caveat, care must be taken in choosing an appropriate number of points (and thus lines) to use to caluclate maximum lake length.  Several densities should be tested and the smallest number of points that produce a stable estimate should be used.
 
 ####lakeMaxWidth
 Function to find line representing maximum lake Width
@@ -208,6 +208,12 @@ install.packages('devtools')
 library('devtools')
 install_github('USEPA/lakemorpho')
 library(lakemorpho)
+```
+
+#Figures
+
+```{r pointdens, echo=FALSE, fig.cap="Variation in estimates of maximum lake length as a function of both point density along the shoreline and lake shape complexity.\\label{fig:pointdens}",cache=FALSE}
+
 ```
 
 #References
