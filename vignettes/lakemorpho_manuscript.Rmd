@@ -122,6 +122,7 @@ lapply(example_lakeMorpho,class)
 
 
 ###Lake Morphometry Functions
+<!-- Think about discussing details of the implementation in more depth --!>
 Each of the remaining functions all expect a `lakeMorpho` object as input and all return a numeric value.  Some of the functions do have a side effect of adding a spatial object to the input `lakeMorpho` object.  
 
 ####lakeFetch	
@@ -162,7 +163,14 @@ lakeMaxLength(example_lakeMorpho, 1000)
 The `pointDens` parameter can have an impact on both the processing time and the resulting value and both of these can vary as a function of the complexity of the shape of the lake with less complex lakes providing more consistent lake length across a range of number of points (Figure \ref{fig:pointdens}).  Given this caveat, care must be taken in choosing an appropriate number of points (and thus lines) to use to caluclate maximum lake length.  Several densities should be tested and the smallest number of points that produce a stable estimate should be used.
 
 ####lakeMaxWidth
-Function to find line representing maximum lake Width
+Maximum lake width is the maximum shore to shore distance that is perpendicular to the line representing maximum lake length.  The `lakeMaxWidth` function requires a `lakeMorpho` object and `pointDens` value which is used to determine the number of points along the maximum lake length line. The issue with `pointDens` that was discussed above also exists for the use of `pointDens` with `lakeMaxWidth()` and care should be taken to determine an appropriate number of lines to test.
+
+Usage of lakeMaxWidth is:
+
+```{r lakeMaxWidthExample}
+#Fetch for North
+lakeMaxWidth(example_lakeMorpho, 1000)
+```
 
 ####lakeMeanDepth	
 Function to return lake Mean Depth
