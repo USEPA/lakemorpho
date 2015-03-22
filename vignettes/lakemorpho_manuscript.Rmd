@@ -146,7 +146,7 @@ Maximum lake depth provides information that may be used to, along with flow rat
 The usage for `lakeMaxDepth()` is:
 
 ```{r lakeMaxDepthExample}
-#Fetch for North
+#Maximum Lake Depth
 lakeMaxDepth(example_lakeMorpho)
 ```
 
@@ -156,7 +156,7 @@ Maximum lake length is the longest open water distance within a lake and, simila
 To caluclate maximum lake length requires a `lakeMorpho` object and total number of points to use to find the maximum point-to-point distance.  
 
 ```{r lakeMaxLengthExample}
-#Fetch for North
+#Max Length with a Point Density of 1000
 lakeMaxLength(example_lakeMorpho, 1000)
 ```
 
@@ -168,12 +168,16 @@ Maximum lake width is the maximum shore to shore distance that is perpendicular 
 Usage of lakeMaxWidth is:
 
 ```{r lakeMaxWidthExample}
-#Fetch for North
+#Max width with a point density of 1000
 lakeMaxWidth(example_lakeMorpho, 1000)
 ```
 
 ####lakeMeanDepth	
-Function to return lake Mean Depth
+Mean depth of a lake is calculated as the volume of the lake divided by the area.  This function requires only a `lakeMorpho` object and returns a numeric value of the mean depth.  Usage of the function is:
+
+```{r lakeMeanDepthExample}
+lakeMeadDepth(example_lakeMorpho)
+```
 
 ####lakeMeanWidth	
 Function to return lake Mean Width
