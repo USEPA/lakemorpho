@@ -1,6 +1,6 @@
 [![DOI](https://zenodo.org/badge/4384/USEPA/lakemorpho.svg)](http://dx.doi.org/10.5281/zenodo.16244) 
 
-![RStudio CRAN Downloads](http://cranlogs.r-pkg.org/badges/lakemorpho)]
+![RStudio_CRAN_Downloads](http://cranlogs.r-pkg.org/badges/grand-total/lakemorpho)
 
 # lakemorpho
 The purpose of `lakemorpho` is to provide a suite of tools that can be used to calculate basic lake morphometry metrics from an input SpatialPolygonsDataframe of a lake and a digital elevation model, as a RasterLayer, for the terrain surrounding that lake.  These tools are being used to calculate lake morphometry metrics for all "lakepond" waterbodies in the [NHDPlus V2](http://www.horizon-systems.com/nhdplus/NHDPlusV2_home.php).
