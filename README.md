@@ -1,4 +1,4 @@
-[![DOI](https://zenodo.org/badge/4384/USEPA/lakemorpho.svg)](http://dx.doi.org/10.5281/zenodo.16244) 
+[![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.16244.svg)](http://dx.doi.org/10.5281/zenodo.16244)
 
 [![RStudio_CRAN_Downloads](http://cranlogs.r-pkg.org/badges/grand-total/lakemorpho)](http://cranlogs.r-pkg.org/badges/grand-total/lakemorpho)
 
