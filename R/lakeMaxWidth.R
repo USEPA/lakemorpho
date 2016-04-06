@@ -59,7 +59,7 @@ lakeMaxWidth <- function(inLakeMorpho, pointDens, addLine = T) {
             y <- c(y[1] - ydiff, y)
         }
     }
-    longline <- matrix(c(min(x), max(x), min(y), max(y)), 2, 2)
+    longline<-data.frame(x,y)
     longline <- SpatialLines(list(Lines(list(Line(longline)), "1")), proj4string = CRS(proj4string(inLakeMorpho$lake)))
     longlinedata <- data.frame(spsample(longline, pointDens, "regular")@coords)
     if (round(var(y), 1) == 0) {

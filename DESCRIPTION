@@ -11,23 +11,25 @@ BugReports: https://www.github.com/USEPA/lakemorpho/issues
 Maintainer: Jeffrey W. Hollister <hollister.jeff@epa.gov>
 License: CC0
 Description: Lake morphometry metrics are used by limnologists to understand,
-    among other things, the ecological processes in a lake.  Traditionally, 
-    these metrics are calculated by hand, with planimeters, and increasingly 
-    with commercial GIS products.  All of these methods work; however, they are
-    either outdated, difficult to reproduce, or require expensive licenses to 
-    use. The \code{lakemorpho} package provides the tools to calculate a typical 
-    suite of these metrics from an input elevation model and lake polygon.  The 
-    metrics currently supported are: fetch, maximum length, maximum 
-    width, mean width, maximum depth, mean depth, shoreline development, shoreline 
-    length, surface area, and volume. 
-Depends: 
+    among other things, the ecological processes in a lake. Traditionally, these
+    metrics are calculated by hand, with planimeters, and increasingly with
+    commercial GIS products. All of these methods work; however, they are either
+    outdated, difficult to reproduce, or require expensive licenses to use. The
+    \code{lakemorpho} package provides the tools to calculate a typical suite
+    of these metrics from an input elevation model and lake polygon. The metrics
+    currently supported are: fetch, maximum length, maximum width, mean width,
+    maximum depth, mean depth, shoreline development, shoreline length, surface
+    area, and volume.
+Depends:
     maptools
-Imports: 
+Imports:
     rgdal,
     raster,
     rgeos,
     sp,
     geosphere
 Author: Jeffrey W. Hollister [aut, cre]
-Suggests: knitr
+Suggests:
+    knitr
 VignetteBuilder: knitr
+RoxygenNote: 5.0.1
