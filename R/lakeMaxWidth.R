@@ -105,8 +105,8 @@ lakeMaxWidth <- function(inLakeMorpho, pointDens, intersect = FALSE,
     }
     myInter2Lines <- SpatialLines(myInter2, proj4string = CRS(proj4string(inLakeMorpho$lake)))
     if(intersect){
-      browser() #Should just be able to grab lines from myInter2Lines that 
-      # intersect max length.  Then pass on to maxWidthLine ...
+      browser()
+      myInter2Lines<-myInter2Lines[gIntersects(myInter2Lines,inLakeMorpho$maxLengthLine,byid=T),]
     } 
     
     maxWidthLine <- myInter2Lines[gLength(myInter2Lines, byid = T) == 
