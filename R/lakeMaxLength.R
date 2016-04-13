@@ -55,6 +55,9 @@ lakeMaxLength <- function(inLakeMorpho, pointDens, addLine = T) {
         return(NA)
     }
     myLine <- myLines[myInd][gLength(myLines[myInd], byid = T) == max(gLength(myLines[myInd], byid = T))]
+    plot(inLakeMorpho$lake)
+    plot(myLine,add=T,col="red",lwd=3)
+    browser()
     result <- gLength(myLine)
     
     if (addLine) {
