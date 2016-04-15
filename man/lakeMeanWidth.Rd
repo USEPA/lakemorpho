@@ -18,8 +18,10 @@ Mean lake width is the result of lake surface area divded by the maximum
 length.
 }
 \examples{
+\dontrun{
 data(lakes)
 lakeMeanWidth(inputLM)
+}
 }
 \references{
 Florida LAKEWATCH (2001). A Beginner's guide to water management

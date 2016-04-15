@@ -4,6 +4,10 @@
 #' 
 #' @param x input lakeMorpho class to plot
 #' @param ... allows for passing of other plot parameters
+#' @param dist Boolean to control plotting of in lake distance
+#' @param length Boolean to control plotting of max lake length line
+#' @param width Boolean to control plotting of max lake width line
+#' @param fetch Boolean to control plotting of fetch lines
 #' @method plot lakeMorpho
 #' @export
 #' @examples

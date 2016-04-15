@@ -10,6 +10,14 @@
 \arguments{
 \item{x}{input lakeMorpho class to plot}
 
+\item{dist}{Boolean to control plotting of in lake distance}
+
+\item{length}{Boolean to control plotting of max lake length line}
+
+\item{width}{Boolean to control plotting of max lake width line}
+
+\item{fetch}{Boolean to control plotting of fetch lines}
+
 \item{...}{allows for passing of other plot parameters}
 }
 \description{
