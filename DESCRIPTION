@@ -2,7 +2,7 @@ Package: lakemorpho
 Type: Package
 Title: Lake Morphometry Metrics in R
 Version: 1.0.1.9999
-Date: 2016-04-06
+Date: 2016-04-15
 Authors@R: person(given = "Jeffrey W.", family = "Hollister",
     role = c("aut","cre"),
     email = "hollister.jeff@epa.gov")

@@ -1,15 +1,21 @@
 #' Function to find line representing maximum lake Width
 #' 
 #' Maximum lake width is defined as the maximum in lake distance that is 
-#' perpendicular to the maximum lake length.  This function calculates the 
-#' equation of the perpendicular line and repeats that line \code{pointDens}
-#' number of times and returns the longest of those lines.
+#' perpendicular to the maximum lake length. As no definition specifies whether
+#' or not the maximum lake width should intersect the line of maximum legnth, 
+#' this function assumes that it does not, but may be forced to find the maximum 
+#' width line the is perpendicular to and intersects with the maximum lake 
+#' length line.  This function calculates the equation of the perpendicular line 
+#' and repeats that line \code{pointDens}number of times and returns the longest 
+#' of those lines.
 #'
 #' @param inLakeMorpho An object of \code{\link{lakeMorphoClass}}.  Output of the 
 #'        \code{\link{lakeSurroundTopo}} function would be appropriate as input
 #' @param pointDens Number of points to place equidistant along the 
 #'        \code{\link{lakeMaxLength}}. A line that crosses at that point and
-#'        extends from shore to shore is calcuated.   
+#'        extends from shore to shore is calcuated.
+#' @param intersect Boolean to force max width to intersect the max length line.
+#'        for many lakes this will return the same line.   
 #' @param addLine Boolean to determine if the selected max length line should be 
 #'        added to the inLakeMorpho object.  Defaults to True
 #' @export
@@ -26,7 +32,8 @@
 #' data(lakes)
 #' lakeMaxWidth(inputLM,50)
 
-lakeMaxWidth <- function(inLakeMorpho, pointDens, addLine = T) {
+lakeMaxWidth <- function(inLakeMorpho, pointDens, intersect = FALSE, 
+                         addLine = T) {
     myName <- paste(substitute(inLakeMorpho))
     if (class(inLakeMorpho) != "lakeMorpho") {
         return(warning("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo first."))
@@ -97,8 +104,13 @@ lakeMaxWidth <- function(inLakeMorpho, pointDens, addLine = T) {
         myInter2 <- c(myInter2, Lines(lineInter[i], i))
     }
     myInter2Lines <- SpatialLines(myInter2, proj4string = CRS(proj4string(inLakeMorpho$lake)))
-    maxWidthLine <- myInter2Lines[gLength(myInter2Lines, byid = T) == max(gLength(myInter2Lines, byid = T)), 
-        ]
+    if(intersect){
+      myInter2Lines<-myInter2Lines[gIntersects(myInter2Lines,inLakeMorpho$maxLengthLine,byid=T),]
+    } 
+    
+    maxWidthLine <- myInter2Lines[gLength(myInter2Lines, byid = T) == 
+                                      max(gLength(myInter2Lines, byid = T)),]
+    
     if (addLine) {
         
         inLakeMorpho$maxWidthLine <- NULL
