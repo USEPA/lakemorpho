@@ -31,5 +31,4 @@ Imports:
 Author: Jeffrey W. Hollister [aut, cre]
 Suggests:
     knitr
-VignetteBuilder: knitr
 RoxygenNote: 5.0.1
