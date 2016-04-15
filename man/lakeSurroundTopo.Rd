@@ -7,9 +7,9 @@
 lakeSurroundTopo(inLake, inElev, inCatch = NULL, reso = res(inElev)[1])
 }
 \arguments{
-\item{inLake}{a SpatialPolygons or SpatialPolygonsDataFrame representing the input lake}
+\item{inLake}{a SpatialPolygons or SpatialPolygonsDataFrame representing the input lake. Required.}
 
-\item{inElev}{a RasterLayer representing the elevation around the lake}
+\item{inElev}{a RasterLayer representing the elevation around the lake. Required.}
 
 \item{inCatch}{Optional SpatialPolygons or SpatialPolygonsDataFrame defining the
 Surrounding Topography.  Default is NULL wich uses a buffer equal to the

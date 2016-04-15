@@ -36,7 +36,8 @@ metrics
 \examples{
 \dontrun{
 data(lakes)
-calcLakeMetrics(inputLM,45,250)}
+calcLakeMetrics(inputLM,45,250)
+}
 }
 \references{
 Florida LAKEWATCH (2001). A Beginner's guide to water management

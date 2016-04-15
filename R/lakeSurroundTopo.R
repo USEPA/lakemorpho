@@ -8,8 +8,8 @@
 #' intersect the lake. 
 #' 
 #' 
-#' @param inLake a SpatialPolygons or SpatialPolygonsDataFrame representing the input lake
-#' @param inElev a RasterLayer representing the elevation around the lake
+#' @param inLake a SpatialPolygons or SpatialPolygonsDataFrame representing the input lake. Required.
+#' @param inElev a RasterLayer representing the elevation around the lake. Required.
 #' @param inCatch Optional SpatialPolygons or SpatialPolygonsDataFrame defining the
 #'                Surrounding Topography.  Default is NULL wich uses a buffer equal to the
 #'                maximum in lake distance.  
@@ -27,8 +27,9 @@
 #' inputLM}
 
 lakeSurroundTopo <- function(inLake, inElev, inCatch = NULL, reso = res(inElev)[1]) {
-    if (dim(inLake)[1] > 1) {
-        return(warning(paste(dim(inLake)[1], "polygons input. Select a single lake as input.")))
+  
+  if (dim(inLake)[1] > 1) {
+        stop(paste(dim(inLake)[1], "polygons input. Select a single lake as input."))
     }
     
     slot(inLake, "polygons") <- lapply(slot(inLake, "polygons"), checkPolygonsHoles)

@@ -2,7 +2,7 @@
 #' 
 #' This is a helper function that creates a lakeMorpho class object
 #' 
-#' @param inLake input lake SpatialPolygons object
+#' @param inLake input lake SpatialPolygons object. Required.
 #' @param inElev input elevation model raster object
 #' @param inCatch input catchement SpatialPolygons object, can be buffer
 #'        around lake
@@ -18,7 +18,7 @@
 
 # May need to be done as a method (i.e. no need to @export) TO DO: Add null place holders for all possible
 # lakeMorpho metrics (eg various lines)
-lakeMorphoClass <- function(inLake, inElev, inCatch, inLakeDist, lakeOnEdge = F) {
+lakeMorphoClass <- function(inLake, inElev=NULL, inCatch=NULL, inLakeDist=NULL, lakeOnEdge = F) {
     lmorpho <- list(lake = inLake, elev = inElev, surround = inCatch, lakeDistance = inLakeDist, lakeOnEdge = lakeOnEdge)
     class(lmorpho) <- "lakeMorpho"
     return(lmorpho)

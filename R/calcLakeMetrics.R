@@ -37,7 +37,8 @@
 #' @examples
 #' \dontrun{
 #' data(lakes)
-#' calcLakeMetrics(inputLM,45,250)}
+#' calcLakeMetrics(inputLM,45,250)
+#' }
 
 calcLakeMetrics <- function(inLakeMorpho, bearing, pointDens, correctFactor = 1) {
     if (class(inLakeMorpho) != "lakeMorpho") {
