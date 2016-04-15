@@ -50,14 +50,11 @@ lakeMaxLength <- function(inLakeMorpho, pointDens, addLine = T) {
     xylist <- split(xydf, rownames(xydf))
     myLines <- SpatialLines(lapply(xylist, function(x) Lines(list(Line(matrix(as.numeric(x), 2, 2))), row.names(x))), 
         proj4string = CRS(proj4string(inLakeMorpho$lake)))
-    myInd <- gWithin(myLines, inLakeMorpho$lake, byid = T)
+    myInd <- gContains(inLakeMorpho$lake, myLines, byid = T)
     if (sum(myInd) == 0) {
         return(NA)
     }
     myLine <- myLines[myInd][gLength(myLines[myInd], byid = T) == max(gLength(myLines[myInd], byid = T))]
-    plot(inLakeMorpho$lake)
-    plot(myLine,add=T,col="red",lwd=3)
-    browser()
     result <- gLength(myLine)
     
     if (addLine) {

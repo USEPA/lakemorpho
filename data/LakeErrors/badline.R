@@ -1,16 +1,15 @@
-x <- new("SpatialLines"
-    , lines = structure(list("Lines", package = "sp"), .Names = "406")
-    , bbox = structure(c(341083.295191692, 5581436.4432812, 341146.084038399, 
-                         5582065.43429987), .Dim = c(2L, 2L), .Dimnames = list(c("x", 
-                                                                                 "y"), c("min", "max")))
-    , proj4string = new("CRS"
-                        , projargs = "+proj=utm +zone=14 +datum=NAD83 +units=m +no_defs +ellps=GRS80 +towgs84=0,0,0"
-    )
-)
-
-xl <- readOGR(".", "ErrorLakes")
+library(quickmapr)
+library(lakemorpho)
+library(rgdal)
+library(rgeos)
+x <- structure(list(`693` = list(structure(c(341329.641389457, 341368.194230847, 
+                                             5582028.28651484, 5581579.69423085), .Dim = c(2L, 2L)))), .Names = "693")
+xl <- readOGR("data/LakeErrors", "ErrorLakes")[1,]
+x<-SpatialLines(list(Lines(list(Line(coordinates(x))),ID=1)),proj4string = CRS(proj4string(xl)))
 
 plot(xl)
 plot(x,add=T,col="red")
 
-gWithin(xl,x)
+gWithin(xl,x,byid = T)
+
+#Recreating line and it returns false... Whoa!
