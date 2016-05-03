@@ -71,22 +71,20 @@ lakeFetch <- function(inLakeMorpho, bearing, addLine = T) {
     centPts <- list()
     centPts[[1]] <- coordinates(lakedd)
     colnames(centPts[[1]]) <- c("lon", "lat")
-    centPts[[2]] <- destPoint(centPts[[1]], perpbear1, max(res(inLakeMorpho$lakeDistance)) * 3)
+    centPts[[2]] <- destPoint(centPts[[1]], perpbear1, 100)
     i <- length(centPts)
     while (centPts[[i]][, 1] < coordinates(maxPt)[, 1] & centPts[[i]][, 1] > coordinates(minPt)[, 1] & centPts[[i]][, 
         2] < coordinates(maxPt)[, 2] & centPts[[i]][, 2] > coordinates(minPt)[, 2]) {
         i <- length(centPts) + 1
-        centPts[[i]] <- destPoint(centPts[[i - 1]], perpbear1, round(max(res(inLakeMorpho$lakeDistance)) * 
-            3))
+        centPts[[i]] <- destPoint(centPts[[i - 1]], perpbear1, 100)
     }
     # Build list of center points for perpbear2
     i <- length(centPts) + 1
-    centPts[[i]] <- destPoint(centPts[[1]], perpbear2, max(res(inLakeMorpho$lakeDistance)) * 3)
+    centPts[[i]] <- destPoint(centPts[[1]], perpbear2, 100)
     while (centPts[[i]][, 1] < coordinates(maxPt)[, 1] & centPts[[i]][, 1] > coordinates(minPt)[, 1] & centPts[[i]][, 
         2] < coordinates(maxPt)[, 2] & centPts[[i]][, 2] > coordinates(minPt)[, 2]) {
         i <- length(centPts) + 1
-        centPts[[i]] <- destPoint(centPts[[i - 1]], perpbear2, round(max(res(inLakeMorpho$lakeDistance)) * 
-            3))
+        centPts[[i]] <- destPoint(centPts[[i - 1]], perpbear2, 100)
     }
     # calc point for centroid, max distance, bearing + 180 (if bearing is less that 180) or - 180 (if bearing
     # is more than 180)
