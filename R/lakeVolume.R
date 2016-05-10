@@ -28,7 +28,11 @@
 
 lakeVolume <- function(inLakeMorpho, correctFactor = 1) {
     if (class(inLakeMorpho) != "lakeMorpho") {
-        return(warning("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo first."))
+      stop("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo or lakeMorphoClass first.")
+    }
+    if(is.null(inLakeMorpho$elev)){
+      stop("Input elevation dataset required to estimate depth related metrics.  
+             Run lakeSurround Topo first with elevation included")
     }
     Dmax <- max(inLakeMorpho$lakeDistance@data@values, na.rm = T)
     Zmax <- lakeMaxDepth(inLakeMorpho, correctFactor)

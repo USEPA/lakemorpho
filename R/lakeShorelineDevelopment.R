@@ -21,7 +21,7 @@
 
 lakeShorelineDevelopment <- function(inLakeMorpho) {
     if (class(inLakeMorpho) != "lakeMorpho") {
-        return(warning("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo first."))
+      stop("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo or lakeMorphoClass first.")
     }
     return((gLength(inLakeMorpho$lake))/(2 * sqrt(pi * gArea(inLakeMorpho$lake))))
 } 

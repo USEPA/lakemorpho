@@ -34,9 +34,9 @@
 
 lakeMaxWidth <- function(inLakeMorpho, pointDens, intersect = FALSE, 
                          addLine = T) {
-    myName <- paste(substitute(inLakeMorpho))
+    myName <- deparse(substitute(inLakeMorpho))
     if (class(inLakeMorpho) != "lakeMorpho") {
-        return(warning("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo first."))
+      stop("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo or lakeMorphoClass first.")
     }
     if (is.null(inLakeMorpho$maxLengthLine)) {
         lakeMaxLength(inLakeMorpho, pointDens)

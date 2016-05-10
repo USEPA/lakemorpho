@@ -36,7 +36,7 @@
 
 lakeMaxLength <- function(inLakeMorpho, pointDens, addLine = T) {
     if (class(inLakeMorpho) != "lakeMorpho") {
-        return(warning("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo first."))
+        stop("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo or lakeMorphoClass first.")
     }
     result <- NA
     lakeShorePoints <- spsample(as(inLakeMorpho$lake, "SpatialLines"), pointDens, "regular")@coords
@@ -58,7 +58,7 @@ lakeMaxLength <- function(inLakeMorpho, pointDens, addLine = T) {
     result <- gLength(myLine)
     
     if (addLine) {
-        myName <- paste(substitute(inLakeMorpho))
+        myName <- deparse(substitute(inLakeMorpho))
         inLakeMorpho$maxLengthLine <- NULL
         inLakeMorpho <- c(inLakeMorpho, maxLengthLine = myLine)
         class(inLakeMorpho) <- "lakeMorpho"

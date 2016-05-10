@@ -19,7 +19,11 @@
 
 lakeMeanDepth <- function(inLakeMorpho) {
     if (class(inLakeMorpho) != "lakeMorpho") {
-        return(warning("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo first."))
+      stop("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo or lakeMorphoClass first.")
+    }
+    if(is.null(inLakeMorpho$elev)){
+      stop("Input elevation dataset required to estimate depth related metrics.  
+           Run lakeSurround Topo first with elevation included")
     }
     return(lakeVolume(inLakeMorpho)/lakeSurfaceArea(inLakeMorpho))
 } 

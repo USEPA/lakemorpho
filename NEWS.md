@@ -7,6 +7,7 @@ lakemorpho 1.0.1 (2015-03-16)
 ## Bug Fixes
 - `lakeMaxWidth()` was flipping slope of line on lakes with a maximum lake length that had negative slope.  Tracked down to creating a line with `matrix()`. Switched to `data.frame()` and now works.
 - `lakeMaxLength()` was using `rgeos::gWithin` to ID lines that fell inside the lake boundary.  Would occassionally select a line that was outside the boundary on curved lakes (e.g. s-shaped).  Couldn't track down why this was happening, but `rgeos::gContains()` did not have this same behavior, so replaced `gWithin()` with `gContains`.
+- switched `paste(substitue())` to `deparse(substitute())` 
 
 ## API Changes
 - lakeFetch - bearing parameter no long character, accepts numeric (0-360).  
@@ -19,5 +20,7 @@ lakemorpho 1.0.1 (2015-03-16)
 - `lakeMorphoClass()` now accepts lake only.  Other arguments have defualt NULL values.
 - Default plot accepts NULLS in `lakeMorphoClass` and plots lines if they exist.
 - Added NEWS.md
+- Added elevation checks for functions that require it.
+- check now error, instead of warns, when wrong input is supplied
 
 

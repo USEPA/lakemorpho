@@ -28,9 +28,9 @@
 #' lakeFetch(inputLM,45)
 
 lakeFetch <- function(inLakeMorpho, bearing, addLine = T) {
-    inputName <- paste(substitute(inLakeMorpho))
+    inputName <- deparse(substitute(inLakeMorpho))
     if (class(inLakeMorpho) != "lakeMorpho") {
-        return(warning("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo first."))
+      stop("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo or lakeMorphoClass first.")
     }
     result <- NA
     # convert to dd
@@ -106,8 +106,8 @@ lakeFetch <- function(inLakeMorpho, bearing, addLine = T) {
         xlines <- slot(lakeLinesSL_proj[i], "lines")
         xLines <- slot(xlines[[1]], "Lines")
         for (j in 1:length(xLines)) {
-            lakeLinesList_proj[length(lakeLinesList_proj) + 1] <- Lines(xLines[j], as.character(length(lakeLinesList_proj) + 
-                1))
+            lakeLinesList_proj[[length(lakeLinesList_proj) + 1]] <- 
+              Lines(xLines[j], as.character(length(lakeLinesList_proj) + 1))
         }
     }
     
