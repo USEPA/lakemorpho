@@ -20,15 +20,12 @@ Description: Lake morphometry metrics are used by limnologists to understand,
     currently supported are: fetch, maximum length, maximum width, mean width,
     maximum depth, mean depth, shoreline development, shoreline length, surface
     area, and volume.
-Depends:
-    maptools
 Imports:
     rgdal,
     raster,
     rgeos,
     sp,
-    geosphere
+    geosphere,
+    maptools
 Author: Jeffrey W. Hollister [aut, cre]
-Suggests:
-    knitr
 RoxygenNote: 5.0.1
