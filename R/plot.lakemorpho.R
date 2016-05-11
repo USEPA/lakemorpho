@@ -9,6 +9,7 @@
 #' @param width Boolean to control plotting of max lake width line
 #' @param fetch Boolean to control plotting of fetch lines
 #' @method plot lakeMorpho
+#' @import grDevices
 #' @export
 #' @examples
 #' \dontrun{

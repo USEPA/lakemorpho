@@ -1,0 +1,21 @@
+
+language: r
+warnings_are_errors: true
+dist: trusty
+cache: packages
+
+r:
+  - oldrel
+  - release
+  - devel
+
+addons:
+  apt:
+    packages:
+      - libgdal-dev
+      - libproj-dev
+
+notifications:
+  email:
+    on_success: change
+    on_failure: change

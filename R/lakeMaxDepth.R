@@ -25,6 +25,7 @@
 #'             \href{http://edis.ifas.ufl.edu/pdffiles/FA/FA08100.pdf}{Link}
 #' 
 #' @import raster
+#' @importFrom stats median
 #' 
 #' @examples
 #' data(lakes)

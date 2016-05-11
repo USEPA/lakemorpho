@@ -16,7 +16,7 @@
 #' @param reso Optional resolution for raster output (e.g. lake distance).  
 #'        Defaults to the resolution of inElev
 #'
-#' @import sp rgeos raster rgdal maptools                   
+#' @import sp rgeos raster rgdal methods maptools                 
 #' @export
 #' @return Returns an object of class 'lakemorpho' that includes the surrounding
 #'         topography of the lake.

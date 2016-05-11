@@ -26,7 +26,8 @@
 #'             - Lake Morphometry (2nd ed.). Gainesville: Florida LAKEWATCH, 
 #'             Department of Fisheries and Aquatic Sciences.
 #'             \href{http://edis.ifas.ufl.edu/pdffiles/FA/FA08100.pdf}{Link}
-#' @import sp rgeos
+#' @import sp rgeos methods
+#' @importFrom stats var lm
 #' 
 #' @examples
 #' data(lakes)
