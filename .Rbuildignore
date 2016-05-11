@@ -1,5 +1,12 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
-NEWS.md
-data/LakeErrors
-vignettes/
+.travis.yml
+^\.travis\.yml$
+^NEWS.md$
+^cran_comments\.md$
+^appveyor\.yml$
+^CONTRIBUTING.md$
+^README\.Rmd$
+^README\.pdf$
+^figure$
+^NEWS\.md$
