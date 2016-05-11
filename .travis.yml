@@ -1,7 +1,5 @@
-
 language: r
 warnings_are_errors: true
-dist: trusty
 cache: packages
 
 r:
@@ -9,11 +7,9 @@ r:
   - release
   - devel
 
-addons:
-  apt:
-    packages:
-      - libgdal-dev
-      - libproj-dev
+r_binary_packages:
+  - rgdal
+  - sp
 
 notifications:
   email:
