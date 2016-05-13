@@ -2,7 +2,7 @@
 
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/jhollist/lakemorpho?branch=master)](https://ci.appveyor.com/project/jhollist/lakemorpho) 
 
-[![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.16244.svg)](http://dx.doi.org/10.5281/zenodo.16244)
+[![DOI](https://zenodo.org/badge/4384/jhollist/lakemorpho.svg)](https://zenodo.org/badge/latestdoi/4384/jhollist/lakemorpho)
 
 [![RStudio_CRAN_Downloads](http://cranlogs.r-pkg.org/badges/grand-total/lakemorpho)](http://cranlogs.r-pkg.org/badges/grand-total/lakemorpho)
 
