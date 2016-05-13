@@ -1,19 +1,13 @@
-##Resubmission
-Changes made in resubmission:
-- Edited description of package to focus just on quickmapr
-- Single quoted all package names
-- Corrected spelling mistakes
-- Bumped date and version for second submission
-
 ##Test Environments
-- Win 7, Local, R 3.2.2
-- Ubuntu 12.04, travis-ci, R 3.2.2
-- Win 7, Appveyor, R Development (2015-10-30 r69588)
+- Ubuntu 12.04, travis-ci, R 3.2.5 (2016-04-14)
+- Ubuntu 12.04, travis-ci, R 3.3.0 (2016-05-03)
+- Ubuntu 12.04, travis-ci, R Under development (unstable) (2016-05-11 r70597)
+- Win 7, Appveyor, 3.3.0 Patched (2016-05-09 r70593)
+- Ubuntu 14.04 LTS, local, R 3.3.0 (2016-05-03)
 
 ##R CMD check results
-- No ERRORS or WARNINGS.  
+- No ERRORS or WARNINGS or NOTES
 
--  1 Note on Ubuntu/Travis: 
-    - Maintainer: ‘Jeffrey W. Hollister <hollister.jeff@epa.gov>’
-      New submission
+## Downstream dependencies
+There are currently no downstream dependencies
 
