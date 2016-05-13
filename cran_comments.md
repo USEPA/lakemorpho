@@ -6,7 +6,11 @@
 - Ubuntu 14.04 LTS, local, R 3.3.0 (2016-05-03)
 
 ## R CMD check results
-- No ERRORS or WARNINGS or NOTES
+- No ERRORS or WARNINGS
+- One NOTE:
+
+NOTE
+Maintainer: ‘Jeffrey W. Hollister <hollister.jeff@epa.gov>’
 
 ## Downstream dependencies
 There are currently no downstream dependencies
