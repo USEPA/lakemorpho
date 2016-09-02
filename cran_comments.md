@@ -1,3 +1,6 @@
+## Comments
+This new version is in response to an 2016-08-29 email from Kurt Hornik regarding unbuilt vignettes.  The vignette folder has been removed as the vignette is not yet completed. 
+
 ## Test Environments
 - Ubuntu 12.04, travis-ci, R 3.2.5 (2016-04-14)
 - Ubuntu 12.04, travis-ci, R 3.3.1 (2016-06-21)
