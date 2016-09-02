@@ -1,3 +1,10 @@
+lakemorpho 1.0.3 (2016-09-02)
+=============================
+
+## Minor Changes
+- Request from CRAN to add vignette builder to DESCRIPTION; however, vignette complete.  Removed vignette from build and resubmitted.  Bumped minor version
+
+
 lakemorpho 1.0.2 (2016-05-14)
 =============================
 

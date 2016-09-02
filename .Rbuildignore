@@ -11,3 +11,4 @@
 ^figure$
 ^NEWS\.md$
 ^revdep$
+vignettes/
