@@ -1,3 +1,13 @@
+lakemorpho 1.0.4 (2016-10-14)
+
+## Minor Changes
+- cleaned up package description
+
+## API Change
+- added a depth parameter, zmax,  to `lakeVolume` and `lakeMeanDepth` (passed to `lakeVolume`) to allow input a known maximum depth.  If not included and an elevation model is included in the lake morpho object, max depth is estimated with `lakeMaxDepth`.
+
+
+
 lakemorpho 1.0.3 (2016-09-02)
 =============================
 

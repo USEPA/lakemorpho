@@ -4,11 +4,15 @@
 \alias{lakeMeanDepth}
 \title{Function to return lake Mean Depth}
 \usage{
-lakeMeanDepth(inLakeMorpho)
+lakeMeanDepth(inLakeMorpho, zmax = NULL)
 }
 \arguments{
 \item{inLakeMorpho}{An object of \code{\link{lakeMorphoClass}}.  Output of the 
 \code{\link{lakeSurroundTopo}} function would be appropriate as input}
+
+\item{zmax}{Maximum depth of the lake.  If none entered and elevation dataset
+is inlcuded in inLakeMorpho, \code{\link{lakeMaxDepth}} is used 
+to estimate a maximum depth.}
 }
 \value{
 Returns a numerica value for the mean depth of the lake

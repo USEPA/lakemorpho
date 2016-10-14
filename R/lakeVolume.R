@@ -35,7 +35,7 @@ lakeVolume <- function(inLakeMorpho, zmax = NULL, correctFactor = 1) {
     }
     if(is.null(inLakeMorpho$elev) & is.null(zmax)){
       stop("No maximum depth provided and no elevation data included to estimate 
-            maximum depth.  Provided a maximum depth or run lakeSurroundTopo 
+            maximum depth.  Provide a maximum depth or run lakeSurroundTopo 
             first with elevation included")
     }
     dmax <- max(inLakeMorpho$lakeDistance@data@values, na.rm = T)
