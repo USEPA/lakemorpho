@@ -4,11 +4,15 @@
 \alias{lakeVolume}
 \title{Caluclates Lake Volume in R}
 \usage{
-lakeVolume(inLakeMorpho, correctFactor = 1)
+lakeVolume(inLakeMorpho, zmax = NULL, correctFactor = 1)
 }
 \arguments{
 \item{inLakeMorpho}{An object of \code{\link{lakeMorphoClass}}.  Output of the 
 \code{\link{lakeSurroundTopo}} function would be appropriate as input}
+
+\item{zmax}{Maximum depth of the lake.  If none entered and elevation dataset
+is inlcuded in inLakeMorpho, \code{\link{lakeMaxDepth}} is used 
+to estimate a maximum depth.}
 
 \item{correctFactor}{This a factor used by \code{\link{lakeMaxDepth}} to 
 correct the predicted maximum lake depth.  Defaults to 1.}
