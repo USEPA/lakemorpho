@@ -1,0 +1,48 @@
+#' Calculate the ratio of the minor axis length to major axis length
+#' 
+#' Major axis length is defined as the maximum length spanning the convex hull
+#' of a lake. Minor axis length is defined as the minimum length spanning the
+#' convex hull of a lake.
+#' 
+#' @param inLakeMorpho An object of \code{\link{lakeMorphoClass}}.  Output of the 
+#'        \code{\link{lakeSurroundTopo}} function would be appropriate as input
+#' @param pointDens Number of points to place equidistant along shoreline. The 
+#'        maximum point to point distance that does not also intersect the 
+#'        shoreline is used.  To total of n*(n-1)/2 comparisons is possible, but
+#'        in practice is usually significant less.
+#' @param addLine Boolean to determine if the selected major and minor axis lines
+#'        should be added to the inLakeMorpho object.  Defaults to True
+#' 
+#' @export
+#' @return This returns a vector of numeric values indicating the length of the
+#'         major and minor axes of the lake. Units are the same as the input data.
+#' 
+#' @references \href{https://en.wikipedia.org/wiki/Semi-major_and_semi-minor_axes}{Link}
+#' @import sp rgeos methods
+#' @importFrom sp spsample
+#' @importFrom stats dist
+#' @importFrom cluster ellipsoidhull
+#' @examples
+#' data(lakes)
+#' lakeMinorMajorRatio(inputLM, 50)
+#' lines(inputLM$majoraxisLengthLine)
+#' lines(inputLM$minoraxisLengthLine)
+
+lakeMinorMajorRatio <- function(inLakeMorpho, pointDens, addLine = TRUE) {
+  if (class(inLakeMorpho) != "lakeMorpho") {
+    stop("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo or lakeMorphoClass first.")
+  }
+  
+  if (is.null(inLakeMorpho$majoraxisLengthLine) |
+      is.null(inLakeMorpho$minoraxisLengthLine)) {
+    lakeMinorAxisLength(inLakeMorpho, pointDens)
+    lakeMajorAxisLength(inLakeMorpho, pointDens)
+  }
+  
+  # https://stackoverflow.com/questions/18278382/how-to-obtain-the-lengths-of-semi-axes-of-an-ellipse-in-r
+
+  result <- rgeos::gLength(inLakeMorpho$minoraxisLengthLine) /
+            rgeos::gLength(inLakeMorpho$majoraxisLengthLine)
+  
+  return(result)
+} 

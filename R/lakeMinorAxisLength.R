@@ -29,7 +29,6 @@
 lakeMinorAxisLength <- function(inLakeMorpho, pointDens, addLine = TRUE) {
   if (class(inLakeMorpho) != "lakeMorpho") {
     stop("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo or lakeMorphoClass first.")
-    stop("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo or lakeMorphoClass first.")
   }
   
   result <- NA
