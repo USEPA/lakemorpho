@@ -1,6 +1,6 @@
-#' Calculate the length of the major axis for lake
+#' Calculate the length of the minor axis for lake
 #' 
-#' Major axis length is defined as the maximum length spanning the convex hull
+#' Minor axis length is defined as the minimum length spanning the convex hull
 #' of a lake.
 #' 
 #' @param inLakeMorpho An object of \code{\link{lakeMorphoClass}}.  Output of the 
@@ -9,11 +9,11 @@
 #'        maximum point to point distance that does not also intersect the 
 #'        shoreline is used.  To total of n*(n-1)/2 comparisons is possible, but
 #'        in practice is usually significant less.
-#' @param addLine Boolean to determine if the selected major axis line should be 
+#' @param addLine Boolean to determine if the selected minor axis line should be 
 #'        added to the inLakeMorpho object.  Defaults to True
 #' 
 #' @export
-#' @return This returns a numeric value indicating the length of the major axis
+#' @return This returns a numeric value indicating the length of the minor axis
 #'  in the lake. Units are the same as the input data.
 #' 
 #' @references \href{https://en.wikipedia.org/wiki/Semi-major_and_semi-minor_axes}{Link}
@@ -23,10 +23,10 @@
 #' @importFrom cluster ellipsoidhull
 #' @examples
 #' data(lakes)
-#' lakeMajorAxisLength(inputLM, 50)
-#' lines(inputLM$majoraxisLengthLine)
+#' lakeMinorAxisLength(inputLM, 50)
+#' lines(inputLM$minoraxisLengthLine)
 
-lakeMajorAxisLength <- function(inLakeMorpho, pointDens, addLine = TRUE) {
+lakeMinorAxisLength <- function(inLakeMorpho, pointDens, addLine = TRUE) {
   if (class(inLakeMorpho) != "lakeMorpho") {
     stop("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo or lakeMorphoClass first.")
     stop("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo or lakeMorphoClass first.")
@@ -44,16 +44,17 @@ lakeMajorAxisLength <- function(inLakeMorpho, pointDens, addLine = TRUE) {
   # max(dist2center)     ## major axis
   # min(dist2center)   ## minor axis
 
-  myLine.max <- elpshull[dist2center == max(dist2center),]
-  myLine <- SpatialLines(list(Lines(list(Line(myLine.max)), "1")),
+  myLine.min <- rbind(elpshull.center, elpshull[dist2center == min(dist2center),])
+  
+  myLine <- SpatialLines(list(Lines(list(Line(myLine.min)), "1")),
               proj4string = CRS(proj4string(inLakeMorpho$lake)))
 
   result <- max(dist2center)
   
   if (addLine) {
     myName <- deparse(substitute(inLakeMorpho))
-    inLakeMorpho$majoraxisLengthLine <- NULL
-    inLakeMorpho <- c(inLakeMorpho, majoraxisLengthLine = myLine)
+    inLakeMorpho$minoraxisLengthLine <- NULL
+    inLakeMorpho <- c(inLakeMorpho, minoraxisLengthLine = myLine)
     class(inLakeMorpho) <- "lakeMorpho"
     assign(myName, inLakeMorpho, envir = parent.frame())
   }
