@@ -29,6 +29,7 @@ of a lake.
 \examples{
 data(lakes)
 lakeMajorAxisLength(inputLM, 50)
+plot(inputLM$lake)
 lines(inputLM$majoraxisLengthLine)
 }
 \references{
