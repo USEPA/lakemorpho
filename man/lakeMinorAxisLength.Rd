@@ -4,16 +4,11 @@
 \alias{lakeMinorAxisLength}
 \title{Calculate the length of the minor axis for lake}
 \usage{
-lakeMinorAxisLength(inLakeMorpho, pointDens, addLine = TRUE)
+lakeMinorAxisLength(inLakeMorpho, addLine = TRUE)
 }
 \arguments{
 \item{inLakeMorpho}{An object of \code{\link{lakeMorphoClass}}.  Output of the 
 \code{\link{lakeSurroundTopo}} function would be appropriate as input}
-
-\item{pointDens}{Number of points to place equidistant along shoreline. The 
-maximum point to point distance that does not also intersect the 
-shoreline is used.  To total of n*(n-1)/2 comparisons is possible, but
-in practice is usually significant less.}
 
 \item{addLine}{Boolean to determine if the selected minor axis line should be 
 added to the inLakeMorpho object.  Defaults to True}
@@ -28,7 +23,7 @@ of a lake.
 }
 \examples{
 data(lakes)
-lakeMinorAxisLength(inputLM, 50)
+lakeMinorAxisLength(inputLM)
 plot(inputLM$lake)
 lines(inputLM$minoraxisLengthLine)
 }

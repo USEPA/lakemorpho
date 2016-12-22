@@ -5,10 +5,6 @@
 #' 
 #' @param inLakeMorpho An object of \code{\link{lakeMorphoClass}}.  Output of the 
 #'        \code{\link{lakeSurroundTopo}} function would be appropriate as input
-#' @param pointDens Number of points to place equidistant along shoreline. The 
-#'        maximum point to point distance that does not also intersect the 
-#'        shoreline is used.  To total of n*(n-1)/2 comparisons is possible, but
-#'        in practice is usually significant less.
 #' @param addLine Boolean to determine if the selected minor axis line should be 
 #'        added to the inLakeMorpho object.  Defaults to True
 #' 
@@ -17,24 +13,23 @@
 #'  in the lake. Units are the same as the input data.
 #' 
 #' @references \href{https://en.wikipedia.org/wiki/Semi-major_and_semi-minor_axes}{Link}
-#' @importFrom sp spsample proj4string CRS SpatialLines
-#' @importFrom stats dist
+#' @importFrom sp proj4string CRS SpatialLines
 #' @importFrom cluster ellipsoidhull
 #' @examples
 #' data(lakes)
-#' lakeMinorAxisLength(inputLM, 50)
+#' lakeMinorAxisLength(inputLM)
 #' plot(inputLM$lake)
 #' lines(inputLM$minoraxisLengthLine)
 
-lakeMinorAxisLength <- function(inLakeMorpho, pointDens, addLine = TRUE) {
+lakeMinorAxisLength <- function(inLakeMorpho, addLine = TRUE) {
 
   if (class(inLakeMorpho) != "lakeMorpho") {
     stop("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo or lakeMorphoClass first.")
   }
   
   result <- NA
-  lakeShorePoints <- sp::spsample(as(inLakeMorpho$lake, "SpatialLines"),
-                                  pointDens, "regular")@coords
+  lakeShorePoints <- as(as(inLakeMorpho$lake, "SpatialLines"),
+                        "SpatialPoints")@coords
   
   # https://stackoverflow.com/questions/18278382/how-to-obtain-the-lengths-of-semi-axes-of-an-ellipse-in-r
   elpshull <- predict(cluster::ellipsoidhull(lakeShorePoints))

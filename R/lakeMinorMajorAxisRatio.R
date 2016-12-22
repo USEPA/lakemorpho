@@ -6,10 +6,6 @@
 #' 
 #' @param inLakeMorpho An object of \code{\link{lakeMorphoClass}}.  Output of the 
 #'        \code{\link{lakeSurroundTopo}} function would be appropriate as input
-#' @param pointDens Number of points to place equidistant along shoreline. The 
-#'        maximum point to point distance that does not also intersect the 
-#'        shoreline is used.  To total of n*(n-1)/2 comparisons is possible, but
-#'        in practice is usually significant less.
 #' @param addLine Boolean to determine if the selected major and minor axis lines
 #'        should be added to the inLakeMorpho object.  Defaults to True
 #' 
@@ -21,12 +17,12 @@
 #' @importFrom rgeos gLength
 #' @examples
 #' data(lakes)
-#' lakeMinorMajorRatio(inputLM, 50)
+#' lakeMinorMajorRatio(inputLM)
 #' plot(inputLM$lake)
 #' lines(inputLM$majoraxisLengthLine)
 #' lines(inputLM$minoraxisLengthLine)
 
-lakeMinorMajorRatio <- function(inLakeMorpho, pointDens, addLine = TRUE) {
+lakeMinorMajorRatio <- function(inLakeMorpho, addLine = TRUE) {
   myName <- deparse(substitute(inLakeMorpho))
   if (class(inLakeMorpho) != "lakeMorpho") {
     stop("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo or lakeMorphoClass first.")
@@ -34,8 +30,8 @@ lakeMinorMajorRatio <- function(inLakeMorpho, pointDens, addLine = TRUE) {
   
   if (is.null(inLakeMorpho$majoraxisLengthLine) |
       is.null(inLakeMorpho$minoraxisLengthLine)) {
-    lakeMinorAxisLength(inLakeMorpho, pointDens)
-    lakeMajorAxisLength(inLakeMorpho, pointDens)
+    lakeMinorAxisLength(inLakeMorpho)
+    lakeMajorAxisLength(inLakeMorpho)
     
     assign(myName, inLakeMorpho, envir = parent.frame())
   }

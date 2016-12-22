@@ -4,16 +4,11 @@
 \alias{lakeMinorMajorRatio}
 \title{Calculate the ratio of the minor axis length to major axis length}
 \usage{
-lakeMinorMajorRatio(inLakeMorpho, pointDens, addLine = TRUE)
+lakeMinorMajorRatio(inLakeMorpho, addLine = TRUE)
 }
 \arguments{
 \item{inLakeMorpho}{An object of \code{\link{lakeMorphoClass}}.  Output of the 
 \code{\link{lakeSurroundTopo}} function would be appropriate as input}
-
-\item{pointDens}{Number of points to place equidistant along shoreline. The 
-maximum point to point distance that does not also intersect the 
-shoreline is used.  To total of n*(n-1)/2 comparisons is possible, but
-in practice is usually significant less.}
 
 \item{addLine}{Boolean to determine if the selected major and minor axis lines
 should be added to the inLakeMorpho object.  Defaults to True}
@@ -29,7 +24,7 @@ convex hull of a lake.
 }
 \examples{
 data(lakes)
-lakeMinorMajorRatio(inputLM, 50)
+lakeMinorMajorRatio(inputLM)
 plot(inputLM$lake)
 lines(inputLM$majoraxisLengthLine)
 lines(inputLM$minoraxisLengthLine)
