@@ -46,7 +46,7 @@ lakeMajorAxisLength <- function(inLakeMorpho, pointDens, addLine = TRUE) {
   myLine <- SpatialLines(list(Lines(list(Line(myLine.max)), "1")),
               proj4string = CRS(proj4string(inLakeMorpho$lake)))
 
-  result <- max(dist2center)
+  result <- rgeos::gLength(myLine)
   
   if (addLine) {
     myName <- deparse(substitute(inLakeMorpho))

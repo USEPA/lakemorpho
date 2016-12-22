@@ -46,7 +46,7 @@ lakeMinorAxisLength <- function(inLakeMorpho, pointDens, addLine = TRUE) {
   myLine <- sp::SpatialLines(list(Lines(list(Line(myLine.min)), "1")),
               proj4string = sp::CRS(sp::proj4string(inLakeMorpho$lake)))
 
-  result <- min(dist2center)
+  result <- rgeos::gLength(myLine)
   
   if (addLine) {
     myName <- deparse(substitute(inLakeMorpho))
