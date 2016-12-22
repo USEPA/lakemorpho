@@ -18,7 +18,7 @@
 #'         major and minor axes of the lake. Units are the same as the input data.
 #' 
 #' @references \href{https://en.wikipedia.org/wiki/Semi-major_and_semi-minor_axes}{Link}
-#' @import rgeos
+#' @importFrom rgeos gLength
 #' @examples
 #' data(lakes)
 #' lakeMinorMajorRatio(inputLM, 50)
@@ -27,6 +27,7 @@
 #' lines(inputLM$minoraxisLengthLine)
 
 lakeMinorMajorRatio <- function(inLakeMorpho, pointDens, addLine = TRUE) {
+  myName <- deparse(substitute(inLakeMorpho))
   if (class(inLakeMorpho) != "lakeMorpho") {
     stop("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo or lakeMorphoClass first.")
   }
@@ -35,9 +36,9 @@ lakeMinorMajorRatio <- function(inLakeMorpho, pointDens, addLine = TRUE) {
       is.null(inLakeMorpho$minoraxisLengthLine)) {
     lakeMinorAxisLength(inLakeMorpho, pointDens)
     lakeMajorAxisLength(inLakeMorpho, pointDens)
+    
+    assign(myName, inLakeMorpho, envir = parent.frame())
   }
-  
-  # https://stackoverflow.com/questions/18278382/how-to-obtain-the-lengths-of-semi-axes-of-an-ellipse-in-r
 
   result <- rgeos::gLength(inLakeMorpho$minoraxisLengthLine) /
             rgeos::gLength(inLakeMorpho$majoraxisLengthLine)

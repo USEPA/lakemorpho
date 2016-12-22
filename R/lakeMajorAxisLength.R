@@ -28,11 +28,13 @@
 #' lines(inputLM$majoraxisLengthLine)
 
 lakeMajorAxisLength <- function(inLakeMorpho, pointDens, addLine = TRUE) {
+
   if (class(inLakeMorpho) != "lakeMorpho") {
     stop("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo or lakeMorphoClass first.")
   }
   
   result <- NA
+  
   lakeShorePoints <- sp::spsample(as(inLakeMorpho$lake, "SpatialLines"),
                       pointDens, "regular")@coords
   
