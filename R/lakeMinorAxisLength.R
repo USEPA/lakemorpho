@@ -12,7 +12,7 @@
 #' @return This returns a numeric value indicating the length of the minor axis
 #'  in the lake. Units are the same as the input data.
 #' 
-#' @references \href{https://en.wikipedia.org/wiki/Semi-major_and_semi-minor_axes}{Link}
+#' @references \href{https://en.wikipedia.org/wiki/Semi-major_and_semi-minor_axes}{Wikipedia}
 #' @importFrom sp proj4string CRS SpatialLines
 #' @importFrom cluster ellipsoidhull
 #' @examples
