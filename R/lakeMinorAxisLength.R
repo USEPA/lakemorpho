@@ -17,13 +17,13 @@
 #'  in the lake. Units are the same as the input data.
 #' 
 #' @references \href{https://en.wikipedia.org/wiki/Semi-major_and_semi-minor_axes}{Link}
-#' @import sp rgeos methods
-#' @importFrom sp spsample
+#' @importFrom sp spsample proj4string CRS SpatialLines
 #' @importFrom stats dist
 #' @importFrom cluster ellipsoidhull
 #' @examples
 #' data(lakes)
 #' lakeMinorAxisLength(inputLM, 50)
+#' plot(inputLM$lake)
 #' lines(inputLM$minoraxisLengthLine)
 
 lakeMinorAxisLength <- function(inLakeMorpho, pointDens, addLine = TRUE) {
@@ -32,23 +32,21 @@ lakeMinorAxisLength <- function(inLakeMorpho, pointDens, addLine = TRUE) {
   }
   
   result <- NA
-  lakeShorePoints <- spsample(as(inLakeMorpho$lake, "SpatialLines"), pointDens, "regular")@coords
-  # chull <- gConvexHull(lakeShorePoints)
+  lakeShorePoints <- sp::spsample(as(inLakeMorpho$lake, "SpatialLines"),
+                                  pointDens, "regular")@coords
   
   # https://stackoverflow.com/questions/18278382/how-to-obtain-the-lengths-of-semi-axes-of-an-ellipse-in-r
   elpshull <- predict(cluster::ellipsoidhull(lakeShorePoints))
   elpshull.center <- matrix(colMeans((elpshull)), ncol = 2, nrow = 1)
   
   dist2center <- sqrt(rowSums((t(t(elpshull) - colMeans((elpshull))))^2))
-  # max(dist2center)     ## major axis
-  # min(dist2center)   ## minor axis
-
+  
   myLine.min <- rbind(elpshull.center, elpshull[dist2center == min(dist2center),])
   
-  myLine <- SpatialLines(list(Lines(list(Line(myLine.min)), "1")),
-              proj4string = CRS(proj4string(inLakeMorpho$lake)))
+  myLine <- sp::SpatialLines(list(Lines(list(Line(myLine.min)), "1")),
+              proj4string = sp::CRS(sp::proj4string(inLakeMorpho$lake)))
 
-  result <- max(dist2center)
+  result <- min(dist2center)
   
   if (addLine) {
     myName <- deparse(substitute(inLakeMorpho))

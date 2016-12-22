@@ -18,13 +18,11 @@
 #'         major and minor axes of the lake. Units are the same as the input data.
 #' 
 #' @references \href{https://en.wikipedia.org/wiki/Semi-major_and_semi-minor_axes}{Link}
-#' @import sp rgeos methods
-#' @importFrom sp spsample
-#' @importFrom stats dist
-#' @importFrom cluster ellipsoidhull
+#' @import rgeos
 #' @examples
 #' data(lakes)
 #' lakeMinorMajorRatio(inputLM, 50)
+#' plot(inputLM$lake)
 #' lines(inputLM$majoraxisLengthLine)
 #' lines(inputLM$minoraxisLengthLine)
 

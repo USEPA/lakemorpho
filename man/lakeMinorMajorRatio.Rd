@@ -30,6 +30,7 @@ convex hull of a lake.
 \examples{
 data(lakes)
 lakeMinorMajorRatio(inputLM, 50)
+plot(inputLM$lake)
 lines(inputLM$majoraxisLengthLine)
 lines(inputLM$minoraxisLengthLine)
 }
