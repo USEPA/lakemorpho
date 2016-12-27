@@ -32,6 +32,8 @@ plot.lakeMorpho <- function(x, dist=FALSE, length=TRUE, width=TRUE, fetch=FALSE,
     }
     if(!is.null(x$maxLengthLine)&length){plot(x$maxLengthLine,add = T, col="blue")}
     if(!is.null(x$maxWidthLine)&width){plot(x$maxWidthLine,add=T,col="red")}
+    if(!is.null(x$majoraxisLengthLine)&width){plot(x$majoraxisLengthLine,add=T,col="green")}
+    if(!is.null(x$minoraxisLengthLine)&width){plot(x$minoraxisLengthLine,add=T,col="orange")}
     if(fetch){
       for(i in names(x)[grep("Fetch",names(x))]){
         plot(x[[i]],add=T,col="green")
