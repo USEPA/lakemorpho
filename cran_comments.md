@@ -1,7 +1,13 @@
 ## Comments
-This new version (1.1.0) contains three new functions (major axis length, minor axis 
+Re-submit of version 1.1.0 to fix encoding on umlaut (per Uwe Ligges email on 
+2016-12-27.  Removed reference as it was included to provide an example of the 
+use and not necessary for documenting the function.  Was not throwing error on 
+available test environments.  Will fix and included in a future release and test
+via R-Hub environments.   
+
+This version contains three new functions (major axis length, minor axis 
 length, and major:minor axis ratio), some additional detail added to the 
-description and a new contributor was added.
+description and a new contributor was added.  
 
 ## Test Environments
 - Ubuntu 12.04, travis-ci, R version 3.2.5 (2016-04-14)
