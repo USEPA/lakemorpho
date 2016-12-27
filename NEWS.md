@@ -1,4 +1,19 @@
+
+lakemorpho 1.1.0 (2016-12-27)
+=============================
+
+## New Functions
+- lakeMajorAxisLength added to calculate the length of the Major Axis.  This is calcualted from the convex hull of all points that represent the polygon.  (Thanks to Joseph Stachelek for the contribution!)
+- lakeMinorAxisLength added to calculate the length of the Mino Axis.  This is calcualted from the convex hull of all points that represent the polygon.  (Thanks to Joseph Stachelek for the contribution!)
+- lakeMinorMajorAxisRatio added to calculate the ratio of the Minor and Major axis lengths (Thanks to Joseph Stachelek for the contribution!)
+
+## Minor Changes
+- Update to description, added Joseph Stachelek as contributor
+- Added major and minor axis lines to default plot
+- Updated R Depends to version 3.0.0
+
 lakemorpho 1.0.4 (2016-10-14)
+=============================
 
 ## Minor Changes
 - cleaned up package description

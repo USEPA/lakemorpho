@@ -21,10 +21,11 @@ The purpose of `lakemorpho` is to provide a suite of tools that can be used to c
 - Maximum Lake Length
 - Mean Lake Width
 - Maximum Lake Width 
+- Major and Minor Axis
 - Fetch from a specified bearing
 
 # To install 
-Install version 1.0 of `lakemorpho` from CRAN:
+Install version 1.1.0 of `lakemorpho` from CRAN:
 
 ```
 install.packages("lakemorpho")
