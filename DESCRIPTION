@@ -3,9 +3,13 @@ Type: Package
 Title: Lake Morphometry Metrics in R
 Version: 1.0.4.9001
 Date: 2016-10-11
-Authors@R: person(given = "Jeffrey W.", family = "Hollister",
+Authors@R: c(
+    person(given = "Jeffrey W.", family = "Hollister",
     role = c("aut","cre"),
-    email = "hollister.jeff@epa.gov")
+    email = "hollister.jeff@epa.gov"),
+    person(given = "Joseph", family = "Stachelek",
+    role = "ctb")
+    )
 URL: http://www.github.com/USEPA/lakemorpho
 BugReports: https://www.github.com/USEPA/lakemorpho/issues
 Maintainer: Jeffrey W. Hollister <hollister.jeff@epa.gov>
@@ -31,6 +35,7 @@ Imports:
     raster,
     rgeos,
     sp,
-    geosphere
+    geosphere,
+    cluster
 Author: Jeffrey W. Hollister [aut, cre]
 RoxygenNote: 5.0.1
