@@ -76,9 +76,9 @@ Metrics describing the shape and size of lakes, known as lake morphometry metric
 
 The study and quantificaiton of lake shape (i.e. lake morphology and morphometry) is one of the foundations of limnology and for students of limnology, some of the first lessons are centered around a typical suite of metrics and how to calculate them [e.g. @wetzel2001limnology].  It is also widely accepted that the morphometry of lakes and ponds can impact available nutrients and thus overall productivity.  For instance, the widely used Vollenweider input-output models that are used to estimate nutrient concentrations rely on hydraulic residence time and sometimes mean depth, both of which are derived from total lake volume [@vollenweider1975input; @milstead2013estimating]. Also, clear water versus turbid water states in lakes have been linked in part to lake morphometry, in particular mean depth [@genkai2005eutrophication].  In short, limnologists have long recognized the importance of lake morphology as one factor controlling a variety of ecological processes in lakes.
 
-Traditional methods for calculating lake morphometry metrics have relied upon the use of paper bathymetry maps, planimeters, or unnecessary assumptions [@kalff2002limnology; @welch1935limnology; @wetzel2000limnological; @hollister2010volume]. In addition, detailed bathymetry is a requirement for most of these methods, but it's collection is only available for a relatively small number of lakes.  This is not a problem when the focus of a study is a single lake, a small number of lakes or on well studied lakes.  Relying on complete bathymetry becomes a limitation when attempting to conduct regional or national studies of lakes as bathymetry is at best difficult to find or does not exist for all lakes of interest.  In these cases alternative approaches for estimating lake morphometry are required.  
+Traditional methods for calculating lake morphometry metrics have relied upon the use of paper bathymetry maps, planimeters, or unnecessary assumptions [@kalff2002limnology; @welch1935limnology; @wetzel2000limnological; @hollister2010volume]. In addition, detailed bathymetry is a requirement for most of these methods, but it is not universally available and often only available for a relatively small number of lakes.  This is not a problem when the focus of a study is a single lake, a small number of lakes or on well studied lakes.  Relying on complete bathymetry becomes a limitation when attempting to conduct regional or national studies of lakes as bathymetry is at best difficult to find or does not exist for all lakes of interest.  In these cases alternative approaches for estimating lake morphometry are required.  
 
-Recent work has demonstrated the ability to estimate many of these metrics from ubiquitous spatial data.  For instance, maximum depth and lake volume may be predicted using the lake polygon and surrounding topography [@hollister2010volume; @hollister2011predicting] provided by the National Hydrography Dataset Plus and the National Elevation Dataset, respectively [e.g. @usepa2005national;@gesch2009national]. The initial development of these tools were developed with proprietary tools thus limiting their use.  In an effort to reach a broader audience the tools were converted to R, expanded to include a more complete suite of lake morphometry metrics and compiled into an R Package.
+Recent work has demonstrated the ability to estimate many of these metrics from ubiquitous spatial data.  For instance, maximum depth and lake volume may be predicted using the lake polygon and surrounding topography [@hollister2010volume; @hollister2011predicting] <!--Need to add recent additional papers on lake depth--> provided by the National Hydrography Dataset Plus and the National Elevation Dataset, respectively [e.g. @usepa2005national;@gesch2009national]. The initial development of these tools were developed with proprietary tools thus limiting their use.  In an effort to reach a broader audience the tools were converted to R, expanded to include a more complete suite of lake morphometry metrics and compiled into an R Package.
 
 #Implementation and Use in R
 
@@ -89,7 +89,7 @@ Using R as a Geographic Information System is now possible as several packages p
 Included in `lakemorpho` are, one function to create a `lakeMorpho` object,  eleven functions to caclulate morphometry metrics, a default plotting function, two example datasets, and an example `lakeMorpho` object.
 
 A typical workflow for using `lakemorpho` to calculate lake metrics would include
-pulling spatial data into R (e.g. as shapefiles, tiff, etc.), creating a lakemorpho object  and calculating the desired lake morphometry metrics.  The following sections provide details on the type of input data required and dicsuss the use of the functions, inlcluding examples with the provided example data.
+pulling spatial data into R (e.g. as shapefiles, tiff, etc.), creating a `lakeMorpho` object  and calculating the desired lake morphometry metrics.  The following sections provide details on the type of input data required and dicsuss the use of the functions, inlcluding examples with the provided example data.
 
 ###The `lakeMorpho` Class and `lakeSurroundTopo`  
 Many of the lake morphometry metrics rely on the same information about the lake.  For instance, the functions to estimate maximum depth, mean depth, and volume rely on statistical summaries of the surrouding topography as well as the maximum in-lake distance to shoreline.  [@hollister2011predicting; @hollister2010volume]. To avoid recaluclating these values, a `lakeMorpho` class was created to store the information on surrounding topography as well as the original datasets.  This object is required input for all of the lake morphometry functions in the the `lakemorpho` package.  In addition to this, an object of class `lakeMorpho` also holds the initial datasets and, optionally, can store the spatial objects that result from some of the lake morphometry functions.  At a minimum, a `lakeMorpho` object contains.
@@ -122,11 +122,11 @@ lapply(example_lakeMorpho,class)
 
 
 ###Lake Morphometry Functions
-<!-- Think about discussing details of the implementation in more depth.  Also provide some indication as to what the metric means, ecologically --!>
+<!-- Think about discussing details of the implementation in more depth.  Also provide some indication as to what the metric means, ecologically -->
 Each of the remaining functions all expect a `lakeMorpho` object as input and all return a numeric value.  Some of the functions do have a side effect of adding a spatial object to the input `lakeMorpho` object.  
 
 ####lakeFetch	
-Fetch is the maximum open water distance in a given direction and can be used an indicator of mixing as greater fetch implies greater potential for waves[NEED REF]. The lakeFetch() function calculates fetch along an input bearing.  The input bearing may be any value from 0 to 360 where 0 and 360 both represent north, although the fetch for opposite directions (e.g. east and west) are identical.
+Fetch is the maximum open water distance in a given direction and can be used an indicator of mixing as greater fetch implies greater potential for waves[NEED REF]. The `lakeFetch()` function calculates fetch along an input bearing.  The input bearing may be any value from 0 to 360 where 0 and 360 both represent north, although the fetch for opposite directions (e.g. east and west) are identical.
 
 To calulcate the fetch of an input lake use:
 
@@ -190,6 +190,12 @@ lakeMaxLength(example_lakeMorpho,1000,addLine = TRUE)
 lakeMeanWidth(example_lakeMorpho)
 ```
 
+####lakeMajorAxisLength
+Function to calculate major axis of the convex hull formed around the lake polygon
+
+####lakeMinorAxisLength
+Function to calculate minor axis of the convex hull formed around the lake polygon
+
 ####lakeShorelineDevelopment	
 The shoreline development metric provides a measure of the complexity of the shoreline.  It is a ratio the perimeter of the lake to the perimeter of a circle of the same area.  Values will be 1 or greater with value of 1 indicating a circular lake.  This metric is used as an indicator of potential habitat [@lakewatch2001department].  It only requires a `lakeMorpho` object as input.
 
@@ -212,7 +218,7 @@ Calculate all Lake Morphometry Metrics
 
 #Software Availability
 
-The `lakemorpho` version 1.0.1 package is currently available directly from the Comprehensive R Archive Network (CRAN) and may simply be installed and loaded in R via:
+The `lakemorpho` version 1.1.0 package is currently available directly from the Comprehensive R Archive Network (CRAN) and may simply be installed and loaded in R via:
 
 ```{r, eval=FALSE}
 install.packages('lakemorpho')
