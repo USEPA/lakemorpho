@@ -125,6 +125,9 @@ lapply(example_lakeMorpho,class)
 <!-- Think about discussing details of the implementation in more depth.  Also provide some indication as to what the metric means, ecologically -->
 Each of the remaining functions all expect a `lakeMorpho` object as input and all return a numeric value.  Some of the functions do have a side effect of adding a spatial object to the input `lakeMorpho` object.  
 
+####calcLakeMetrics  
+Calculate all Lake Morphometry Metrics
+
 ####lakeFetch	
 Fetch is the maximum open water distance in a given direction and can be used an indicator of mixing as greater fetch implies greater potential for waves[NEED REF]. The `lakeFetch()` function calculates fetch along an input bearing.  The input bearing may be any value from 0 to 360 where 0 and 360 both represent north, although the fetch for opposite directions (e.g. east and west) are identical.
 
@@ -139,6 +142,8 @@ lakeFetch(example_lakeMorpho, 360)
 lakeFetch(example_lakeMorpho, 270)
 ```
 
+####lakeMajorAxisLength
+Function to calculate major axis of the convex hull formed around the lake polygon
 
 ####lakeMaxDepth	
 Maximum lake depth provides information that may be used to, along with flow rates, estimate the residence time of a lake.  While there is no substitute for field verifed measurements, maximum lake depth may be estimated with the surrounding topography. The `lakeMaxDepth()` function uses the methods outlined in Hollister *et al* [-@hollister2011predicting] to provide an estimate of the maximum lake depth.  It requires only a `lakeMorpho` object as input.  Optionally a correction factor based off of verified depth data may be specified is one is known.
@@ -190,11 +195,11 @@ lakeMaxLength(example_lakeMorpho,1000,addLine = TRUE)
 lakeMeanWidth(example_lakeMorpho)
 ```
 
-####lakeMajorAxisLength
-Function to calculate major axis of the convex hull formed around the lake polygon
-
 ####lakeMinorAxisLength
 Function to calculate minor axis of the convex hull formed around the lake polygon
+
+####lakeMinorMajorRatio
+Function to calculate the ratio of the minor and major axis of the convex hull formed around the lake polygon
 
 ####lakeShorelineDevelopment	
 The shoreline development metric provides a measure of the complexity of the shoreline.  It is a ratio the perimeter of the lake to the perimeter of a circle of the same area.  Values will be 1 or greater with value of 1 indicating a circular lake.  This metric is used as an indicator of potential habitat [@lakewatch2001department].  It only requires a `lakeMorpho` object as input.
@@ -203,18 +208,22 @@ The shoreline development metric provides a measure of the complexity of the sho
 lakeShorelineDevelopment(example_lakeMorpho)
 ```
 
-####lakeShorelineLength	
-Function to calculate shoreline length
+####lakeShorelineLength and lakeSurfaceArea
+Shoreline length is simply the total perimeter of the lake polygon and as with all other functions requires a `lakeMorpho` object as input.  To calculate the shoreline length:
 
-####lakeSurfaceArea	
-Return lake surface area
+```{r lakeShorelineLength}
+lakeShorelineLength(example_lakeMorpho)
+```
+
+Similarly, surface area for a lake is the total area of the lake polygon.  It is calculated via:
+
+```{r lakeSurfaceArea}
+lakeSurfaceArea(example_lakeMorpho)
+```
 
 ####lakeVolume
-Caluclates Lake Volume in R
+The `lakeVolume` function uses maximum lake depth (see lakeMaxDepth) and methods outlined by Hollister *et al.* [-@hollister2010volume] to estimate lake volume.  The method uses the ratio of the maximum depth to the maximum distance... 
 
-####calcLakeMetrics  
-Calculate all Lake Morphometry Metrics
- 
 
 #Software Availability
 
