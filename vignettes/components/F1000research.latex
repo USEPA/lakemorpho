@@ -1,0 +1,64 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 
+%% upated by @jhollist 09/15/2014
+%% inspired by @cboetting https://github.com/cboettig/template and
+%% @rmflight blog posts:
+%% http://rmflight.github.io/posts/2014/07/analyses_as_packages.html 
+%% http://rmflight.github.io/posts/2014/07/vignetteAnalysis.html).  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Modifed from writeLaTex:
+% Welcome to writeLaTeX --- just edit your LaTeX on the left,
+% and we'll compile it for you on the right. If you give 
+% someone the link to this page, they can edit at the same
+% time. See the help menu above for more info. Enjoy!
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% For more detailed article preparation guidelines, please see:
+% http://f1000research.com/author-guidelines and http://f1000research.com/data-preparation
+
+\documentclass[10pt,a4paper,twocolumn]{article}
+\usepackage{components/f1000_styles}
+\usepackage{longtable,booktabs}
+$if(numbersections)$
+\setcounter{secnumdepth}{5}
+$else$
+\setcounter{secnumdepth}{0}
+$endif$
+\begin{document}
+
+
+$if(title)$
+\title{\textit{F1000Research} $title$}
+$endif$
+
+
+$for(author)$
+$if(author.name)$
+\author[$affilnum$]{$author.name$}
+$else$
+\author[1]{$author$}
+$endif$
+$endfor$
+
+$for(affiliation)$
+$if(affil)$
+\affil[$affilnum$]{$affil$}
+$else$
+\affil[1]{$affil$}
+$endif$
+$endfor$
+
+\maketitle
+\thispagestyle{fancy}
+
+
+%%Adds affiliations from YAML
+
+$body$
+
+\nocite{*}
+{\small\bibliographystyle{unsrt}
+\bibliography{$biblio-files$}}
+
+\end{document}
