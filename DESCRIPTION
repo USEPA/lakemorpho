@@ -6,9 +6,11 @@ Date: 2016-12-27
 Authors@R: c(
     person(given = "Jeffrey W.", family = "Hollister",
     role = c("aut","cre"),
-    email = "hollister.jeff@epa.gov"),
+    email = "hollister.jeff@epa.gov", 
+    comment = c(ORCID = c("0000-0002-9254-9740"))),
     person(given = "Joseph", family = "Stachelek",
-    role = "ctb")
+    role = "ctb", 
+    comment = c(ORCID = c("0000-0002-5924-2464")))
     )
 URL: http://www.github.com/USEPA/lakemorpho
 BugReports: https://www.github.com/USEPA/lakemorpho/issues
