@@ -1,3 +1,14 @@
+lakemorpho 1.1.1 (2017...)
+==========================
+
+## Vignette and Publication
+- New publication through peer review and available on f100research R channel
+- Added as a vignette (need to do)
+
+## Bug fixes
+- Throwing errors related to noLD/long double issues
+- Fixed by wrapping examples in dontrun.  Looking for a more permanent long term fix.
+
 
 lakemorpho 1.1.0 (2016-12-27)
 =============================
