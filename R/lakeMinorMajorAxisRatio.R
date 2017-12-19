@@ -16,11 +16,12 @@
 #' @references \href{https://en.wikipedia.org/wiki/Semi-major_and_semi-minor_axes}{Link}
 #' @importFrom rgeos gLength
 #' @examples
+#' \dontrun{
 #' data(lakes)
 #' lakeMinorMajorRatio(inputLM)
 #' plot(inputLM$lake)
 #' lines(inputLM$majoraxisLengthLine)
-#' lines(inputLM$minoraxisLengthLine)
+#' lines(inputLM$minoraxisLengthLine)}
 
 lakeMinorMajorRatio <- function(inLakeMorpho, addLine = TRUE) {
   myName <- deparse(substitute(inLakeMorpho))

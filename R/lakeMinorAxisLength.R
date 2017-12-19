@@ -16,10 +16,11 @@
 #' @importFrom sp proj4string CRS SpatialLines
 #' @importFrom cluster ellipsoidhull
 #' @examples
+#' \dontrun{
 #' data(lakes)
 #' lakeMinorAxisLength(inputLM)
 #' plot(inputLM$lake)
-#' lines(inputLM$minoraxisLengthLine)
+#' lines(inputLM$minoraxisLengthLine)}
 
 lakeMinorAxisLength <- function(inLakeMorpho, addLine = TRUE) {
 
