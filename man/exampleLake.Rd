@@ -12,4 +12,3 @@ of lakes named exampleLakes.  These lakes are originally from the
 dataset.
 }
 \keyword{datasets}
-

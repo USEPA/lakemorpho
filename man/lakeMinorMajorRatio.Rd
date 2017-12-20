@@ -23,13 +23,13 @@ of a lake. Minor axis length is defined as the minimum length spanning the
 convex hull of a lake.
 }
 \examples{
+\dontrun{
 data(lakes)
 lakeMinorMajorRatio(inputLM)
 plot(inputLM$lake)
 lines(inputLM$majoraxisLengthLine)
-lines(inputLM$minoraxisLengthLine)
+lines(inputLM$minoraxisLengthLine)}
 }
 \references{
 \href{https://en.wikipedia.org/wiki/Semi-major_and_semi-minor_axes}{Link}
 }
-

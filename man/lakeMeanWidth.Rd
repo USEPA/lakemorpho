@@ -30,4 +30,3 @@ Florida LAKEWATCH (2001). A Beginner's guide to water management
             \href{http://edis.ifas.ufl.edu/pdffiles/FA/FA08100.pdf}{Link}
 #' @import rgeos
 }
-

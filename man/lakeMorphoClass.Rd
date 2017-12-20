@@ -30,4 +30,3 @@ This is a helper function that creates a lakeMorpho class object
 \seealso{
 lakeSurroundTopo
 }
-

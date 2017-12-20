@@ -5,10 +5,11 @@ lakemorpho 1.1.1 (2017...)
 - New publication through peer review and available on f100research R channel
 - Added as a vignette (need to do)
 
-## Bug fixes
+## Bug fixes and other changes
 - Throwing errors related to noLD/long double issues
 - Fixed by wrapping examples in dontrun.  Looking for a more permanent long term fix.
-
+- Removed maptools dependency and internal checking of polygon holes.  Assumes
+clean polygons to start.
 
 lakemorpho 1.1.0 (2016-12-27)
 =============================

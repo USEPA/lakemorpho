@@ -23,12 +23,16 @@ Major axis length is defined as the maximum length spanning the convex hull
 of a lake.
 }
 \examples{
+\dontrun{
 data(lakes)
 lakeMajorAxisLength(inputLM)
 plot(inputLM$lake)
-lines(inputLM$majoraxisLengthLine)
+lines(inputLM$majoraxisLengthLine)}
 }
 \references{
 \href{https://en.wikipedia.org/wiki/Semi-major_and_semi-minor_axes}{Wikipedia}
-}
 
+Kirillin, G., Engelhardt, C., Golosov, S. and Hintze, T., 2009. Basin-scale
+internal waves in the bottom boundary layer of ice-covered Lake Müggelsee,
+Germany. Aquatic ecology, 43(3), pp.641-651.
+}

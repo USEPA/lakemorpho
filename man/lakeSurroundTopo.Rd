@@ -28,12 +28,14 @@ As a part of this combination, the surrounding topography is also determined.
 If no input catchements are used, it is assumed that a buffer equal to the
 maximum in lake distance is used. If an input catchement is used, then the 
 surrounding topography is the land area represented by the  catchements that 
-intersect the lake.
+intersect the lake. This function (and all of \code{lakemorpho}) expect clean
+polygons.  No internal checking (e.g. for proper encoding of holes, etc.) is
+done.
 }
 \examples{
 \dontrun{
 data(lakes)
 inputLM<-lakeSurroundTopo(exampleLake,exampleElev)
-inputLM}
+inputLM
 }
-
+}

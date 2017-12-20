@@ -10,4 +10,3 @@ This example lakemorpho class was generated using lakeSurroundTopo with the
 included exampleElev and exampleLake data.
 }
 \keyword{datasets}
-

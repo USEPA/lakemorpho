@@ -45,4 +45,3 @@ Florida LAKEWATCH (2001). A Beginner's guide to water management
             Department of Fisheries and Aquatic Sciences.
             \href{http://edis.ifas.ufl.edu/pdffiles/FA/FA08100.pdf}{Link}
 }
-

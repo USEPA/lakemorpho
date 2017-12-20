@@ -10,4 +10,3 @@ This example data is a RasterLayer of a small subset of the National
 Elevation Dataset named exampleElev.
 }
 \keyword{datasets}
-
