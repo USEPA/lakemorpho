@@ -14,8 +14,8 @@
 #' #' @import rgeos
 #' 
 #' @examples
-#' 
 #' data(lakes)
+#' lakeMaxLength(inputLM, 50)
 #' lakeMeanWidth(inputLM)
 #' 
 

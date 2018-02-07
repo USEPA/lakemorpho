@@ -37,7 +37,8 @@ of those lines.
 \examples{
 \dontrun{
 data(lakes)
-lakeMaxWidth(inputLM,50)}
+lakeMaxWidth(inputLM,50)
+}
 }
 \references{
 Florida LAKEWATCH (2001). A Beginner's guide to water management

@@ -24,8 +24,7 @@
 Plots the lakeMorpho class by showing lake, surround topography and in lake distance
 }
 \examples{
-\dontrun{
 data(lakes)
 plot(inputLM)
-}
+
 }

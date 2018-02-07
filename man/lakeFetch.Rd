@@ -26,10 +26,10 @@ The function calculates the maximum in lake distance of a line along an input
 bearing.
 }
 \examples{
-\dontrun{
+
 data(lakes)
 lakeFetch(inputLM,45)
-}
+
 }
 \references{
 Florida LAKEWATCH (2001). A Beginner's guide to water management

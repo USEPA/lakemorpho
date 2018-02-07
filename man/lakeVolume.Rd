@@ -27,9 +27,8 @@ all pixels and thus, distances, to an estimated depth.  These depths are
 multiplied by the area of the pixel and summed.
 }
 \examples{
-\dontrun{
 data(lakes)
-lakeVolume(inputLM)}
+lakeVolume(inputLM)
 }
 \references{
 Hollister, J. W., W.B. Milstead (2010). Using GIS to Estimate 

@@ -19,9 +19,8 @@ It is simply the ratio of the shoreline length (i.e. perimeter) to the
 perimeter of an equally sized circle.
 }
 \examples{
-\dontrun{
 data(lakes)
-lakeShorelineDevelopment(inputLM)}
+lakeShorelineDevelopment(inputLM)
 }
 \references{
 Florida LAKEWATCH (2001). A Beginner's guide to water management

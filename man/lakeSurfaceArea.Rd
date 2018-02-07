@@ -18,9 +18,8 @@ This function simply retruns the area of the lake SpatialPolygons that is part
 of the \code{\link{lakeMorphoClass}} class.
 }
 \examples{
-\dontrun{
 data(lakes)
-lakeSurfaceArea(inputLM)}
+lakeSurfaceArea(inputLM)
 }
 \references{
 Florida LAKEWATCH (2001). A Beginner's guide to water management
