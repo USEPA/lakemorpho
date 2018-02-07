@@ -17,10 +17,10 @@
 #' @references Hollister, J. W., W.B. Milstead (2010). Using GIS to Estimate 
 #'             Lake Volume from Limited Data. Lake and Reservoir Management. 
 #'             26(3)194-199.
-#'             \href{http://dx.doi.org/10.1080/07438141.2010.504321}{Link}
+#'             \href{https://dx.doi.org/10.1080/07438141.2010.504321}{Link}
 #' @references Hollister, J. W., W.B. Milstead, M.A. Urrutia (2011). Predicting 
 #'             Maximum Lake Depth from Surrounding Topography. PLoS ONE 6(9).
-#'             \href{http://dx.doi.org/10.1371/journal.pone.0025764}{link}           
+#'             \href{https://dx.doi.org/10.1371/journal.pone.0025764}{link}           
 #'             
 #' @name lakemorpho
 NULL 

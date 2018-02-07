@@ -33,7 +33,7 @@ lakeMaxDepth(inputLM)
 \references{
 Hollister, J. W., W.B. Milstead, M.A. Urrutia (2011). Predicting 
             Maximum Lake Depth from Surrounding Topography. PLoS ONE 6(9).
-            \href{http://dx.doi.org/10.1371/journal.pone.0025764}{link}
+            \href{https://dx.doi.org/10.1371/journal.pone.0025764}{link}
 
 Florida LAKEWATCH (2001). A Beginner's guide to water management
             - Lake Morphometry (2nd ed.). Gainesville: Florida LAKEWATCH, 
