@@ -24,10 +24,10 @@
 #' @export
 #' 
 #' @examples
-#' \dontrun{
+#' 
 #' data(lakes)
 #' lakeFetch(inputLM,45)
-#' }
+#' 
 
 lakeFetch <- function(inLakeMorpho, bearing, addLine = T) {
     inputName <- deparse(substitute(inLakeMorpho))

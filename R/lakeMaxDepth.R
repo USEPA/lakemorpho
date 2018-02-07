@@ -28,9 +28,8 @@
 #' @importFrom stats median
 #' 
 #' @examples
-#' \dontrun{
 #' data(lakes)
-#' lakeMaxDepth(inputLM)}             
+#' lakeMaxDepth(inputLM)             
 
 lakeMaxDepth <- function(inLakeMorpho, correctFactor = 1) {
     if (class(inLakeMorpho) != "lakeMorpho") {

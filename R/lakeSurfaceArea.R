@@ -14,9 +14,8 @@
 #'             \href{http://edis.ifas.ufl.edu/pdffiles/FA/FA08100.pdf}{Link}
 #' @import rgeos
 #' @examples
-#' \dontrun{
 #' data(lakes)
-#' lakeSurfaceArea(inputLM)}
+#' lakeSurfaceArea(inputLM)
 
 lakeSurfaceArea <- function(inLakeMorpho) {
     if (class(inLakeMorpho) != "lakeMorpho") {

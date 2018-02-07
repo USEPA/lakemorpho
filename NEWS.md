@@ -6,6 +6,9 @@ lakemorpho 1.1.1 (2018-02-07)
 - Fixed by wrapping examples in dontrun.  Looking for a more permanent long term fix.
 - Removed maptools dependency and internal checking of polygon holes.  Assumes
 clean polygons to start.
+- Cleaned up DESCRIPTION
+- Fixed encoding issue in lakeMajorAxisLength documentation
+- Removed several of the /dontrun on examples.
 
 lakemorpho 1.1.0 (2016-12-27)
 =============================

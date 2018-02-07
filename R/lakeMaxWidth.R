@@ -32,7 +32,8 @@
 #' @examples
 #' \dontrun{
 #' data(lakes)
-#' lakeMaxWidth(inputLM,50)}
+#' lakeMaxWidth(inputLM,50)
+#' }
 
 lakeMaxWidth <- function(inLakeMorpho, pointDens, intersect = FALSE, 
                          addLine = T) {

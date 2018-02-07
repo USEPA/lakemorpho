@@ -15,9 +15,8 @@
 #'             \href{http://edis.ifas.ufl.edu/pdffiles/FA/FA08100.pdf}{Link}
 #' @import rgeos
 #' @examples
-#' \dontrun{
 #' data(lakes)
-#' lakeShorelineLength(inputLM)}
+#' lakeShorelineLength(inputLM)
 
 lakeShorelineLength <- function(inLakeMorpho) {
     if (class(inLakeMorpho) != "lakeMorpho") {

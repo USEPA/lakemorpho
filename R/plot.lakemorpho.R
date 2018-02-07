@@ -12,10 +12,9 @@
 #' @import grDevices
 #' @export
 #' @examples
-#' \dontrun{
 #' data(lakes)
 #' plot(inputLM)
-#' }
+#' 
 
 plot.lakeMorpho <- function(x, dist=FALSE, length=TRUE, width=TRUE, fetch=FALSE,
                             ...) {

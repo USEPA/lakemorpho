@@ -16,9 +16,8 @@
 #' @import rgeos
 #' 
 #' @examples
-#' \dontrun{
 #' data(lakes)
-#' lakeShorelineDevelopment(inputLM)}
+#' lakeShorelineDevelopment(inputLM)
 
 lakeShorelineDevelopment <- function(inLakeMorpho) {
     if (class(inLakeMorpho) != "lakeMorpho") {

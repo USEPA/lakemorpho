@@ -16,9 +16,9 @@
 #'             \href{http://edis.ifas.ufl.edu/pdffiles/FA/FA08100.pdf}{Link}
 #' 
 #' @examples
-#' \dontrun{
+#' 
 #' data(lakes)
-#' lakeMeanDepth(inputLM)}
+#' lakeMeanDepth(inputLM)
 
 
 lakeMeanDepth <- function(inLakeMorpho, zmax = NULL) {

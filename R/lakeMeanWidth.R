@@ -14,10 +14,10 @@
 #' #' @import rgeos
 #' 
 #' @examples
-#' \dontrun{
+#' 
 #' data(lakes)
 #' lakeMeanWidth(inputLM)
-#' }
+#' 
 
 lakeMeanWidth <- function(inLakeMorpho) {
     if (class(inLakeMorpho) != "lakeMorpho") {

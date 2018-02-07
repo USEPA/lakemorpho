@@ -26,9 +26,8 @@
 #'             \href{http://edis.ifas.ufl.edu/pdffiles/FA/FA08100.pdf}{Link}
 #' @import raster
 #' @examples
-#' \dontrun{
 #' data(lakes)
-#' lakeVolume(inputLM)}
+#' lakeVolume(inputLM)
 
 lakeVolume <- function(inLakeMorpho, zmax = NULL, correctFactor = 1) {
     if (class(inLakeMorpho) != "lakeMorpho") {
