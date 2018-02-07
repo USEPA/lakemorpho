@@ -22,7 +22,6 @@ Calculates average depth of lake as a mean of lake volume divided by
 lake surface area
 }
 \examples{
-
 data(lakes)
 lakeMeanDepth(inputLM)
 }

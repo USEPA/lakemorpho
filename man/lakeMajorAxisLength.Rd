@@ -24,7 +24,6 @@ of a lake.
 \examples{
 data(lakes)
 lakeMajorAxisLength(inputLM)
-
 }
 \references{
 \href{https://en.wikipedia.org/wiki/Semi-major_and_semi-minor_axes}{Wikipedia}

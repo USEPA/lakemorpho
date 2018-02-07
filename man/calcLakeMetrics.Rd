@@ -34,9 +34,13 @@ each metric for an input lakeMorphoClass.  This returns a list of all
 metrics
 }
 \examples{
-\dontrun{
+\donttest{
 data(lakes)
 calcLakeMetrics(inputLM,45,250)
+}
+\dontshow{
+data(lakes)
+calcLakeMetrics(inputLM,45,10)
 }
 }
 \references{

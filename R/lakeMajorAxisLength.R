@@ -23,7 +23,7 @@
 #' @examples
 #' data(lakes)
 #' lakeMajorAxisLength(inputLM)
-#' 
+
 
 lakeMajorAxisLength <- function(inLakeMorpho, addLine = TRUE) {
 

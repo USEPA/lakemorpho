@@ -35,9 +35,13 @@
 #'         lakemorpho object
 #' 
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' data(lakes)
 #' calcLakeMetrics(inputLM,45,250)
+#' }
+#' \dontshow{
+#' data(lakes)
+#' calcLakeMetrics(inputLM,45,10)
 #' }
 
 calcLakeMetrics <- function(inLakeMorpho, bearing, pointDens, correctFactor = 1) {

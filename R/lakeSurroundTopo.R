@@ -23,10 +23,16 @@
 #' @return Returns an object of class 'lakemorpho' that includes the surrounding
 #'         topography of the lake.
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' data(lakes)
 #' inputLM<-lakeSurroundTopo(exampleLake,exampleElev)
 #' inputLM
+#' }
+#' \dontshow{
+#' data(lakes)
+#' x<-as(rgeos::gBuffer(rgeos::gCentroid(exampleLake),width = 100), "SpatialPolygonsDataFrame")
+#' y<-raster::crop(exampleElev,x)
+#' lakeSurroundTopo(x,y)
 #' }
 
 lakeSurroundTopo <- function(inLake, inElev, inCatch = NULL, reso = res(inElev)[1]) {

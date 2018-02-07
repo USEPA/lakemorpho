@@ -16,7 +16,6 @@
 #'             \href{http://edis.ifas.ufl.edu/pdffiles/FA/FA08100.pdf}{Link}
 #' 
 #' @examples
-#' 
 #' data(lakes)
 #' lakeMeanDepth(inputLM)
 

@@ -33,9 +33,15 @@ polygons.  No internal checking (e.g. for proper encoding of holes, etc.) is
 done.
 }
 \examples{
-\dontrun{
+\donttest{
 data(lakes)
 inputLM<-lakeSurroundTopo(exampleLake,exampleElev)
 inputLM
+}
+\dontshow{
+data(lakes)
+x<-as(rgeos::gBuffer(rgeos::gCentroid(exampleLake),width = 100), "SpatialPolygonsDataFrame")
+y<-raster::crop(exampleElev,x)
+lakeSurroundTopo(x,y)
 }
 }
