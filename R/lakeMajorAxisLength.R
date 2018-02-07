@@ -25,7 +25,8 @@
 #' data(lakes)
 #' lakeMajorAxisLength(inputLM)
 #' plot(inputLM$lake)
-#' lines(inputLM$majoraxisLengthLine)}
+#' lines(inputLM$majoraxisLengthLine)
+#' }
 
 lakeMajorAxisLength <- function(inLakeMorpho, addLine = TRUE) {
 

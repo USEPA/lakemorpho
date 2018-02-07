@@ -22,8 +22,9 @@ Calculates average depth of lake as a mean of lake volume divided by
 lake surface area
 }
 \examples{
+\dontrun{
 data(lakes)
-lakeMeanDepth(inputLM)
+lakeMeanDepth(inputLM)}
 }
 \references{
 Florida LAKEWATCH (2001). A Beginner's guide to water management

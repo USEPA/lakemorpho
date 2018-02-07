@@ -36,8 +36,9 @@ shorelines.  Care needs to be taken in selecting an approriate
 in the estimates.
 }
 \examples{
+\dontrun{
 data(lakes)
-lakeMaxLength(inputLM,50)
+lakeMaxLength(inputLM,50)}
 }
 \references{
 Florida LAKEWATCH (2001). A Beginner's guide to water management

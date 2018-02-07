@@ -18,8 +18,9 @@ This function returns the length of the shoreline of the lake and is simply
 the perimeter of the input lake polyogn.
 }
 \examples{
+\dontrun{
 data(lakes)
-lakeShorelineLength(inputLM)
+lakeShorelineLength(inputLM)}
 }
 \references{
 Florida LAKEWATCH (2001). A Beginner's guide to water management

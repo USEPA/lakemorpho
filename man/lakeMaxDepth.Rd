@@ -27,8 +27,9 @@ on the assumption that the slope of the surrounding topography is similar
 to the bathymetry of the lake (Hollister et. al 2011).
 }
 \examples{
+\dontrun{
 data(lakes)
-lakeMaxDepth(inputLM)             
+lakeMaxDepth(inputLM)}             
 }
 \references{
 Hollister, J. W., W.B. Milstead, M.A. Urrutia (2011). Predicting 

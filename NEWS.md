@@ -1,9 +1,5 @@
-lakemorpho 1.1.1 (2017...)
+lakemorpho 1.1.1 (2018-02-07)
 ==========================
-
-## Vignette and Publication
-- New publication through peer review and available on f100research R channel
-- Added as a vignette (need to do)
 
 ## Bug fixes and other changes
 - Throwing errors related to noLD/long double issues

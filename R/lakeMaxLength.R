@@ -32,8 +32,9 @@
 #' @import sp rgeos methods
 #' @importFrom stats dist
 #' @examples
+#' \dontrun{
 #' data(lakes)
-#' lakeMaxLength(inputLM,50)
+#' lakeMaxLength(inputLM,50)}
 
 lakeMaxLength <- function(inLakeMorpho, pointDens, addLine = T) {
     if (class(inLakeMorpho) != "lakeMorpho") {
