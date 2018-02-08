@@ -28,11 +28,12 @@ lakeMinorAxisLength <- function(inLakeMorpho, addLine = TRUE) {
   }
   
   result <- NA
-  lakeShorePoints <- as(as(inLakeMorpho$lake, "SpatialLines"),
-                        "SpatialPoints")@coords
+  lakeShoreLine <- as(inLakeMorpho$lake, "SpatialLines")
+  lakeShorePoints <- as(lakeShoreLine, "SpatialPoints")
+  lakeShoreCoords <- coordinates(lakeShorePoints)
   
   # https://stackoverflow.com/questions/18278382/how-to-obtain-the-lengths-of-semi-axes-of-an-ellipse-in-r
-  elpshull <- predict(cluster::ellipsoidhull(lakeShorePoints))
+  elpshull <- predict(cluster::ellipsoidhull(lakeShoreCoords))
   elpshull.center <- matrix(colMeans((elpshull)), ncol = 2, nrow = 1)
   
   dist2center <- sqrt(rowSums((t(t(elpshull) - colMeans((elpshull))))^2))
