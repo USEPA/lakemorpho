@@ -2,8 +2,8 @@ lakemorpho 1.1.1 (2018-02-07)
 ==========================
 
 ## Bug fixes and other changes
-- Throwing errors related to noLD/long double issues
-- Fixed by wrapping examples in dontrun.  Looking for a more permanent long term fix.
+- Throwing errors related to noLD/long double issues, fixed by rounding '==' 
+checks to 8 digits.
 - Removed maptools dependency and internal checking of polygon holes.  Assumes
 clean polygons to start.
 - Cleaned up DESCRIPTION
