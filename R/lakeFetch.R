@@ -114,7 +114,11 @@ lakeFetch <- function(inLakeMorpho, bearing, addLine = T) {
     # Determine the longest
     lakeLinesSL_proj <- SpatialLines(lakeLinesList_proj, proj4string = CRS(proj4string(inLakeMorpho$lake)))
     result <- max(gLength(lakeLinesSL_proj, byid = TRUE), na.rm = T)
-    myLine <- lakeLinesSL_proj[gLength(lakeLinesSL_proj, byid = T) == result, ]
+    if(capabilities("long.double")){
+      myLine <- lakeLinesSL_proj[gLength(lakeLinesSL_proj, byid = T) == result, ]
+    } else {
+      myLine <- lakeLinesSL_proj[round(gLength(lakeLinesSL_proj, byid = T),8) == round(result,8), ]
+    }
     
     # line added to input lakemorpho
     if (addLine) {

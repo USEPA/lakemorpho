@@ -43,7 +43,12 @@ lakeMajorAxisLength <- function(inLakeMorpho, addLine = TRUE) {
   
   dist2center <- sqrt(rowSums((t(t(elpshull) - colMeans((elpshull))))^2))
 
-  myLine.max <- elpshull[dist2center == max(dist2center),]
+  if(capabilities("long.double")){
+    myLine.max <- elpshull[dist2center == max(dist2center),]
+  } else {
+    myLine.max <- elpshull[round(dist2center,8) == round(max(dist2center),8),]
+  }
+
   myLine <- sp::SpatialLines(list(Lines(list(Line(myLine.max)), "1")),
               proj4string = sp::CRS(sp::proj4string(inLakeMorpho$lake)))
 

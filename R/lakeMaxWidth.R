@@ -110,9 +110,13 @@ lakeMaxWidth <- function(inLakeMorpho, pointDens, intersect = FALSE,
       myInter2Lines<-myInter2Lines[gIntersects(myInter2Lines,inLakeMorpho$maxLengthLine,byid=T),]
     } 
     
-    maxWidthLine <- myInter2Lines[gLength(myInter2Lines, byid = T) == 
+    if(capabilities("long.double")){
+      maxWidthLine <- myInter2Lines[gLength(myInter2Lines, byid = T) == 
                                       max(gLength(myInter2Lines, byid = T)),]
-    
+    } else {
+      maxWidthLine <- myInter2Lines[round(gLength(myInter2Lines, byid = T),8) == 
+                                      round(max(gLength(myInter2Lines, byid = T)),8),]
+    }
     if (addLine) {
         
         inLakeMorpho$maxWidthLine <- NULL

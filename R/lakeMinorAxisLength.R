@@ -38,7 +38,12 @@ lakeMinorAxisLength <- function(inLakeMorpho, addLine = TRUE) {
   
   dist2center <- sqrt(rowSums((t(t(elpshull) - colMeans((elpshull))))^2))
   
-  myLine.min <- rbind(elpshull.center, elpshull[dist2center == min(dist2center),])
+  if(capabilities("long.double")){
+    myLine.min <- rbind(elpshull.center, elpshull[dist2center == min(dist2center),])
+  } else {
+    myLine.min <- rbind(elpshull.center, elpshull[round(dist2center,8) == round(min(dist2center),8),])
+  }
+  
   
   myLine <- sp::SpatialLines(list(Lines(list(Line(myLine.min)), "1")),
               proj4string = sp::CRS(sp::proj4string(inLakeMorpho$lake)))
