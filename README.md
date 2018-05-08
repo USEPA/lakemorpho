@@ -9,6 +9,11 @@
 # lakemorpho
 The purpose of `lakemorpho` is to provide a suite of tools that can be used to calculate basic lake morphometry metrics from an input SpatialPolygonsDataframe of a lake and a digital elevation model, as a RasterLayer, for the terrain surrounding that lake.  These tools are being used to calculate lake morphometry metrics for all "lakepond" waterbodies in the [NHDPlus V2](http://www.horizon-systems.com/nhdplus/NHDPlusV2_home.php).
 
+For a detailed description of the package and its use, see:
+
+Hollister J and Stachelek J. lakemorpho: Calculating lake morphometry metrics in R [version 1; referees: 2 approved]. F1000Research 2017, 6:1718 
+[(doi: 10.12688/f1000research.12512.1)](https://f1000research.com/articles/6-1718/v1)
+
 # Metrics Included
 `lakemorpho` calculates the following metrics
 
