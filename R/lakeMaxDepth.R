@@ -17,7 +17,7 @@
 #' @return Returns a numeric value of the predicted maximum depth
 #' @references Hollister, J. W., W.B. Milstead, M.A. Urrutia (2011). Predicting 
 #'             Maximum Lake Depth from Surrounding Topography. PLoS ONE 6(9).
-#'             \href{https://dx.doi.org/10.1371/journal.pone.0025764}{link}
+#'             \href{https://doi.org/10.1371/journal.pone.0025764}{link}
 #' 
 #' @references Florida LAKEWATCH (2001). A Beginner's guide to water management
 #'             - Lake Morphometry (2nd ed.). Gainesville: Florida LAKEWATCH, 

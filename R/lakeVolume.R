@@ -18,7 +18,7 @@
 #' @references Hollister, J. W., W.B. Milstead (2010). Using GIS to Estimate 
 #'             Lake Volume from Limited Data. Lake and Reservoir Management. 
 #'             26(3)194-199.
-#'             \href{https://dx.doi.org/10.1080/07438141.2010.504321}{Link} 
+#'             \href{https://doi.org/10.1080/07438141.2010.504321}{Link} 
 #'
 #' @references Florida LAKEWATCH (2001). A Beginner's guide to water management
 #'             - Lake Morphometry (2nd ed.). Gainesville: Florida LAKEWATCH, 
