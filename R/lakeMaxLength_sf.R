@@ -33,15 +33,21 @@
 #' @importFrom stats dist
 #' @examples
 #' data(lakes)
-#' lakeMaxLength(inputLM,50)
+#' inputLM$lake <- st_as_sf(inputLM$lake)
+#' lakeMaxLength_sf(inputLM,50)
 
 
-lakeMaxLength_new <- function(inLakeMorpho, pointDens, addLine = T, alt = F) {
+lakeMaxLength_sf <- function(inLakeMorpho, pointDens, addLine = T) {
     if (class(inLakeMorpho) != "lakeMorpho") {
-        stop("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo or lakeMorphoClass first.")
+      stop("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo or lakeMorphoClass first.")
     }
     result <- NA
-    lakeShorePoints <- spsample(as(inLakeMorpho$lake, "SpatialLines"), pointDens, "regular")@coords
+    browser()
+    #lakeShorePoints <- spsample(as(inLakeMorpho$lake, "SpatialLines"), pointDens, "regular")@coords
+    lakeShorePoints <- st_cast(st_sample(st_cast(st_geometry(inLakeMorpho$lake),
+                                                 "LINESTRING"), pointDens), 
+                               "POINT")
+    lakeShorePoints <- st_coordinates(lakeShorePoints)
     md <- nrow(lakeShorePoints)
     x0 <- lakeShorePoints[which(lower.tri(matrix(1, md, md)) == 1, arr.ind = T)[, 1], ][, 1]
     y0 <- lakeShorePoints[which(lower.tri(matrix(1, md, md)) == 1, arr.ind = T)[, 1], ][, 2]
@@ -49,29 +55,11 @@ lakeMaxLength_new <- function(inLakeMorpho, pointDens, addLine = T, alt = F) {
     y1 <- lakeShorePoints[which(lower.tri(matrix(1, md, md)) == 1, arr.ind = T)[, 2], ][, 2]
     xydf <- data.frame(x0, x1, y0, y1)
     xylist <- split(xydf, rownames(xydf))
-    if(alt){
-      mysl <- function(x){
-        
-      }
-      list_line <- lapply(xylist, function(x) list(Line(matrix(as.numeric(x), 2, 2))))
-      counter <- 0
-      list_lines <- lapply(list_line, function(x) {
-        counter <<- counter + 1
-        Lines(x, ID = counter)})
-      myLines <- SpatialLines(list_lines[[1]], 
-                   proj4string = CRS(proj4string(inLakeMorpho$lake)))
-      
-      myInd <- gContains(inLakeMorpho$lake, myLines, byid = T)
-      
-    } else {
-      
-      myLines <- SpatialLines(lapply(xylist, function(x) Lines(list(Line(matrix(as.numeric(x), 2, 2))), row.names(x))), 
+    myLines <- SpatialLines(lapply(xylist, function(x) Lines(list(Line(matrix(as.numeric(x), 2, 2))), row.names(x))), 
         proj4string = CRS(proj4string(inLakeMorpho$lake)))
-      myInd <- gContains(inLakeMorpho$lake, myLines, byid = T)
-    }
-    
+    myInd <- gContains(inLakeMorpho$lake, myLines, byid = T)
     if (sum(myInd) == 0) {
-      return(NA)
+        return(NA)
     }
     if(capabilities("long.double")){
       myLine <- myLines[myInd][gLength(myLines[myInd], byid = T) == max(gLength(myLines[myInd], byid = T))]
@@ -82,12 +70,11 @@ lakeMaxLength_new <- function(inLakeMorpho, pointDens, addLine = T, alt = F) {
     result <- gLength(myLine)
     
     if (addLine) {
-      myName <- deparse(substitute(inLakeMorpho))
-      inLakeMorpho$maxLengthLine <- NULL
-      inLakeMorpho <- c(inLakeMorpho, maxLengthLine = myLine)
-      class(inLakeMorpho) <- "lakeMorpho"
-      assign(myName, inLakeMorpho, envir = parent.frame())
+        myName <- deparse(substitute(inLakeMorpho))
+        inLakeMorpho$maxLengthLine <- NULL
+        inLakeMorpho <- c(inLakeMorpho, maxLengthLine = myLine)
+        class(inLakeMorpho) <- "lakeMorpho"
+        assign(myName, inLakeMorpho, envir = parent.frame())
     }
-    
     return(result)
 } 
