@@ -29,11 +29,11 @@
 #'             - Lake Morphometry (2nd ed.). Gainesville: Florida LAKEWATCH, 
 #'             Department of Fisheries and Aquatic Sciences.
 #'             \href{http://edis.ifas.ufl.edu/pdffiles/FA/FA08100.pdf}{Link}
-#' @import sp rgeos methods
+#' @import sp rgeos methods sf
 #' @importFrom stats dist
 #' @examples
 #' data(lakes)
-#' inputLM$lake <- st_as_sf(inputLM$lake)
+#' inputLM$lake <- sf::st_as_sf(inputLM$lake)
 #' lakeMaxLength_sf(inputLM,50)
 
 
@@ -42,7 +42,7 @@ lakeMaxLength_sf <- function(inLakeMorpho, pointDens, addLine = T) {
       stop("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo or lakeMorphoClass first.")
     }
     result <- NA
-    browser()
+   
     #lakeShorePoints <- spsample(as(inLakeMorpho$lake, "SpatialLines"), pointDens, "regular")@coords
     lakeShorePoints <- st_cast(st_sample(st_cast(st_geometry(inLakeMorpho$lake),
                                                  "LINESTRING"), pointDens), 
@@ -53,8 +53,12 @@ lakeMaxLength_sf <- function(inLakeMorpho, pointDens, addLine = T) {
     y0 <- lakeShorePoints[which(lower.tri(matrix(1, md, md)) == 1, arr.ind = T)[, 1], ][, 2]
     x1 <- lakeShorePoints[which(lower.tri(matrix(1, md, md)) == 1, arr.ind = T)[, 2], ][, 1]
     y1 <- lakeShorePoints[which(lower.tri(matrix(1, md, md)) == 1, arr.ind = T)[, 2], ][, 2]
-    xydf <- data.frame(x0, x1, y0, y1)
-    xylist <- split(xydf, rownames(xydf))
+    xydf <- data.frame(x0, y0, x1, y1)
+    xydf_s <- split(xydf, row.names(xydf))
+    browser()
+    xylist <- lapply(xydf_s, function(x) st_linestring(matrix(unlist(x), 2, 2, 
+                                                              byrow = TRUE)))
+    st_sfc(st_linestring(xylist[[1]]), st_linestring(xylist[[2]]))
     myLines <- SpatialLines(lapply(xylist, function(x) Lines(list(Line(matrix(as.numeric(x), 2, 2))), row.names(x))), 
         proj4string = CRS(proj4string(inLakeMorpho$lake)))
     myInd <- gContains(inLakeMorpho$lake, myLines, byid = T)

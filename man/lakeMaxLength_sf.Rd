@@ -37,8 +37,8 @@ in the estimates.
 }
 \examples{
 data(lakes)
-inputLM$lake <- st_as_sf(inputLM$lake)
-lakeMaxLength(inputLM,50)
+inputLM$lake <- sf::st_as_sf(inputLM$lake)
+lakeMaxLength_sf(inputLM,50)
 }
 \references{
 Florida LAKEWATCH (2001). A Beginner's guide to water management
