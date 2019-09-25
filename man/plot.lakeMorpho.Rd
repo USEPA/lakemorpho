@@ -4,8 +4,8 @@
 \alias{plot.lakeMorpho}
 \title{Default plotting of a lakeMorpho object}
 \usage{
-\method{plot}{lakeMorpho}(x, dist = FALSE, length = TRUE, width = TRUE,
-  fetch = FALSE, ...)
+\method{plot}{lakeMorpho}(x, dist = FALSE, length = TRUE,
+  width = TRUE, fetch = FALSE, ...)
 }
 \arguments{
 \item{x}{input lakeMorpho class to plot}
