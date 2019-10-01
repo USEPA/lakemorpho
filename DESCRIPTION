@@ -15,6 +15,7 @@ URL: http://www.github.com/jhollist/lakemorpho
 BugReports: https://www.github.com/jhollist/lakemorpho/issues
 Maintainer: Jeffrey W. Hollister <hollister.jeff@epa.gov>
 License: CC0
+Encoding: UTF-8
 Description: Lake morphometry metrics are used by limnologists to understand,
     among other things, the ecological processes in a lake. Traditionally, these
     metrics are calculated by hand, with planimeters, and increasingly with
@@ -37,4 +38,4 @@ Imports:
     sp,
     geosphere,
     cluster
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.1

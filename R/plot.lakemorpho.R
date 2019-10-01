@@ -1,7 +1,7 @@
 #' Default plotting of a lakeMorpho object
-#' 
-#' Plots the lakeMorpho class by showing lake, surround topography and in lake distance
-#' 
+#'
+#' Plots the lakeMorpho class object showing the lake, surrounding topography, and in-lake distance
+#'
 #' @param x input lakeMorpho class to plot
 #' @param ... allows for passing of other plot parameters
 #' @param dist Boolean to control plotting of in lake distance
@@ -14,7 +14,7 @@
 #' @examples
 #' data(lakes)
 #' plot(inputLM)
-#' 
+#'
 
 plot.lakeMorpho <- function(x, dist=FALSE, length=TRUE, width=TRUE, fetch=FALSE,
                             ...) {
