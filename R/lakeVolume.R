@@ -1,4 +1,4 @@
-#' Caluclates Lake Volume in R
+#' Calculates Lake Volume in R
 #' 
 #' This function returns lake volume for the input lake.  The volume is 
 #' calculated using maximum lake depth and maximum distance ratio to transform
