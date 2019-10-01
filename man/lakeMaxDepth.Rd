@@ -19,7 +19,7 @@ slope of the line would then be used as the correction
 factor(Hollister et. al, 2011).}
 }
 \value{
-Returns a numeric value of the predicited maximum depth
+Returns a numeric value of the predicted maximum depth
 }
 \description{
 This function uses slope and distance to estimate max depth.  This is based 
