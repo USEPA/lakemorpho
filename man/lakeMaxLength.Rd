@@ -25,7 +25,7 @@ This returns a numeric value indicating the length of the longest
 \description{
 Maximum lake length is defined as the longest open water distance of a lake.
 This function determines the maximum lake length of lake by comparing the
-lenghts of a user defined number of lines.  The user specifies a number of
+lengths of a user defined number of lines.  The user specifies a number of
 points to distribute along the lake shoreline and the point to point line
 lengths are checked for multiple intersections (i.e. line not just open
 water),starting with the longest line first.  Function is currently very

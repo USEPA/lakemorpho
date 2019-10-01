@@ -21,7 +21,7 @@
 \item{...}{allows for passing of other plot parameters}
 }
 \description{
-Plots the lakeMorpho class by showing lake, surround topography and in lake distance
+Plots the lakeMorpho class object showing the lake, surrounding topography, and in-lake distance
 }
 \examples{
 data(lakes)
