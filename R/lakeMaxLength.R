@@ -1,4 +1,4 @@
-#' Caluclate maximum lake length
+#' Calculate maximum lake length
 #' 
 #' Maximum lake length is defined as the longest open water distance of a lake.
 #' This function determines the maximum lake length of lake by comparing the 
