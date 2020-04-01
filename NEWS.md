@@ -1,3 +1,10 @@
+lakemorpho 1.1.1 (2020-0?-??)
+==========================
+
+## Bug fixes
+- @data@values was not returning vector as thought, switched all of these to 
+raster::getValues
+
 lakemorpho 1.1.1 (2018-02-07)
 ==========================
 

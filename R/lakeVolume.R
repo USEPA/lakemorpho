@@ -38,11 +38,12 @@ lakeVolume <- function(inLakeMorpho, zmax = NULL, correctFactor = 1) {
             maximum depth.  Provide a maximum depth or run lakeSurroundTopo 
             first with elevation included")
     }
-    dmax <- max(inLakeMorpho$lakeDistance@data@values, na.rm = T)
+    dmax <- max(raster::getValues(inLakeMorpho$lakeDistance), na.rm = T)
     if(is.null(zmax)) {
       zmax <- lakeMaxDepth(inLakeMorpho, correctFactor)
     }
-    lakevol <- sum((inLakeMorpho$lakeDistance@data@values * zmax/dmax) * res(inLakeMorpho$lakeDistance)[1] * 
-        res(inLakeMorpho$lakeDistance)[2], na.rm = T)
+    lakevol <- sum((raster::getValues(inLakeMorpho$lakeDistance) * zmax/dmax) * 
+                     res(inLakeMorpho$lakeDistance)[1] * 
+                     res(inLakeMorpho$lakeDistance)[2], na.rm = T)
     return(lakevol)
 } 
