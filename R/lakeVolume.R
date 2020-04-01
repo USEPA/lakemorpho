@@ -33,7 +33,7 @@
 #' @import raster
 #' @examples
 #' data(lakes)
-#' lakeVolume(inputLM, addBathy = T)
+#' lakeVolume(inputLM, addBathy = TRUE)
 
 lakeVolume <- function(inLakeMorpho, zmax = NULL, correctFactor = 1, 
                        addBathy = FALSE) {
@@ -45,13 +45,13 @@ lakeVolume <- function(inLakeMorpho, zmax = NULL, correctFactor = 1,
             maximum depth.  Provide a maximum depth or run lakeSurroundTopo 
             first with elevation included")
   }
-  dmax <- max(raster::getValues(inLakeMorpho$lakeDistance), na.rm = T)
+  dmax <- max(raster::getValues(inLakeMorpho$lakeDistance), na.rm = TRUE)
   if(is.null(zmax)) {
     zmax <- lakeMaxDepth(inLakeMorpho, correctFactor)
   }
   lakevol <- sum((raster::getValues(inLakeMorpho$lakeDistance) * zmax/dmax) * 
                    res(inLakeMorpho$lakeDistance)[1] * 
-                   res(inLakeMorpho$lakeDistance)[2], na.rm = T)
+                   res(inLakeMorpho$lakeDistance)[2], na.rm = TRUE)
   
   if (addBathy) {
     myBathy <- inLakeMorpho$lakeDistance * zmax/dmax

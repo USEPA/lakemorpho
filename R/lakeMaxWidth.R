@@ -35,7 +35,7 @@
 
 
 lakeMaxWidth <- function(inLakeMorpho, pointDens, intersect = FALSE, 
-                         addLine = T) {
+                         addLine = TRUE) {
     myName <- deparse(substitute(inLakeMorpho))
     if (class(inLakeMorpho) != "lakeMorpho") {
       stop("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo or lakeMorphoClass first.")
@@ -98,8 +98,8 @@ lakeMaxWidth <- function(inLakeMorpho, pointDens, intersect = FALSE,
     }
     mylinelist <- apply(mydf, 1, createSL)
     mylines <- SpatialLines(mylinelist, proj4string = CRS(proj4string(inLakeMorpho$lake)))
-    myInter <- gIntersection(mylines[gCrosses(mylines, inLakeMorpho$lake, byid = T), ], inLakeMorpho$lake, 
-        byid = T)
+    myInter <- gIntersection(mylines[gCrosses(mylines, inLakeMorpho$lake, byid = TRUE), ], inLakeMorpho$lake, 
+        byid = TRUE)
     lineInter <- unlist(lapply(myInter@lines, function(x) slot(x, "Lines")))
     myInter2 <- list()
     for (i in 1:length(lineInter)) {
@@ -107,15 +107,15 @@ lakeMaxWidth <- function(inLakeMorpho, pointDens, intersect = FALSE,
     }
     myInter2Lines <- SpatialLines(myInter2, proj4string = CRS(proj4string(inLakeMorpho$lake)))
     if(intersect){
-      myInter2Lines<-myInter2Lines[gIntersects(myInter2Lines,inLakeMorpho$maxLengthLine,byid=T),]
+      myInter2Lines<-myInter2Lines[gIntersects(myInter2Lines,inLakeMorpho$maxLengthLine,byid = TRUE),]
     } 
     
     if(capabilities("long.double")){
-      maxWidthLine <- myInter2Lines[gLength(myInter2Lines, byid = T) == 
-                                      max(gLength(myInter2Lines, byid = T)),]
+      maxWidthLine <- myInter2Lines[gLength(myInter2Lines, byid = TRUE) == 
+                                      max(gLength(myInter2Lines, byid = TRUE)),]
     } else {
-      maxWidthLine <- myInter2Lines[round(gLength(myInter2Lines, byid = T),8) == 
-                                      round(max(gLength(myInter2Lines, byid = T)),8),]
+      maxWidthLine <- myInter2Lines[round(gLength(myInter2Lines, byid = TRUE),8) == 
+                                      round(max(gLength(myInter2Lines, byid = TRUE)),8),]
     }
     if (addLine) {
         

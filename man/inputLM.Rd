@@ -4,7 +4,9 @@
 \name{inputLM}
 \alias{inputLM}
 \title{lakemorpho class data for \code{lakemorpho} examples}
-\format{lakemorpho class}
+\format{
+lakemorpho class
+}
 \description{
 This example lakemorpho class was generated using lakeSurroundTopo with the 
 included exampleElev and exampleLake data.

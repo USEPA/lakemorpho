@@ -36,7 +36,7 @@
 #' lakeMaxLength(inputLM,50)
 
 
-lakeMaxLength <- function(inLakeMorpho, pointDens, addLine = T) {
+lakeMaxLength <- function(inLakeMorpho, pointDens, addLine = TRUE) {
     if (class(inLakeMorpho) != "lakeMorpho") {
         stop("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo or lakeMorphoClass first.")
     }
@@ -44,22 +44,22 @@ lakeMaxLength <- function(inLakeMorpho, pointDens, addLine = T) {
     lakeShorePoints <- spsample(as(inLakeMorpho$lake, "SpatialLines"), pointDens, "regular")@coords
     dm <- dist(lakeShorePoints)
     md <- nrow(lakeShorePoints)
-    x0 <- lakeShorePoints[which(lower.tri(matrix(1, md, md)) == 1, arr.ind = T)[, 1], ][, 1][order(dm, decreasing = T)]  #[30:md]
-    y0 <- lakeShorePoints[which(lower.tri(matrix(1, md, md)) == 1, arr.ind = T)[, 1], ][, 2][order(dm, decreasing = T)]  #[30:md]
-    x1 <- lakeShorePoints[which(lower.tri(matrix(1, md, md)) == 1, arr.ind = T)[, 2], ][, 1][order(dm, decreasing = T)]  #[30:md]
-    y1 <- lakeShorePoints[which(lower.tri(matrix(1, md, md)) == 1, arr.ind = T)[, 2], ][, 2][order(dm, decreasing = T)]  #[30:md]
+    x0 <- lakeShorePoints[which(lower.tri(matrix(1, md, md)) == 1, arr.ind = TRUE)[, 1], ][, 1][order(dm, decreasing = TRUE)]  #[30:md]
+    y0 <- lakeShorePoints[which(lower.tri(matrix(1, md, md)) == 1, arr.ind = TRUE)[, 1], ][, 2][order(dm, decreasing = TRUE)]  #[30:md]
+    x1 <- lakeShorePoints[which(lower.tri(matrix(1, md, md)) == 1, arr.ind = TRUE)[, 2], ][, 1][order(dm, decreasing = TRUE)]  #[30:md]
+    y1 <- lakeShorePoints[which(lower.tri(matrix(1, md, md)) == 1, arr.ind = TRUE)[, 2], ][, 2][order(dm, decreasing = TRUE)]  #[30:md]
     xydf <- data.frame(x0, x1, y0, y1)
     xylist <- split(xydf, rownames(xydf))
     myLines <- SpatialLines(lapply(xylist, function(x) Lines(list(Line(matrix(as.numeric(x), 2, 2))), row.names(x))),
         proj4string = CRS(proj4string(inLakeMorpho$lake)))
-    myInd <- gContains(inLakeMorpho$lake, myLines, byid = T)
+    myInd <- gContains(inLakeMorpho$lake, myLines, byid = TRUE)
     if (sum(myInd) == 0) {
         return(NA)
     }
     if(capabilities("long.double")){
-      myLine <- myLines[myInd][gLength(myLines[myInd], byid = T) == max(gLength(myLines[myInd], byid = T))]
+      myLine <- myLines[myInd][gLength(myLines[myInd], byid = TRUE) == max(gLength(myLines[myInd], byid = TRUE))]
     } else {
-      myLine <- myLines[myInd][round(gLength(myLines[myInd], byid = T),8) == round(max(gLength(myLines[myInd], byid = T)),8)]
+      myLine <- myLines[myInd][round(gLength(myLines[myInd], byid = TRUE),8) == round(max(gLength(myLines[myInd], byid = TRUE)),8)]
     }
 
     result <- gLength(myLine)

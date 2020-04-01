@@ -4,8 +4,13 @@
 \alias{lakeMorphoClass}
 \title{Function to create a lakeMorpho class - this is input to all other methods}
 \usage{
-lakeMorphoClass(inLake, inElev = NULL, inCatch = NULL,
-  inLakeDist = NULL, lakeOnEdge = F)
+lakeMorphoClass(
+  inLake,
+  inElev = NULL,
+  inCatch = NULL,
+  inLakeDist = NULL,
+  lakeOnEdge = F
+)
 }
 \arguments{
 \item{inLake}{input lake SpatialPolygons object. Required.}

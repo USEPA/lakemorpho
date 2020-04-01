@@ -67,7 +67,7 @@ lakeSurroundTopo <- function(inLake, inElev, inCatch = NULL, reso = res(inElev)[
 
     xLakeDist <- distance(lakepr2)
     xLakeDist <- mask(xLakeDist, lakepr)
-    inLakeMaxDist <- max(raster::getValues(xLakeDist), na.rm = T)  
+    inLakeMaxDist <- max(raster::getValues(xLakeDist), na.rm = TRUE)  
     #conditional to make at least 100m
     if (inLakeMaxDist < 100) {
         inLakeMaxDist <- 100

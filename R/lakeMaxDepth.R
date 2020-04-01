@@ -40,13 +40,13 @@ lakeMaxDepth <- function(inLakeMorpho, correctFactor = 1) {
              Run lakeSurround Topo first with elevation included")
     }
     slope <- raster::getValues(terrain(inLakeMorpho$elev, "slope"))
-    slope_med <- median(slope, na.rm = T)
+    slope_med <- median(slope, na.rm = TRUE)
     if (is.na(slope_med)) {
         return(NA)
     }
     if (slope_med == 0) {
-        slope_med <- mean(slope, na.rm = T)
+        slope_med <- mean(slope, na.rm = TRUE)
     }
-    maxDist <- max(raster::getValues(inLakeMorpho$lakeDistance), na.rm = T)
+    maxDist <- max(raster::getValues(inLakeMorpho$lakeDistance), na.rm = TRUE)
     return(correctFactor * (slope_med * maxDist))
 } 

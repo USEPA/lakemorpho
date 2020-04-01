@@ -3,11 +3,11 @@ lakemorpho 1.1.1.9999 (2020-0?-??)
 
 ## Bug fixes
 - @data@values was not returning vector as thought, switched all of these to 
-raster::getValues
+raster::getValues (thanks to Laura Read for catching this)
 
 ## Function changes
 - added ability to save pseudo bathymetry from lakeVolume to input lake morpho 
-object
+object (thanks to Bahram Khazaei for suggetsion)
 
 lakemorpho 1.1.1 (2018-02-07)
 ==========================

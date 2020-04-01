@@ -4,7 +4,7 @@
 \alias{lakeFetch}
 \title{Function to calculate fetch along an input bearing}
 \usage{
-lakeFetch(inLakeMorpho, bearing, addLine = T)
+lakeFetch(inLakeMorpho, bearing, addLine = TRUE)
 }
 \arguments{
 \item{inLakeMorpho}{An object of \code{\link{lakeMorphoClass}}.  Output of the 

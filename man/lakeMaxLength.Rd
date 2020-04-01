@@ -4,7 +4,7 @@
 \alias{lakeMaxLength}
 \title{Calculate maximum lake length}
 \usage{
-lakeMaxLength(inLakeMorpho, pointDens, addLine = T)
+lakeMaxLength(inLakeMorpho, pointDens, addLine = TRUE)
 }
 \arguments{
 \item{inLakeMorpho}{An object of \code{\link{lakeMorphoClass}}.  Output of the

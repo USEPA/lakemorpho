@@ -4,7 +4,9 @@
 \name{exampleLake}
 \alias{exampleLake}
 \title{Lake Data for \code{lakemorpho} examples}
-\format{SpatialPolygonDataframe with 115 lakes, each with 13 variables}
+\format{
+SpatialPolygonDataframe with 115 lakes, each with 13 variables
+}
 \description{
 This example data is a SpatialPolygonsDataframe 
 of lakes named exampleLakes.  These lakes are originally from the 

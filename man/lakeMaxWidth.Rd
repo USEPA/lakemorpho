@@ -4,7 +4,7 @@
 \alias{lakeMaxWidth}
 \title{Function to find line representing maximum lake Width}
 \usage{
-lakeMaxWidth(inLakeMorpho, pointDens, intersect = FALSE, addLine = T)
+lakeMaxWidth(inLakeMorpho, pointDens, intersect = FALSE, addLine = TRUE)
 }
 \arguments{
 \item{inLakeMorpho}{An object of \code{\link{lakeMorphoClass}}.  Output of the 

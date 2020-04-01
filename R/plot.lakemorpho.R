@@ -22,20 +22,20 @@ plot.lakeMorpho <- function(x, dist=FALSE, length=TRUE, width=TRUE, fetch=FALSE,
     if(!is.null(x$surround)){
       plot(x$elev, ...)
       if(dist){
-        plot(x$lakeDistance,col=rainbow(10),add=T,legend=FALSE)
+        plot(x$lakeDistance,col=rainbow(10),add = TRUE,legend=FALSE)
       }
-      plot(x$surround, add = T)
-      plot(x$lake, add = T)
+      plot(x$surround, add = TRUE)
+      plot(x$lake, add = TRUE)
     } else {
       plot(x$lake,...)
     }
-    if(!is.null(x$maxLengthLine)&length){plot(x$maxLengthLine,add = T, col="blue")}
-    if(!is.null(x$maxWidthLine)&width){plot(x$maxWidthLine,add=T,col="red")}
-    if(!is.null(x$majoraxisLengthLine)&width){plot(x$majoraxisLengthLine,add=T,col="green")}
-    if(!is.null(x$minoraxisLengthLine)&width){plot(x$minoraxisLengthLine,add=T,col="orange")}
+    if(!is.null(x$maxLengthLine)&length){plot(x$maxLengthLine,add = TRUE, col="blue")}
+    if(!is.null(x$maxWidthLine)&width){plot(x$maxWidthLine,add = TRUE,col="red")}
+    if(!is.null(x$majoraxisLengthLine)&width){plot(x$majoraxisLengthLine,add=TRUE,col="green")}
+    if(!is.null(x$minoraxisLengthLine)&width){plot(x$minoraxisLengthLine,add=TRUE,col="orange")}
     if(fetch){
       for(i in names(x)[grep("Fetch",names(x))]){
-        plot(x[[i]],add=T,col="green")
+        plot(x[[i]],add=TRUE,col="green")
       }
     }
 }
