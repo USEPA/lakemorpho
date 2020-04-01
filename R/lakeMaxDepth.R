@@ -39,7 +39,7 @@ lakeMaxDepth <- function(inLakeMorpho, correctFactor = 1) {
       stop("Input elevation dataset required to estimate depth related metrics.  
              Run lakeSurround Topo first with elevation included")
     }
-    slope <- terrain(inLakeMorpho$elev, "slope")@data@values
+    slope <- raster::getValues(terrain(inLakeMorpho$elev, "slope"))
     slope_med <- median(slope, na.rm = T)
     if (is.na(slope_med)) {
         return(NA)
@@ -47,6 +47,6 @@ lakeMaxDepth <- function(inLakeMorpho, correctFactor = 1) {
     if (slope_med == 0) {
         slope_med <- mean(slope, na.rm = T)
     }
-    maxDist <- max(inLakeMorpho$lakeDistance@data@values, na.rm = T)
+    maxDist <- max(raster::getValues(inLakeMorpho$lakeDistance), na.rm = T)
     return(correctFactor * (slope_med * maxDist))
 } 
