@@ -12,6 +12,12 @@
 #'             to estimate a maximum depth.
 #' @param correctFactor This a factor used by \code{\link{lakeMaxDepth}} to 
 #'        correct the predicted maximum lake depth.  Defaults to 1.
+#' @param addBathy Logical to include a depth raster on the input 
+#'                  \code{\link{lakeMorphoClass}} object.  This is labelled as 
+#'                  'pseudoBathy' in the output.  It is depth estimated using 
+#'                  the maximum lake depth and maximum distance ratio.  Might be
+#'                  useful for some applications but shouldn't be considered a 
+#'                  replacement for a bathymetric survey.  
 #' @export
 #' @return Returns a numeric value for the total volume of the lake
 #' 
@@ -29,7 +35,8 @@
 #' data(lakes)
 #' lakeVolume(inputLM)
 
-lakeVolume <- function(inLakeMorpho, zmax = NULL, correctFactor = 1) {
+lakeVolume <- function(inLakeMorpho, zmax = NULL, correctFactor = 1, 
+                       addBathy = FALSE) {
     if (class(inLakeMorpho) != "lakeMorpho") {
       stop("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo or lakeMorphoClass first.")
     }
@@ -45,5 +52,15 @@ lakeVolume <- function(inLakeMorpho, zmax = NULL, correctFactor = 1) {
     lakevol <- sum((raster::getValues(inLakeMorpho$lakeDistance) * zmax/dmax) * 
                      res(inLakeMorpho$lakeDistance)[1] * 
                      res(inLakeMorpho$lakeDistance)[2], na.rm = T)
+    
+    if (addBathy) {
+      myBathy <- inLakeMorpho$lakeDistance * zmax/dmax
+      myName <- deparse(substitute(inLakeMorpho))
+      inLakeMorpho$pseudoBathy <- NULL
+      inLakeMorpho <- c(inLakeMorpho, pseudoBathy = myBathy)
+      class(inLakeMorpho) <- "lakeMorpho"
+      assign(myName, inLakeMorpho, envir = parent.frame())
+    }
+    
     return(lakevol)
 } 

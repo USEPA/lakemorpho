@@ -4,7 +4,7 @@
 \alias{lakeVolume}
 \title{Caluclates Lake Volume in R}
 \usage{
-lakeVolume(inLakeMorpho, zmax = NULL, correctFactor = 1)
+lakeVolume(inLakeMorpho, zmax = NULL, correctFactor = 1, addBathy = FALSE)
 }
 \arguments{
 \item{inLakeMorpho}{An object of \code{\link{lakeMorphoClass}}.  Output of the 
@@ -16,6 +16,13 @@ to estimate a maximum depth.}
 
 \item{correctFactor}{This a factor used by \code{\link{lakeMaxDepth}} to 
 correct the predicted maximum lake depth.  Defaults to 1.}
+
+\item{addBathy}{Logical to include a depth raster on the input 
+\code{\link{lakeMorphoClass}} object.  This is labelled as 
+'pseudoBathy' in the output.  It is depth estimated using 
+the maximum lake depth and maximum distance ratio.  Might be
+useful for some applications but shouldn't be considered a 
+replacement for a bathymetric survey.}
 }
 \value{
 Returns a numeric value for the total volume of the lake
