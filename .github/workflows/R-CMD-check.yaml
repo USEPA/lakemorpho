@@ -20,12 +20,12 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - {os: windows-latest, r: 'release'}
-          - {os: windows-latest, r: '3.6'}
-          - {os: macOS-latest, r: 'release', args: '--install-args=\"--configure-args=--with-proj-lib=/usr/local/lib/\"", "--ignore-vignettes', build_args: "--no-build-vignettes"}
-          - {os: macOS-latest, r: 'devel', args: '--install-args=\"--configure-args=--with-proj-lib=/usr/local/lib/\"", "--ignore-vignettes', build_args: "--no-build-vignettes"}
-          - {os: ubuntu-latest, r: 'release', cran: "https://demo.rstudiopm.com/all/__linux__/xenial/latest"}
-          - {os: ubuntu-latest, r: '3.6', cran: "https://demo.rstudiopm.com/all/__linux__/xenial/latest"}
+          - {os: windows-latest, r: 'release', args: "--no-manual"}
+          - {os: windows-latest, r: '3.6', args: "--no-manual"}
+          - {os: macOS-latest, r: 'release', args: '--install-args=\"--configure-args=--with-proj-lib=/usr/local/lib/\"", "--ignore-vignettes", "--no-manual', build_args: "--no-build-vignettes"}
+          - {os: macOS-latest, r: 'devel', args: '--install-args=\"--configure-args=--with-proj-lib=/usr/local/lib/\"", "--ignore-vignettes", "--no-manual', build_args: "--no-build-vignettes"}
+          - {os: ubuntu-latest, r: 'release', cran: "https://demo.rstudiopm.com/all/__linux__/xenial/latest", args: "--no-manual"}
+          - {os: ubuntu-latest, r: '3.6', cran: "https://demo.rstudiopm.com/all/__linux__/xenial/latest", args: "--no-manual"}
 
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
