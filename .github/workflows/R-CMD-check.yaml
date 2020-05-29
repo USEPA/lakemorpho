@@ -1,11 +1,4 @@
-# Workflow amended from sf 
-# https://github.com/r-spatial/sf/blob/master/.github/workflows/R-CMD-check.yaml
-
-on:
-  push:
-  pull_request:
-    branches:
-      - master
+on: [push, pull_request]
 
 name: R-CMD-check
 
@@ -13,24 +6,32 @@ jobs:
   R-CMD-check:
     runs-on: ${{ matrix.config.os }}
 
-
-    name: ${{ matrix.config.os }} (${{ matrix.config.r }})
+    name: ${{ matrix.config.os }} (${{ matrix.config.r }} ${{ matrix.config.v8 }})
 
     strategy:
       fail-fast: false
       matrix:
         config:
-          - {os: windows-latest, r: 'release', args: "--no-manual"}
-          - {os: windows-latest, r: '3.6', args: "--no-manual"}
-          - {os: ubuntu-18.04, r: 'release', cran: "https://demo.rstudiopm.com/all/__linux__/xenial/latest", args: "--no-manual"}
-          - {os: ubuntu-18.04, r: '3.6', cran: "https://demo.rstudiopm.com/all/__linux__/xenial/latest", args: "--no-manual"}
+        - { os: windows-latest, r: '3.6', args: "--no-manual"}
+        - { os: macOS-latest, r: '3.6', args: "--no-manual", sf_args: "--with-proj-lib=/usr/local/lib/"}
+        - { os: macOS-latest, r: '3.6', args: "--no-manual", no_node: true, sf_args: "--with-proj-lib=/usr/local/lib/"}
+        - { os: macOS-latest, r: 'devel', sf_args: "--with-proj-lib=/usr/local/lib/"}
+        - { os: ubuntu-16.04, r: '3.5', v8: "libnode-dev", args: "--no-manual"}
+        - { os: ubuntu-16.04, r: '3.6', v8: "libv8-dev", args: "--no-manual"}
+        - { os: ubuntu-16.04, r: '3.6', v8: "libnode-dev"}
 
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
-      CRAN: ${{ matrix.config.cran }}
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v1
+
+      - uses: actions/setup-node@v1
+        if: matrix.config.no_node == false
+
+      - name: install mapshaper node lib
+        if: matrix.config.no_node == false
+        run: npm install -g mapshaper
 
       - uses: r-lib/actions/setup-r@master
         with:
@@ -38,19 +39,30 @@ jobs:
 
       - uses: r-lib/actions/setup-pandoc@master
 
-      - name: Query dependencies
-        run: |
-          install.packages('remotes')
-          saveRDS(remotes::dev_package_deps(dependencies = TRUE), "depends.Rds", version = 2)
-        shell: Rscript {0}
+      - uses: r-lib/actions/setup-tinytex@master
+        if: contains(matrix.config.args, 'no-manual') == false
 
       - name: Cache R packages
-        if: runner.os != 'Windows'
         uses: actions/cache@v1
         with:
           path: ${{ env.R_LIBS_USER }}
-          key: ${{ runner.os }}-r-${{ matrix.config.r }}-${{ hashFiles('depends.Rds') }}
-          restore-keys: ${{ runner.os }}-r-${{ matrix.config.r }}-
+          key: ${{ runner.os }}-r-${{ matrix.config.r }}-v8-${{ matrix.config.v8 }}-${{ matrix.config.dev_sf }}-${{ hashFiles('DESCRIPTION') }}
+
+      - name: install macOS system dependencies
+        if: runner.os == 'macOS'
+        continue-on-error: true
+        run: |
+          brew install pkg-config gdal openssl udunits v8 protobuf
+      - name: add modern cran/v8 ppa
+        # default libv8-dev on Xenial (16) and Bionic (18) is old libv8-3.14.5.
+        # To test on new, add the cran/v8 ppa and install current libnode-dev,
+        # To test on old, install libv8-dev from existing default ppa
+        if: runner.os == 'Linux' && contains(matrix.config.v8, 'libnode-dev') == true
+        run: |
+          sudo add-apt-repository -y ppa:cran/v8
+          sudo apt-get -y update
+      - name: Install remotes package
+        run: Rscript -e "install.packages('remotes')"
 
       - name: Install system dependencies
         if: runner.os == 'Linux'
@@ -59,29 +71,29 @@ jobs:
         run: |
           Rscript -e "remotes::install_github('r-hub/sysreqs')"
           sysreqs=$(Rscript -e "cat(sysreqs::sysreq_commands('DESCRIPTION'))")
+          sudo add-apt-repository -y ppa:cran/jq
           sudo -s eval "$sysreqs"
           # install spatial dependencies
-          sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable
+          sudo add-apt-repository -y ppa:ubuntugis/ubuntugis-unstable
           sudo apt update
           sudo apt install \
             libudunits2-dev \
             libgdal-dev \
             libgeos-dev \
-            libproj-dev
-          ls /usr/local/lib/
-          
+            libproj-dev \
+            ${{ matrix.config.v8 }}
       - name: Install dependencies
         run: |
-          library(remotes)
-          deps <- readRDS("depends.Rds")
-          deps[["installed"]] <- vapply(deps[["package"]], remotes:::local_sha, character(1))
-          update(deps)
-          remotes::install_cran("rcmdcheck")
+          remotes::install_deps(dependencies = TRUE, configure.args = c('sf' = '${{ matrix.config.sf_args }}'))
+          remotes::install_cran('rcmdcheck')
         shell: Rscript {0}
 
+
       - name: Check
-        run: rcmdcheck::rcmdcheck(args = '${{ matrix.config.args }}', error_on = 'warning', check_dir = 'check')
+        run: |
+          rcmdcheck::rcmdcheck(args = '${{ matrix.config.args }}', error_on = 'warning', check_dir = 'check')
         shell: Rscript {0}
+
 
       - name: Upload check results
         if: failure()
