@@ -4,7 +4,13 @@
 \alias{calcLakeMetrics}
 \title{Calculate all Lake Morphometry Metrics}
 \usage{
-calcLakeMetrics(inLakeMorpho, bearing, pointDens, correctFactor = 1)
+calcLakeMetrics(
+  inLakeMorpho,
+  bearing,
+  pointDens,
+  slope_quant = 0.5,
+  correctFactor = 1
+)
 }
 \arguments{
 \item{inLakeMorpho}{an object of \code{\link{lakeMorphoClass}}.  Output of the 
@@ -15,6 +21,10 @@ calcLakeMetrics(inLakeMorpho, bearing, pointDens, correctFactor = 1)
 \item{pointDens}{Number of points to place equidistant along shoreline for 
 \code{\link{lakeMaxLength}} or density of lines to test for 
 \code{\link{lakeMaxWidth}} and \code{\link{lakeFetch}}.}
+
+\item{slope_quant}{The slope quantile to use to estimate maximum depth.
+Defaults to the median as described in (Hollister et. al, 
+2011).}
 
 \item{correctFactor}{Value used to correct the predicted maximum lake depth.
 Defaults to 1. Corrections are simply accomplished by multiplying 

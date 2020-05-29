@@ -10,6 +10,9 @@
 #' @param pointDens Number of points to place equidistant along shoreline for 
 #'        \code{\link{lakeMaxLength}} or density of lines to test for 
 #'        \code{\link{lakeMaxWidth}} and \code{\link{lakeFetch}}.
+#' @param slope_quant The slope quantile to use to estimate maximum depth.  
+#'                    Defaults to the median as described in (Hollister et. al, 
+#'                    2011).
 #' @param correctFactor Value used to correct the predicted maximum lake depth.  
 #'        Defaults to 1. Corrections are simply accomplished by multiplying 
 #'        estimated max depth by correction factor. Correction factors can be 
@@ -44,14 +47,20 @@
 #' calcLakeMetrics(inputLM,45,10)
 #' }
 
-calcLakeMetrics <- function(inLakeMorpho, bearing, pointDens, correctFactor = 1) {
+calcLakeMetrics <- function(inLakeMorpho, bearing, pointDens, slope_quant=0.5, correctFactor = 1) {
     if (class(inLakeMorpho) != "lakeMorpho") {
         return(warning("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo first."))
     }
-    allMet <- list(surfaceArea = lakeSurfaceArea(inLakeMorpho), shorelineLength = lakeShorelineLength(inLakeMorpho), 
-        shorelineDevelopment = lakeShorelineDevelopment(inLakeMorpho), maxDepth = lakeMaxDepth(inLakeMorpho, 
-            correctFactor), volume = lakeVolume(inLakeMorpho, correctFactor), meanDepth = lakeMeanDepth(inLakeMorpho), 
-        maxLength = lakeMaxLength(inLakeMorpho, pointDens), maxWidth = lakeMaxWidth(inLakeMorpho, pointDens), 
-        meanWidth = lakeMeanWidth(inLakeMorpho), fetch = lakeFetch(inLakeMorpho, bearing))
+    allMet <- list(surfaceArea = lakeSurfaceArea(inLakeMorpho), 
+                   shorelineLength = lakeShorelineLength(inLakeMorpho), 
+                   shorelineDevelopment = lakeShorelineDevelopment(inLakeMorpho), 
+                   maxDepth = lakeMaxDepth(inLakeMorpho, slope_quant, 
+                                           correctFactor), 
+                   volume = lakeVolume(inLakeMorpho, slope_quant, correctFactor), 
+                   meanDepth = lakeMeanDepth(inLakeMorpho), 
+                   maxLength = lakeMaxLength(inLakeMorpho, pointDens), 
+                   maxWidth = lakeMaxWidth(inLakeMorpho, pointDens), 
+                   meanWidth = lakeMeanWidth(inLakeMorpho), 
+                   fetch = lakeFetch(inLakeMorpho, bearing))
     return(allMet)
 } 

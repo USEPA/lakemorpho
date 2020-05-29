@@ -10,6 +10,9 @@
 #' @param zmax Maximum depth of the lake.  If none entered and elevation dataset
 #'             is inlcuded in inLakeMorpho, \code{\link{lakeMaxDepth}} is used
 #'             to estimate a maximum depth.
+#' @param slope_quant The slope quantile to use to estimate maximum depth.  
+#'                    Defaults to the median as described in (Hollister et. al, 
+#'                    2011).
 #' @param correctFactor This a factor used by \code{\link{lakeMaxDepth}} to
 #'        correct the predicted maximum lake depth.  Defaults to 1.
 #' @param addBathy Logical to include a depth raster on the input 
@@ -35,7 +38,7 @@
 #' data(lakes)
 #' lakeVolume(inputLM, addBathy = TRUE)
 
-lakeVolume <- function(inLakeMorpho, zmax = NULL, correctFactor = 1, 
+lakeVolume <- function(inLakeMorpho, zmax = NULL, slope_quant = 0.5, correctFactor = 1, 
                        addBathy = FALSE) {
   if (class(inLakeMorpho) != "lakeMorpho") {
     stop("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo or lakeMorphoClass first.")
@@ -47,7 +50,7 @@ lakeVolume <- function(inLakeMorpho, zmax = NULL, correctFactor = 1,
   }
   dmax <- max(raster::getValues(inLakeMorpho$lakeDistance), na.rm = TRUE)
   if(is.null(zmax)) {
-    zmax <- lakeMaxDepth(inLakeMorpho, correctFactor)
+    zmax <- lakeMaxDepth(inLakeMorpho, slope_quant, correctFactor)
   }
   lakevol <- sum((raster::getValues(inLakeMorpho$lakeDistance) * zmax/dmax) * 
                    res(inLakeMorpho$lakeDistance)[1] * 
