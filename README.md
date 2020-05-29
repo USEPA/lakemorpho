@@ -1,6 +1,4 @@
-[![travis_status](https://travis-ci.org/jhollist/lakemorpho.svg)](https://travis-ci.org/jhollist/lakemorpho)  
-
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/jhollist/lakemorpho?branch=master)](https://ci.appveyor.com/project/jhollist/lakemorpho) 
+[![R build status](https://github.com/jhollist/lakemorpho/workflows/R-CMD-check/badge.svg)](https://github.com/jhollist/lakemorpho/actions)
 
 [![DOI](https://zenodo.org/badge/4384/jhollist/lakemorpho.svg)](https://zenodo.org/badge/latestdoi/4384/jhollist/lakemorpho)
 
