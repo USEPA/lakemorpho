@@ -65,7 +65,10 @@ jobs:
           sudo apt update
           sudo apt install \
             libudunits2-dev \
+            libgdal-dev \
             libgeos-dev \
+            libproj-dev
+          cp /usr/local/lib/libgdal.* /usr/lib64/
           
       - name: Install dependencies
         run: |
