@@ -65,7 +65,6 @@ jobs:
           sudo apt update
           sudo apt install \
             libudunits2-dev \
-            libgdal-dev \
             libgeos-dev \
             libproj-dev
           
