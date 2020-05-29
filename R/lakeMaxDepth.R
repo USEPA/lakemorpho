@@ -6,6 +6,9 @@
 #' 
 #' @param inLakeMorpho An object of \code{\link{lakeMorphoClass}}.  Output of the 
 #'        \code{\link{lakeSurroundTopo}} function would be appropriate as input
+#' @param slope_quant The slope quantile to use to estimate maximum depth.  
+#'                    Defaults to the median as described in (Hollister et. al, 
+#'                    2011).     
 #' @param correctFactor Value used to correct the predicted maximum lake depth.  
 #'        Defaults to 1. Corrections are simply accomplished by multiplying 
 #'        estimated max depth by correction factor. Correction factors can be 
@@ -31,7 +34,7 @@
 #' data(lakes)
 #' lakeMaxDepth(inputLM)             
 
-lakeMaxDepth <- function(inLakeMorpho, correctFactor = 1) {
+lakeMaxDepth <- function(inLakeMorpho, slope_quant = 0.5, correctFactor = 1) {
     if (class(inLakeMorpho) != "lakeMorpho") {
       stop("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo or lakeMorphoClass first.")
     }
@@ -40,7 +43,7 @@ lakeMaxDepth <- function(inLakeMorpho, correctFactor = 1) {
              Run lakeSurround Topo first with elevation included")
     }
     slope <- raster::getValues(terrain(inLakeMorpho$elev, "slope"))
-    slope_med <- median(slope, na.rm = TRUE)
+    slope_med <- quantile(slope, probs = slope_quant, na.rm = TRUE)
     if (is.na(slope_med)) {
         return(NA)
     }

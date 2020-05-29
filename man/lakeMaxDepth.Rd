@@ -4,11 +4,15 @@
 \alias{lakeMaxDepth}
 \title{Estimate maximum lake depth}
 \usage{
-lakeMaxDepth(inLakeMorpho, correctFactor = 1)
+lakeMaxDepth(inLakeMorpho, slope_quant = 0.5, correctFactor = 1)
 }
 \arguments{
 \item{inLakeMorpho}{An object of \code{\link{lakeMorphoClass}}.  Output of the 
 \code{\link{lakeSurroundTopo}} function would be appropriate as input}
+
+\item{slope_quant}{The slope quantile to use to estimate maximum depth.
+Defaults to the median as described in (Hollister et. al, 
+2011).}
 
 \item{correctFactor}{Value used to correct the predicted maximum lake depth.
 Defaults to 1. Corrections are simply accomplished by multiplying 

@@ -7,7 +7,10 @@ raster::getValues (thanks to Laura Read for catching this)
 
 ## Function changes
 - added ability to save pseudo bathymetry from lakeVolume to input lake morpho 
-object (thanks to Bahram Khazaei for suggetsion)
+object (thanks to Bahram Khazaei for suggetsion).
+- added slope_quant arqument to lakeMaxDepth to allow for other quantiles 
+besides the median to be used to estimate depth.  Median is the default  
+(thanks to Arthur Heyman for the suggestion).
 
 lakemorpho 1.1.1 (2018-02-07)
 ==========================
