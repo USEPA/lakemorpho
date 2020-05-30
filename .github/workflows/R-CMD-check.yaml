@@ -15,7 +15,7 @@ jobs:
         - { os: windows-latest, r: '4.0', args: "--no-manual"}
         - { os: macOS-latest, r: '4.0', args: "--no-manual", sf_args: "--with-proj-lib=/usr/local/lib/"}
         - { os: ubuntu-18.04, r: '4.0', args: "--no-manual"}
-        - { os: ubuntu-18.04, r: '3.6', args: "--no-manual"}
+        #- { os: ubuntu-18.04, r: '3.6', args: "--no-manual"}
         - { os: ubuntu-18.04, r: 'devel', args: "--no-manual""}
 
     env:
