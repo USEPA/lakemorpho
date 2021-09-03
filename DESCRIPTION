@@ -7,7 +7,7 @@ Authors@R: c(
     role = c("aut","cre"),
     email = "hollister.jeff@epa.gov", 
     comment = c(ORCID = c("0000-0002-9254-9740"))),
-    person(given = "Joseph", family = "Stachelek",
+    person(given = "Jemma", family = "Stachelek",
     role = "ctb", 
     comment = c(ORCID = c("0000-0002-5924-2464")))
     )
