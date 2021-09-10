@@ -23,7 +23,7 @@
 #' lakeMeanDepth(inputLM)
 
 
-lakeMeanDepth <- function(inLakeMorpho, slope_quant = 0.5, zmax = NULL, 
+lakeMeanDepth <- function(inLakeMorpho,  zmax = NULL, 
                           slope_quant = 0.5, correctFactor = 1) {
     if (class(inLakeMorpho) != "lakeMorpho") {
       stop("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo or lakeMorphoClass first.")

@@ -9,7 +9,8 @@ calcLakeMetrics(
   bearing,
   pointDens,
   slope_quant = 0.5,
-  correctFactor = 1
+  correctFactor = 1,
+  zmax = NULL
 )
 }
 \arguments{
@@ -33,6 +34,10 @@ determined empirically by regressing the predicted depth against a
 known maximum depth while forcing the intercept through zero.  The 
 slope of the line would then be used as the correction 
 factor(Hollister et. al, 2011).}
+
+\item{zmax}{Maximum depth of the lake.  If none entered and elevation dataset
+is inlcuded in inLakeMorpho, \code{\link{lakeMaxDepth}} is used 
+to estimate a maximum depth.}
 }
 \value{
 Returns a list with all lake metrics calculated for a given input
