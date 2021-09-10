@@ -5,4 +5,5 @@ lakemorpho.Rproj
 brief_descrip.Rmd
 inst/doc
 inst/extdata
+R/gam_depth.R
 

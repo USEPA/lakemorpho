@@ -12,3 +12,4 @@
 ^NEWS\.md$
 ^revdep$
 ^\.github$
+R/gam_depth.R
