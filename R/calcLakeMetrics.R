@@ -60,7 +60,10 @@ calcLakeMetrics <- function(inLakeMorpho, bearing, pointDens, slope_quant=0.5, c
                    meanDepth = lakeMeanDepth(inLakeMorpho), 
                    maxLength = lakeMaxLength(inLakeMorpho, pointDens), 
                    maxWidth = lakeMaxWidth(inLakeMorpho, pointDens), 
-                   meanWidth = lakeMeanWidth(inLakeMorpho), 
+                   meanWidth = lakeMeanWidth(inLakeMorpho),
+                   majorAxis = lakeMajorAxisLength(inLakeMorpho),
+                   minorAxis = lakeMinorAxisLength(inLakeMorpho),
+                   axisRatio = lakeMinorMajorRatio(inLakeMorpho),
                    fetch = lakeFetch(inLakeMorpho, bearing))
     return(allMet)
 } 
