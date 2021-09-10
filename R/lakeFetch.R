@@ -128,5 +128,5 @@ lakeFetch <- function(inLakeMorpho, bearing, addLine = TRUE) {
         class(inLakeMorpho) <- "lakeMorpho"
         assign(inputName, inLakeMorpho, envir = parent.frame())
     }
-    return(result)
+    return(round(result,4))
 } 

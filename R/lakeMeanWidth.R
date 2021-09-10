@@ -26,5 +26,5 @@ lakeMeanWidth <- function(inLakeMorpho) {
     if (is.null(inLakeMorpho$maxLengthLine)) {
         stop("Input 'lakeMorpho' does not contain a Maximum Length Line.  Run lakeMaxLength  first.")
     }
-    return(lakeSurfaceArea(inLakeMorpho)/gLength(inLakeMorpho$maxLengthLine))
+    return(round(lakeSurfaceArea(inLakeMorpho)/gLength(inLakeMorpho$maxLengthLine), 4))
 } 

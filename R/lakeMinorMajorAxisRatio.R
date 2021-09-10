@@ -37,5 +37,5 @@ lakeMinorMajorRatio <- function(inLakeMorpho, addLine = TRUE) {
   result <- rgeos::gLength(inLakeMorpho$minoraxisLengthLine) /
             rgeos::gLength(inLakeMorpho$majoraxisLengthLine)
   
-  return(result)
+  return(round(result,4))
 } 

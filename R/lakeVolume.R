@@ -65,5 +65,5 @@ lakeVolume <- function(inLakeMorpho, zmax = NULL, slope_quant = 0.5, correctFact
     assign(myName, inLakeMorpho, envir = parent.frame())
   }
   
-  return(lakevol)
+  return(round(lakevol, 4))
 } 

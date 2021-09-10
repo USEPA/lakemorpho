@@ -21,5 +21,5 @@ lakeSurfaceArea <- function(inLakeMorpho) {
     if (class(inLakeMorpho) != "lakeMorpho") {
       stop("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo or lakeMorphoClass first.")
     }
-    return(gArea(inLakeMorpho$lake))
+    return(round(gArea(inLakeMorpho$lake), 4))
 } 

@@ -57,5 +57,5 @@ lakeMinorAxisLength <- function(inLakeMorpho, addLine = TRUE) {
     class(inLakeMorpho) <- "lakeMorpho"
     assign(myName, inLakeMorpho, envir = parent.frame())
   }
-  return(result)
+  return(round(result,4))
 } 

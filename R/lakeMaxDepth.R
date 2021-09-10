@@ -43,7 +43,7 @@ lakeMaxDepth <- function(inLakeMorpho, slope_quant = 0.5, correctFactor = 1) {
              Run lakeSurround Topo first with elevation included")
     }
     slope <- raster::getValues(terrain(inLakeMorpho$elev, "slope"))
-    slope_med <- quantile(slope, probs = slope_quant, na.rm = TRUE)
+    slope_med <- as.numeric(quantile(slope, probs = slope_quant, na.rm = TRUE))
     if (is.na(slope_med)) {
         return(NA)
     }
@@ -51,5 +51,5 @@ lakeMaxDepth <- function(inLakeMorpho, slope_quant = 0.5, correctFactor = 1) {
         slope_med <- mean(slope, na.rm = TRUE)
     }
     maxDist <- max(raster::getValues(inLakeMorpho$lakeDistance), na.rm = TRUE)
-    return(correctFactor * (slope_med * maxDist))
+    return(round(correctFactor * (slope_med * maxDist), 4))
 } 

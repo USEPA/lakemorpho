@@ -32,5 +32,5 @@ lakeMeanDepth <- function(inLakeMorpho, slope_quant = 0.5, zmax = NULL) {
               maximum depth.  Provide a maximum depth or run lakeSurroundTopo 
               first with elevation included")
     }
-    return(lakeVolume(inLakeMorpho, slope_quant, zmax)/lakeSurfaceArea(inLakeMorpho))
+    return(round(lakeVolume(inLakeMorpho, slope_quant, zmax)/lakeSurfaceArea(inLakeMorpho), 4))
 } 

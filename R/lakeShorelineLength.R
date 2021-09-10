@@ -22,5 +22,5 @@ lakeShorelineLength <- function(inLakeMorpho) {
     if (class(inLakeMorpho) != "lakeMorpho") {
       stop("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo or lakeMorphoClass first.")
     }
-    return(gLength(inLakeMorpho$lake))
+    return(round(gLength(inLakeMorpho$lake), 4))
 } 

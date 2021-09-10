@@ -46,11 +46,7 @@ metrics
 \examples{
 \donttest{
 data(lakes)
-calcLakeMetrics(inputLM,45,250)
-}
-\dontshow{
-data(lakes)
-calcLakeMetrics(inputLM,45,10)
+calcLakeMetrics(inputLM, bearing = 45, pointDens = 250)
 }
 }
 \references{

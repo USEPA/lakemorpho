@@ -124,5 +124,5 @@ lakeMaxWidth <- function(inLakeMorpho, pointDens, intersect = FALSE,
         class(inLakeMorpho) <- "lakeMorpho"
         assign(myName, inLakeMorpho, envir = parent.frame())
     }
-    return(gLength(maxWidthLine))
+    return(round(gLength(maxWidthLine), 4))
 } 
