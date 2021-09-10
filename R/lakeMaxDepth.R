@@ -39,8 +39,9 @@ lakeMaxDepth <- function(inLakeMorpho, slope_quant = 0.5, correctFactor = 1) {
       stop("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo or lakeMorphoClass first.")
     }
     if(is.null(inLakeMorpho$elev)){
-      stop("Input elevation dataset required to estimate depth related metrics.  
-             Run lakeSurround Topo first with elevation included")
+      warning("Input elevation dataset required to estimate depth related metrics. Returning NA. 
+             Run lakeSurround Topo first with elevation included.")
+      return(NA)
     }
     slope <- raster::getValues(terrain(inLakeMorpho$elev, "slope"))
     slope_med <- as.numeric(quantile(slope, probs = slope_quant, na.rm = TRUE))

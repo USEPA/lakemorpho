@@ -44,9 +44,10 @@ lakeVolume <- function(inLakeMorpho, zmax = NULL, slope_quant = 0.5, correctFact
     stop("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo or lakeMorphoClass first.")
   }
   if(is.null(inLakeMorpho$elev) & is.null(zmax)){
-    stop("No maximum depth provided and no elevation data included to estimate 
+    warning("No maximum depth provided and no elevation data included to estimate 
             maximum depth.  Provide a maximum depth or run lakeSurroundTopo 
-            first with elevation included")
+            first with elevation included.  Without these, returns NA.")
+    return(NA)
   }
   dmax <- max(raster::getValues(inLakeMorpho$lakeDistance), na.rm = TRUE)
   if(is.null(zmax)) {

@@ -28,9 +28,10 @@ lakeMeanDepth <- function(inLakeMorpho, slope_quant = 0.5, zmax = NULL) {
       stop("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo or lakeMorphoClass first.")
     }
     if(is.null(inLakeMorpho$elev) & is.null(zmax)){
-      stop("No maximum depth provided and no elevation data included to estimate 
-              maximum depth.  Provide a maximum depth or run lakeSurroundTopo 
-              first with elevation included")
+      warning("No maximum depth provided and no elevation data included to estimate 
+            maximum depth.  Provide a maximum depth or run lakeSurroundTopo 
+            first with elevation included.  Without these, returns NA.")
+      return(NA)
     }
     return(round(lakeVolume(inLakeMorpho, slope_quant, zmax)/lakeSurfaceArea(inLakeMorpho), 4))
 } 

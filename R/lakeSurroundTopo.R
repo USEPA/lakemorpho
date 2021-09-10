@@ -35,7 +35,8 @@
 #' lakeSurroundTopo(x,y)
 #' }
 
-lakeSurroundTopo <- function(inLake, inElev, inCatch = NULL, reso = res(inElev)[1]) {
+lakeSurroundTopo <- function(inLake, inElev = NULL, inCatch = NULL, 
+                             reso = ifelse(!is.null(inElev), res(inElev)[1], 10)) {
 
   if (dim(inLake)[1] > 1) {
         stop(paste(dim(inLake)[1], "polygons input. Select a single lake as input."))
@@ -80,13 +81,17 @@ lakeSurroundTopo <- function(inLake, inElev, inCatch = NULL, reso = res(inElev)[
     } else {
         xSurround <- xBuffer
     }
-
-    xElev <- mask(crop(inElev, xSurround), xSurround)
-
-    if (any(is.na(getValues(xElev)))) {
-        lakeOnEdge <- T
+    
+    if(!is.null(inElev)){
+      xElev <- mask(crop(inElev, xSurround), xSurround)
+      if (any(is.na(getValues(xElev)))) {
+          lakeOnEdge <- T
+      } else {
+          lakeOnEdge <- F
+      }
     } else {
-        lakeOnEdge <- F
+      xElev <- NULL
+      lakeOnEdge <- NA
     }
 
     return(lakeMorphoClass(inLake, xElev, xSurround, xLakeDist, lakeOnEdge))

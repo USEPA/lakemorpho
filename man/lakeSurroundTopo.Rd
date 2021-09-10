@@ -4,7 +4,12 @@
 \alias{lakeSurroundTopo}
 \title{Calculate surrounding topography for lake}
 \usage{
-lakeSurroundTopo(inLake, inElev, inCatch = NULL, reso = res(inElev)[1])
+lakeSurroundTopo(
+  inLake,
+  inElev = NULL,
+  inCatch = NULL,
+  reso = ifelse(!is.null(inElev), res(inElev)[1], 10)
+)
 }
 \arguments{
 \item{inLake}{a SpatialPolygons or SpatialPolygonsDataFrame representing the input lake. Required.}
