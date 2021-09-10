@@ -1,9 +1,10 @@
-lakemorpho 1.1.1.9999 (2020-0?-??)
+lakemorpho 1.2.0 (2021-09-10)
 ==========================
 
 ## Bug fixes
 - @data@values was not returning vector as thought, switched all of these to 
 raster::getValues (thanks to Laura Read for catching this)
+- Fixed volume calcs in calcLakeMetrics with named arguments (Thanks to Viktor Gydemo Östbom for the find)
 
 ## Function changes
 - added ability to save pseudo bathymetry from lakeVolume to input lake morpho 
@@ -11,6 +12,19 @@ object (thanks to Bahram Khazaei for suggetsion).
 - added slope_quant arqument to lakeMaxDepth to allow for other quantiles 
 besides the median to be used to estimate depth.  Median is the default  
 (thanks to Arthur Heyman for the suggestion).
+- Added major and minor axis metrics to calcLakeMetrics.
+- lakeVolume now has option for outputting the psuedoBathy raster to the lakeMorpho object.
+- Can now run metrics without a elevation raster.  Returns NA if not included for those metrics that need a depth or an elevation raster.
+
+## DESCRIPTION changes
+- Author/Contributor changes and name change.
+
+## Other Changes
+- DOI links fixed (thanks, @katrinleinweber)
+- Several typo corrections
+- set rgdal warnings to thin
+- Stale sp objects updated
+- Fixes GH Actions
 
 lakemorpho 1.1.1 (2018-02-07)
 ==========================

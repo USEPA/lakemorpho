@@ -17,6 +17,9 @@ to estimate a maximum depth.}
 \item{slope_quant}{The slope quantile to use to estimate maximum depth.
 Defaults to the median as described in (Hollister et. al, 
 2011).}
+
+\item{correctFactor}{This a factor used by \code{\link{lakeMaxDepth}} to
+correct the predicted maximum lake depth.  Defaults to 1.}
 }
 \value{
 Returns a numerica value for the mean depth of the lake

@@ -8,6 +8,8 @@
 #' @param slope_quant The slope quantile to use to estimate maximum depth.  
 #'                    Defaults to the median as described in (Hollister et. al, 
 #'                    2011).
+#' @param correctFactor This a factor used by \code{\link{lakeMaxDepth}} to
+#'        correct the predicted maximum lake depth.  Defaults to 1.
 #' @param zmax Maximum depth of the lake.  If none entered and elevation dataset
 #'             is inlcuded in inLakeMorpho, \code{\link{lakeMaxDepth}} is used 
 #'             to estimate a maximum depth.
