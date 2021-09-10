@@ -81,8 +81,7 @@ lakeSurroundTopo <- function(inLake, inElev, inCatch = NULL, reso = res(inElev)[
         xSurround <- xBuffer
     }
 
-    xSurroundr <- rasterize(xSurround, inElev)
-    xElev <- mask(inElev, xSurroundr)
+    xElev <- mask(crop(inElev, xSurround), xSurround)
 
     if (any(is.na(getValues(xElev)))) {
         lakeOnEdge <- T
