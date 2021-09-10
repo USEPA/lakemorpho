@@ -20,6 +20,9 @@
 #'        known maximum depth while forcing the intercept through zero.  The 
 #'        slope of the line would then be used as the correction 
 #'        factor(Hollister et. al, 2011). 
+#' @param zmax Maximum depth of the lake.  If none entered and elevation dataset
+#'             is inlcuded in inLakeMorpho, \code{\link{lakeMaxDepth}} is used 
+#'             to estimate a maximum depth.
 #'        
 #'         
 #' @references Florida LAKEWATCH (2001). A Beginner's guide to water management
@@ -43,18 +46,25 @@
 #' calcLakeMetrics(inputLM, bearing = 45, pointDens = 250)
 #' }
 
-calcLakeMetrics <- function(inLakeMorpho, bearing, pointDens, slope_quant=0.5, correctFactor = 1) {
+calcLakeMetrics <- function(inLakeMorpho, bearing, pointDens, slope_quant=0.5, 
+                            correctFactor = 1, zmax = NULL) {
     if (class(inLakeMorpho) != "lakeMorpho") {
         return(warning("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo first."))
     }
     allMet <- list(surfaceArea = lakeSurfaceArea(inLakeMorpho), 
                    shorelineLength = lakeShorelineLength(inLakeMorpho), 
                    shorelineDevelopment = lakeShorelineDevelopment(inLakeMorpho), 
-                   maxDepth = lakeMaxDepth(inLakeMorpho, slope_quant, 
-                                           correctFactor), 
+                   maxDepth = ifelse(is.null(zmax), 
+                                     lakeMaxDepth(inLakeMorpho, slope_quant, 
+                                           correctFactor),
+                                     zmax), 
                    volume = lakeVolume(inLakeMorpho, slope_quant = slope_quant, 
-                                       correctFactor = correctFactor), 
-                   meanDepth = lakeMeanDepth(inLakeMorpho), 
+                                       correctFactor = correctFactor, 
+                                       zmax = zmax), 
+                   meanDepth = lakeMeanDepth(inLakeMorpho, 
+                                             slope_quant = slope_quant, 
+                                             correctFactor = correctFactor, 
+                                             zmax = zmax), 
                    maxLength = lakeMaxLength(inLakeMorpho, pointDens), 
                    maxWidth = lakeMaxWidth(inLakeMorpho, pointDens), 
                    meanWidth = lakeMeanWidth(inLakeMorpho),

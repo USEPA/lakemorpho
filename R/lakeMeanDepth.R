@@ -23,7 +23,8 @@
 #' lakeMeanDepth(inputLM)
 
 
-lakeMeanDepth <- function(inLakeMorpho, slope_quant = 0.5, zmax = NULL) {
+lakeMeanDepth <- function(inLakeMorpho, slope_quant = 0.5, zmax = NULL, 
+                          slope_quant = 0.5, correctFactor = 1) {
     if (class(inLakeMorpho) != "lakeMorpho") {
       stop("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo or lakeMorphoClass first.")
     }
@@ -33,5 +34,7 @@ lakeMeanDepth <- function(inLakeMorpho, slope_quant = 0.5, zmax = NULL) {
             first with elevation included.  Without these, returns NA.")
       return(NA)
     }
-    return(round(lakeVolume(inLakeMorpho, slope_quant, zmax)/lakeSurfaceArea(inLakeMorpho), 4))
+    return(round(lakeVolume(inLakeMorpho, slope_quant = slope_quant, 
+                            zmax = zmax, correctFactor = correctFactor)/
+                   lakeSurfaceArea(inLakeMorpho), 4))
 } 
