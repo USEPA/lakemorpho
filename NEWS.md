@@ -25,6 +25,7 @@ besides the median to be used to estimate depth.  Median is the default
 - set rgdal warnings to thin
 - Stale sp objects updated
 - Fixes GH Actions
+- Added new citation file
 
 lakemorpho 1.1.1 (2018-02-07)
 ==========================

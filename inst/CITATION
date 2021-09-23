@@ -1,0 +1,23 @@
+citHeader("To cite lakemorpho in publications use:")
+
+citEntry(
+  entry    = "Article",
+  title    = "lakemorpho: Calculating lake morphometry metrics in R",
+  author   = c(
+    person(given = "Jeffrey W.", family = "Hollister",
+    role = c("aut","cre"),
+    email = "hollister.jeff@epa.gov", 
+    comment = c(ORCID = c("0000-0002-9254-9740"))),
+    person(given = "Jemma", family = "Stachelek",
+    role = "aut", 
+    comment = c(ORCID = c("0000-0002-5924-2464")))
+    ),
+  journal  = "F1000Research",
+  year     = 2017,
+  volume   = 6,
+  number   = 1718,
+  url      = "https://doi.org/10.12688/f1000research.12512.1",
+  textVersion = paste(
+  "Hollister J and Stachelek J. lakemorpho: Calculating lake morphometry metrics in R [version 1; peer review: 2 approved]. F1000Research 2017, 6:1718 (https://doi.org/10.12688/f1000research.12512.1)"
+  )
+)
