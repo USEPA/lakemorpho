@@ -18,7 +18,7 @@
 
 plot.lakeMorpho <- function(x, dist=FALSE, length=TRUE, width=TRUE, fetch=FALSE,
                             ...) {
-    #browser()
+   
     if(!is.null(x$surround)){
       plot(x$elev, ...)
       if(dist){
