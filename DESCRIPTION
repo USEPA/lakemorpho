@@ -27,7 +27,7 @@ Description: Lake morphometry metrics are used by limnologists to understand,
     ratio, maximum length, maximum width, mean width, maximum depth, mean depth, 
     shoreline development, shoreline length, surface area, and volume.
 Depends: 
-    R (>= 3.0.0)
+    R (>= 3.5.0)
 Imports:
     methods,
     stats,
