@@ -8,7 +8,7 @@
 #' uses this approach to also estimate maximum depth, mean depth, and volume.
 #' 
 #' This development version of this package is available at 
-#' https://github.com/USEPA/lakemorpho 
+#' https://github.com/USEPA/lakemorpho/ 
 #' 
 #' @references Florida LAKEWATCH (2001). A Beginner's guide to water management
 #'             - Lake Morphometry (2nd ed.). Gainesville: Florida LAKEWATCH, 

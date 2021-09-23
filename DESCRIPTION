@@ -11,8 +11,8 @@ Authors@R: c(
     role = "aut", 
     comment = c(ORCID = c("0000-0002-5924-2464")))
     )
-URL: https://github.com/jhollist/lakemorpho
-BugReports: https://github.com/jhollist/lakemorpho/issues
+URL: https://github.com/jhollist/lakemorpho/
+BugReports: https://github.com/jhollist/lakemorpho/issues/
 Maintainer: Jeffrey W. Hollister <hollister.jeff@epa.gov>
 License: CC0
 Encoding: UTF-8

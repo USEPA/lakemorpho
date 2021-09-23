@@ -1,5 +1,5 @@
 ## Comments
-Release 1.2.0 includes bug fixes, some additional functionality, and updates to authors in the DESCRIPTION.  Full list of changes are in <https://github.com/jhollist/lakemorpho/blob/main/NEWS.md>
+Release 1.2.0 includes bug fixes, some additional functionality, and updates to authors in the DESCRIPTION.  Full list of changes are in <https://github.com/jhollist/lakemorpho/blob/main/NEWS.md>.  Plus fixes URL and DOI issues found in pretest inspection.
 
 ## Test Environments
 - Github Actions, Ubuntu 20.04 LTS, R version 4.1.1
