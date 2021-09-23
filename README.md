@@ -1,6 +1,8 @@
 [![R build status](https://github.com/jhollist/lakemorpho/workflows/R-CMD-check/badge.svg)](https://github.com/jhollist/lakemorpho/actions)
 
-[![DOI](https://zenodo.org/badge/4384/jhollist/lakemorpho.svg)](https://zenodo.org/badge/latestdoi/4384/jhollist/lakemorpho)
+[![F1000Research](https://img.shields.io/badge/F1000Research-Published-blue.svg)](https://f1000research.com/articles/6-1718)
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5524742.svg)](https://doi.org/10.5281/zenodo.5524742)
 
 [![RStudio_CRAN_Downloads](http://cranlogs.r-pkg.org/badges/lakemorpho)](http://cranlogs.r-pkg.org/badges/lakemorpho)
 
