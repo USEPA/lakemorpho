@@ -37,7 +37,7 @@
 
 lakeSurroundTopo <- function(inLake, inElev = NULL, inCatch = NULL, 
                              reso = ifelse(!is.null(inElev), res(inElev)[1], 10)) {
-
+  
   if (dim(inLake)[1] > 1) {
         stop(paste(dim(inLake)[1], "polygons input. Select a single lake as input."))
     }
@@ -65,7 +65,6 @@ lakeSurroundTopo <- function(inLake, inElev = NULL, inCatch = NULL,
     lakepr2 <- lakepr
     lakepr2[is.na(lakepr2)] <- 0
     lakepr2[lakepr2 == 1] <- NA
-
     xLakeDist <- distance(lakepr2)
     xLakeDist <- mask(xLakeDist, lakepr)
     inLakeMaxDist <- max(raster::getValues(xLakeDist), na.rm = TRUE)  
