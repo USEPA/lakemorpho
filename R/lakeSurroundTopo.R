@@ -13,7 +13,7 @@
 #' @param inLake a SpatialPolygons or SpatialPolygonsDataFrame representing the input lake. Required.
 #' @param inElev a RasterLayer representing the elevation around the lake. Required.
 #' @param inCatch Optional SpatialPolygons or SpatialPolygonsDataFrame defining the
-#'                Surrounding Topography.  Default is NULL wich uses a buffer equal to the
+#'                Surrounding Topography.  Default is NULL which uses a buffer equal to the
 #'                maximum in lake distance.
 #' @param reso Optional resolution for raster output (e.g. lake distance).
 #'        Defaults to the resolution of inElev
@@ -73,13 +73,10 @@ lakeSurroundTopo <- function(inLake, inElev = NULL, inCatch = NULL,
     if (inLakeMaxDist < 100) {
         inLakeMaxDist <- 100
     }
-    xBuffer <- gDifference(gBuffer(inLake, width = inLakeMaxDist), inLake)
     if (!is.null(inCatch)) {
-        ind <- gOverlaps(inLake, inCatch, T)
-        xCatch <- inCatch[ind[, 1], ]
-        xSurround <- gIntersection(xCatch, xBuffer, T)
+        xSurround <- gDifference(inCatch, inLake)
     } else {
-        xSurround <- xBuffer
+        xSurround <- gDifference(gBuffer(inLake, width = inLakeMaxDist), inLake)
     }
     
     if(!is.null(inElev)){

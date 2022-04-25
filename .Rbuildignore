@@ -13,3 +13,4 @@
 ^revdep$
 ^\.github$
 R/gam_depth.R
+^bugs$

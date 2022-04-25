@@ -1,7 +1,7 @@
 Package: lakemorpho
 Type: Package
 Title: Lake Morphometry Metrics
-Version: 1.2.0
+Version: 1.2.1.9999
 Authors@R: c(
     person(given = "Jeffrey W.", family = "Hollister",
     role = c("aut","cre"),

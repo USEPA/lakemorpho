@@ -1,3 +1,10 @@
+lakemorpho 1.2.1 (2022-04-25)
+==========================
+
+## Bug fixes
+- @aarohall caught a bug with user supplied catchment returning a Null 
+surrounding landscape.
+
 lakemorpho 1.2.0 (2021-09-23)
 ==========================
 
