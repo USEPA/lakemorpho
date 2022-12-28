@@ -20,7 +20,7 @@
 #'             \href{http://edis.ifas.ufl.edu/pdffiles/FA/FA08100.pdf}{Link}
 #' 
 #' @import geosphere methods
-#' @import sf st_as_sf st_transform st_crs st_bbox st_coordinates st_linestring st_sfc st_length st_within st_intersection
+#' @importFrom sf st_as_sf st_transform st_crs st_bbox st_coordinates st_linestring st_sfc st_length st_within st_intersection
 #' 
 #' @export
 #' 
