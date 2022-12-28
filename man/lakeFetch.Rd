@@ -26,6 +26,7 @@ The function calculates the maximum in lake distance of a line along an input
 bearing.
 }
 \examples{
+library(sf)
 data(lakes)
 lakeFetch(inputLM,45)
 }
