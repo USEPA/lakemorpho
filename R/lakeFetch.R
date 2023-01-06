@@ -131,7 +131,7 @@ lakeFetch <- function(inLakeMorpho, bearing, addLine = TRUE) {
   if (addLine) {
     myName <- paste("maxFetchLine_", bearing, sep = "")
     inLakeMorpho[[substitute(myName)]] <- NULL
-    inLakeMorpho[[substitute(myName)]] <- myLine
+    inLakeMorpho[[substitute(myName)]] <- as(myLine, "Spatial") #TODO: Yank this as() when switch to sf complete
     class(inLakeMorpho) <- "lakeMorpho"
     assign(inputName, inLakeMorpho, envir = parent.frame())
   }
