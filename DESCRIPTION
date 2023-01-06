@@ -36,6 +36,7 @@ Imports:
     raster,
     rgeos,
     sp,
+    sf,
     geosphere,
     cluster
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.3
