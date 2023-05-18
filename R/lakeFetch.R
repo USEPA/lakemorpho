@@ -116,7 +116,7 @@ lakeFetch <- function(inLakeMorpho, bearing, addLine = TRUE) {
   lakeLinesSL_proj <- sf::st_transform(lakeLinesSL, st_crs(st_as_sf(inLakeMorpho$lake))$proj4string)
   
   # Determine the longest
-  lakeLinesSL_proj <- st_as_sf(st_cast(st_cast(lakeLinesSL_proj, "MULTILINESTRING"),"LINESTRING"))
+  lakeLinesSL_proj <- sf::st_as_sf(sf::st_cast(sf::st_cast(lakeLinesSL_proj, "MULTILINESTRING"),"LINESTRING"))
   
   result <- max(st_length(lakeLinesSL_proj))
   if(capabilities("long.double")) {
