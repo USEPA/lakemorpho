@@ -1,18 +1,17 @@
 ## Comments
-Release 1.2.0 includes bug fixes, some additional functionality, and updates to authors in the DESCRIPTION.  Full list of changes are in <https://github.com/jhollist/lakemorpho/blob/main/NEWS.md>.  Plus fixes URL and DOI issues found in pretest inspection.
+Release 1.3.0 removes rgdal and rgeos dependencies prior to their retirement in October.  Full list of changes are in <https://github.com/jhollist/lakemorpho/blob/main/NEWS.md>.  
 
 ## Test Environments
-- Github Actions, Ubuntu 20.04 LTS, R version 4.1.1
-- Github Actions, Ubuntu 20.04 LTS, R version 4.0.5
-- Github Actions, Ubuntu 20.04 LTS, R development
-- Github Actions, Microsoft Windows Server 2019, R Version 4.1.1
-- Github Actions, Microsoft Windows Server 2019, R Version 3.6.3
-- Github Actions, Mac OS 10.15, R Version 4.1.1
-- Local, Windows 10, R version 4.1.0
+- Github Actions, Ubuntu 20.04.6 LTS, R version 4.3.1
+- Github Actions, Ubuntu 20.04.6 LTS, R version 4.2.3
+- Github Actions, Ubuntu 22.04.3 LTS, R development
+- Github Actions, Microsoft Windows Server 2022, R Version 4.3.1
+- Github Actions, Microsoft Windows Server 2022, R Version 4.2.3
+- Github Actions, Mac OS 12.6.8, R Version 4.3.1
+- Local, Windows 10 x64 (build 22000), R version 4.2.2 (2022-10-31 ucrt)
 
 ## R CMD check results
 - No ERRORS or WARNINGS
-- Except: An ERROR is currently showing on r-devel-windows-x86_64-gcc10-UCRT related to the availability of `rgdal`.  I believe this is an issue on this flavor and not something caused by `lakemorpho`.
 
 ## Downstream dependencies
 There are currently no downstream dependencies
