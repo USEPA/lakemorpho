@@ -13,15 +13,14 @@
 #'             Department of Fisheries and Aquatic Sciences.
 #'             \href{http://edis.ifas.ufl.edu/pdffiles/FA/FA08100.pdf}{Link}
 #' 
-#' @import rgeos
 #' 
 #' @examples
 #' data(lakes)
 #' lakeShorelineDevelopment(inputLM)
 
 lakeShorelineDevelopment <- function(inLakeMorpho) {
-    if (class(inLakeMorpho) != "lakeMorpho") {
+    if (!inherits(inLakeMorpho, "lakeMorpho")) {
       stop("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo or lakeMorphoClass first.")
     }
-    return(round((gLength(inLakeMorpho$lake))/(2 * sqrt(pi * gArea(inLakeMorpho$lake))), 4))
+    return(round((as.numeric(sf::st_length(sf::st_cast(inLakeMorpho$lake, "MULTILINESTRING"))))/(2 * sqrt(pi * as.numeric(sf::st_area(inLakeMorpho$lake)))), 4))
 } 

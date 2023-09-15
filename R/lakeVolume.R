@@ -40,7 +40,7 @@
 
 lakeVolume <- function(inLakeMorpho, zmax = NULL, slope_quant = 0.5, correctFactor = 1, 
                        addBathy = FALSE) {
-  if (class(inLakeMorpho) != "lakeMorpho") {
+  if (!inherits(inLakeMorpho, "lakeMorpho")) {
     stop("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo or lakeMorphoClass first.")
   }
   if(is.null(inLakeMorpho$elev) & is.null(zmax)){

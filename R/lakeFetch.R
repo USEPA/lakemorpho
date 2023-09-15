@@ -32,7 +32,7 @@
 lakeFetch <- function(inLakeMorpho, bearing, addLine = TRUE) {
   
   inputName <- deparse(substitute(inLakeMorpho))
-  if (class(inLakeMorpho) != "lakeMorpho") {
+  if (!inherits(inLakeMorpho, "lakeMorpho")) {
     stop("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo or lakeMorphoClass first.")
   }
   result <- NA
@@ -78,7 +78,7 @@ lakeFetch <- function(inLakeMorpho, bearing, addLine = TRUE) {
   # needs centroid, not all coords
   # Slight difference with original which returned the label point which is
   # kinda the centroid...
-  centPts[[1]] <- data.frame(st_coordinates(sf::st_centroid(lakedd)))
+  centPts[[1]] <- data.frame(st_coordinates(sf::st_centroid(sf::st_geometry(lakedd))))
   names(centPts[[1]]) <- c("lon", "lat")
   centPts[[2]] <- destPoint(as.matrix(centPts[[1]]), perpbear1, 100)
   i <- length(centPts)
@@ -113,7 +113,7 @@ lakeFetch <- function(inLakeMorpho, bearing, addLine = TRUE) {
   allLinesSL <- st_sfc(geometry = allLines, crs = st_crs("+proj=longlat +datum=WGS84"))
   # clip out lines that are inside lake
   lakeLinesSL <- sf::st_intersection(allLinesSL, lakedd)
-  lakeLinesSL_proj <- sf::st_transform(lakeLinesSL, st_crs(st_as_sf(inLakeMorpho$lake))$proj4string)
+  lakeLinesSL_proj <- sf::st_transform(lakeLinesSL, st_crs(inLakeMorpho$lake))
   
   # Determine the longest
   lakeLinesSL_proj <- sf::st_as_sf(sf::st_cast(sf::st_cast(lakeLinesSL_proj, "MULTILINESTRING"),"LINESTRING"))
@@ -135,5 +135,5 @@ lakeFetch <- function(inLakeMorpho, bearing, addLine = TRUE) {
     class(inLakeMorpho) <- "lakeMorpho"
     assign(inputName, inLakeMorpho, envir = parent.frame())
   }
-  return(round(result,4))
+  return(round(as.numeric(result),4))
 }

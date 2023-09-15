@@ -35,7 +35,9 @@ and repeats that line \code{pointDens}number of times and returns the longest
 of those lines.
 }
 \examples{
+library(lakemorpho)
 data(lakes)
+inputLM <- lakeSurroundTopo(exampleLake, exampleElev)
 lakeMaxWidth(inputLM,50)
 }
 \references{

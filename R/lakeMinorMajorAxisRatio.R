@@ -14,7 +14,6 @@
 #'         major and minor axes of the lake. Units are the same as the input data.
 #' 
 #' @references \href{https://en.wikipedia.org/wiki/Semi-major_and_semi-minor_axes}{Link}
-#' @importFrom rgeos gLength
 #' @examples
 #' data(lakes)
 #' lakeMinorMajorRatio(inputLM)
@@ -22,7 +21,7 @@
 
 lakeMinorMajorRatio <- function(inLakeMorpho, addLine = TRUE) {
   myName <- deparse(substitute(inLakeMorpho))
-  if (class(inLakeMorpho) != "lakeMorpho") {
+  if (!inherits(inLakeMorpho, "lakeMorpho")) {
     stop("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo or lakeMorphoClass first.")
   }
   
@@ -34,8 +33,8 @@ lakeMinorMajorRatio <- function(inLakeMorpho, addLine = TRUE) {
     assign(myName, inLakeMorpho, envir = parent.frame())
   }
 
-  result <- rgeos::gLength(inLakeMorpho$minoraxisLengthLine) /
-            rgeos::gLength(inLakeMorpho$majoraxisLengthLine)
+  result <- as.numeric(sf::st_length(inLakeMorpho$minoraxisLengthLine) /
+            sf::st_length(inLakeMorpho$majoraxisLengthLine))
   
-  return(round(result,4))
+  return(round(as.numeric(result),4))
 } 

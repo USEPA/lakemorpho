@@ -13,7 +13,6 @@
 #'  in the lake. Units are the same as the input data.
 #' 
 #' @references \href{https://en.wikipedia.org/wiki/Semi-major_and_semi-minor_axes}{Wikipedia}
-#' @importFrom sp proj4string CRS SpatialLines
 #' @importFrom cluster ellipsoidhull
 #' @examples
 #' 
@@ -23,14 +22,15 @@
 
 lakeMinorAxisLength <- function(inLakeMorpho, addLine = TRUE) {
 
-  if (class(inLakeMorpho) != "lakeMorpho") {
+  if (!inherits(inLakeMorpho, "lakeMorpho")) {
     stop("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo or lakeMorphoClass first.")
   }
   
   result <- NA
-  lakeShoreLine <- as(inLakeMorpho$lake, "SpatialLines")
-  lakeShorePoints <- as(lakeShoreLine, "SpatialPoints")
-  lakeShoreCoords <- coordinates(lakeShorePoints)
+  
+  lakeShoreLine <- sf::st_cast(inLakeMorpho$lake, "MULTILINESTRING")
+  lakeShorePoints <- sf::st_cast(st_geometry(lakeShoreLine), "MULTIPOINT")
+  lakeShoreCoords <- sf::st_coordinates(lakeShorePoints)[,-3]
   
   # https://stackoverflow.com/questions/18278382/how-to-obtain-the-lengths-of-semi-axes-of-an-ellipse-in-r
   elpshull <- predict(cluster::ellipsoidhull(lakeShoreCoords))
@@ -44,16 +44,14 @@ lakeMinorAxisLength <- function(inLakeMorpho, addLine = TRUE) {
     myLine.min <- rbind(elpshull.center, elpshull[round(dist2center,8) == round(min(dist2center),8),])
   }
   
+  myLine <- st_sfc(sf::st_linestring(myLine.min), crs = sf::st_crs(inLakeMorpho$lake))
   
-  myLine <- sp::SpatialLines(list(Lines(list(Line(myLine.min)), "1")),
-              proj4string = sp::CRS(sp::proj4string(inLakeMorpho$lake)))
+  result <- as.numeric(sf::st_length(myLine))
 
-  result <- rgeos::gLength(myLine)
-  
   if (addLine) {
     myName <- deparse(substitute(inLakeMorpho))
     inLakeMorpho$minoraxisLengthLine <- NULL
-    inLakeMorpho <- c(inLakeMorpho, minoraxisLengthLine = myLine)
+    inLakeMorpho$minoraxisLengthLine <- myLine
     class(inLakeMorpho) <- "lakeMorpho"
     assign(myName, inLakeMorpho, envir = parent.frame())
   }

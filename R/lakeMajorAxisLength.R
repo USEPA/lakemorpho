@@ -18,24 +18,23 @@
 #' internal waves in the bottom boundary layer of ice-covered Lake Mueggelsee,
 #' Germany. Aquatic ecology, 43(3), pp.641-651.
 #' 
-#' @importFrom rgeos gLength
 #' @importFrom cluster ellipsoidhull
 #' @examples
 #' data(lakes)
+#' inputLM <- lakeSurroundTopo(exampleLake, exampleElev)
 #' lakeMajorAxisLength(inputLM)
 
 
 lakeMajorAxisLength <- function(inLakeMorpho, addLine = TRUE) {
 
-  if (class(inLakeMorpho) != "lakeMorpho") {
+  if (!inherits(inLakeMorpho, "lakeMorpho")) {
     stop("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo or lakeMorphoClass first.")
   }
   
   result <- NA
-  #Change to perhaps deal with noLD
-  lakeShoreLine <- as(inLakeMorpho$lake, "SpatialLines")
-  lakeShorePoints <- as(lakeShoreLine, "SpatialPoints")
-  lakeShoreCoords <- coordinates(lakeShorePoints)
+  lakeShoreLine <- sf::st_cast(inLakeMorpho$lake, "MULTILINESTRING")
+  lakeShorePoints <- sf::st_cast(sf::st_geometry(lakeShoreLine), "MULTIPOINT")
+  lakeShoreCoords <- sf::st_coordinates(lakeShorePoints)[,-3]
   
   # https://stackoverflow.com/questions/18278382/how-to-obtain-the-lengths-of-semi-axes-of-an-ellipse-in-r
   elpshull <- predict(cluster::ellipsoidhull(lakeShoreCoords))
@@ -48,16 +47,15 @@ lakeMajorAxisLength <- function(inLakeMorpho, addLine = TRUE) {
   } else {
     myLine.max <- elpshull[round(dist2center,8) == round(max(dist2center),8),]
   }
-
-  myLine <- sp::SpatialLines(list(Lines(list(Line(myLine.max)), "1")),
-              proj4string = sp::CRS(sp::proj4string(inLakeMorpho$lake)))
-
-  result <- rgeos::gLength(myLine)
   
+  myLine <- st_sfc(sf::st_linestring(myLine.max), crs = sf::st_crs(inLakeMorpho$lake))
+
+  
+  result <- as.numeric(sf::st_length(myLine))
   if (addLine) {
     myName <- deparse(substitute(inLakeMorpho))
     inLakeMorpho$majoraxisLengthLine <- NULL
-    inLakeMorpho <- c(inLakeMorpho, majoraxisLengthLine = myLine)
+    inLakeMorpho$majoraxisLengthLine <- myLine
     class(inLakeMorpho) <- "lakeMorpho"
     assign(myName, inLakeMorpho, envir = parent.frame())
   }

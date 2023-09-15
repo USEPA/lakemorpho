@@ -12,14 +12,13 @@
 #'             - Lake Morphometry (2nd ed.). Gainesville: Florida LAKEWATCH, 
 #'             Department of Fisheries and Aquatic Sciences.
 #'             \href{http://edis.ifas.ufl.edu/pdffiles/FA/FA08100.pdf}{Link}
-#' @import rgeos
 #' @examples
 #' data(lakes)
 #' lakeSurfaceArea(inputLM)
 
 lakeSurfaceArea <- function(inLakeMorpho) {
-    if (class(inLakeMorpho) != "lakeMorpho") {
+    if (!inherits(inLakeMorpho, "lakeMorpho")) {
       stop("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo or lakeMorphoClass first.")
     }
-    return(round(gArea(inLakeMorpho$lake), 4))
+    return(round(as.numeric(sf::st_area(inLakeMorpho$lake)), 4))
 } 

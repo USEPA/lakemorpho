@@ -36,7 +36,9 @@ shorelines.  Care needs to be taken in selecting an approriate
 in the estimates.
 }
 \examples{
+library(lakemorpho)
 data(lakes)
+inputLM <- lakeSurroundTopo(exampleLake, exampleElev)  
 lakeMaxLength(inputLM,50)
 }
 \references{
