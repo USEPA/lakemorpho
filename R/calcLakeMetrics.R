@@ -48,7 +48,7 @@
 
 calcLakeMetrics <- function(inLakeMorpho, bearing, pointDens, slope_quant=0.5, 
                             correctFactor = 1, zmax = NULL) {
-    if (class(inLakeMorpho) != "lakeMorpho") {
+    if (!inherits(inLakeMorpho, "lakeMorpho")) {
         return(warning("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo first."))
     }
     allMet <- list(surfaceArea = lakeSurfaceArea(inLakeMorpho), 

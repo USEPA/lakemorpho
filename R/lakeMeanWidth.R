@@ -11,7 +11,6 @@
 #'             - Lake Morphometry (2nd ed.). Gainesville: Florida LAKEWATCH, 
 #'             Department of Fisheries and Aquatic Sciences.
 #'             \href{http://edis.ifas.ufl.edu/pdffiles/FA/FA08100.pdf}{Link}
-#' #' @import rgeos
 #' 
 #' @examples
 #' data(lakes)
@@ -20,11 +19,11 @@
 #' 
 
 lakeMeanWidth <- function(inLakeMorpho) {
-    if (class(inLakeMorpho) != "lakeMorpho") {
+    if (!inherits(inLakeMorpho, "lakeMorpho")) {
         stop("Input data is not of class 'lakeMorpho'.  Run lakeSurroundTopo first.")
     }
     if (is.null(inLakeMorpho$maxLengthLine)) {
         stop("Input 'lakeMorpho' does not contain a Maximum Length Line.  Run lakeMaxLength  first.")
     }
-    return(round(lakeSurfaceArea(inLakeMorpho)/gLength(inLakeMorpho$maxLengthLine), 4))
+    return(round(lakeSurfaceArea(inLakeMorpho)/as.numeric(sf::st_length(inLakeMorpho$maxLengthLine)), 4))
 } 

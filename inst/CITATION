@@ -1,7 +1,6 @@
-citHeader("To cite lakemorpho in publications use:")
+utils::citHeader("To cite lakemorpho in publications use:")
 
-citEntry(
-  entry    = "Article",
+bibentry(bibtype = "Article",
   title    = "lakemorpho: Calculating lake morphometry metrics in R",
   author   = c(
     person(given = "Jeffrey W.", family = "Hollister",
@@ -21,3 +20,6 @@ citEntry(
   "Hollister J and Stachelek J. lakemorpho: Calculating lake morphometry metrics in R [version 1; peer review: 2 approved]. F1000Research 2017, 6:1718 (https://doi.org/10.12688/f1000research.12512.1)"
   )
 )
+
+bibentry("Manual",
+         other = unlist(citation(auto = meta), recursive = FALSE))

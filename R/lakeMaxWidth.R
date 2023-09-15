@@ -26,32 +26,38 @@
 #'             - Lake Morphometry (2nd ed.). Gainesville: Florida LAKEWATCH, 
 #'             Department of Fisheries and Aquatic Sciences.
 #'             \href{http://edis.ifas.ufl.edu/pdffiles/FA/FA08100.pdf}{Link}
-#' @import sp rgeos methods
+#' @import sp methods
 #' @importFrom stats var lm
 #' 
 #' @examples
+#' library(lakemorpho)
 #' data(lakes)
+#' inputLM <- lakeSurroundTopo(exampleLake, exampleElev)
 #' lakeMaxWidth(inputLM,50)
 
 
 lakeMaxWidth <- function(inLakeMorpho, pointDens, intersect = FALSE, 
                          addLine = TRUE) {
+
     myName <- deparse(substitute(inLakeMorpho))
-    if (class(inLakeMorpho) != "lakeMorpho") {
+    if (!inherits(inLakeMorpho, "lakeMorpho")) {
       stop("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo or lakeMorphoClass first.")
     }
     if (is.null(inLakeMorpho$maxLengthLine)) {
         lakeMaxLength(inLakeMorpho, pointDens)
     }
-    linedata <- data.frame(spsample(inLakeMorpho$maxLengthLine, 30, "regular")@coords)
+    
+    #linedata <- data.frame(spsample(inLakeMorpho$maxLengthLine, 30, "regular")@coords)
+    linedata <- sf::st_coordinates(sf::st_sample(inLakeMorpho$maxLengthLine, 30, 
+                                                 type = "regular"))
     x <- linedata[, 1]
     y <- linedata[, 2]
     xdiff <- abs(x[1] - x[2])
     ydiff <- abs(y[1] - y[2])
-    lakeMinx <- bbox(inLakeMorpho$lake)[1, 1]
-    lakeMaxx <- bbox(inLakeMorpho$lake)[1, 2]
-    lakeMiny <- bbox(inLakeMorpho$lake)[2, 1]
-    lakeMaxy <- bbox(inLakeMorpho$lake)[2, 2]
+    lakeMinx <- sf::st_bbox(inLakeMorpho$lake)$xmin
+    lakeMaxx <- sf::st_bbox(inLakeMorpho$lake)$xmax
+    lakeMiny <- sf::st_bbox(inLakeMorpho$lake)$ymin
+    lakeMaxy <- sf::st_bbox(inLakeMorpho$lake)$ymax
     while (!(max(x) > lakeMaxx && min(x) < lakeMinx) && !(max(y) > lakeMaxy && min(y) < lakeMiny)) {
         if (x[1] - x[2] >= 0) {
             x <- c(x, x[length(x)] - xdiff)
@@ -69,60 +75,70 @@ lakeMaxWidth <- function(inLakeMorpho, pointDens, intersect = FALSE,
         }
     }
     longline<-data.frame(x,y)
-    longline <- SpatialLines(list(Lines(list(Line(longline)), "1")), proj4string = CRS(proj4string(inLakeMorpho$lake)))
-    longlinedata <- data.frame(spsample(longline, pointDens, "regular")@coords)
+    longline <- sf::st_linestring(as.matrix(longline))
+    #longline <- SpatialLines(list(Lines(list(Line(longline)), "1")), proj4string = CRS(proj4string(inLakeMorpho$lake)))
+    longlinedata <- data.frame(spsample(as(longline, "Spatial"), pointDens, "regular")@coords)
+    longlinedata <- data.frame(sf::st_coordinates(sf::st_sample(longline, pointDens, 
+                                                     type = "regular")))
     if (round(var(y), 1) == 0) {
         xmin <- longlinedata[, 1]
         xmax <- longlinedata[, 1]
-        ypred_min <- bbox(inLakeMorpho$lake)[2, 1]
-        ypred_max <- bbox(inLakeMorpho$lake)[2, 2]
+        ypred_min <- sf::st_bbox(inLakeMorpho$lake)[2, 1]
+        ypred_max <- sf::st_bbox(inLakeMorpho$lake)[2, 2]
     } else if (round(var(x), 1) == 0) {
-        xmin <- bbox(inLakeMorpho$lake)[1, 1]
-        xmax <- bbox(inLakeMorpho$lake)[1, 2]
+        xmin <- sf::st_bbox(inLakeMorpho$lake)$xmin
+        xmax <- sf::st_bbox(inLakeMorpho$lake)$xmax
         ypred_min <- longlinedata[, 2]
         ypred_max <- longlinedata[, 2]
     } else {
         mylm <- lm(longlinedata[, 2] ~ longlinedata[, 1])
+        # Need to check this.  not getting perpendicular line...
         mylm2_slope <- (1/mylm$coefficients[2]) * -1
         mylm2_int <- (mylm2_slope * -longlinedata[, 1]) - (-longlinedata[, 2])
-        xmin <- bbox(inLakeMorpho$lake)[1, 1]
-        xmax <- bbox(inLakeMorpho$lake)[1, 2]
+        xmin <- sf::st_bbox(inLakeMorpho$lake)$xmin
+        xmax <- sf::st_bbox(inLakeMorpho$lake)$xmax
         ypred_min <- (mylm2_slope * xmin) + mylm2_int
         ypred_max <- (mylm2_slope * xmax) + mylm2_int
     }
-    mydf <- data.frame(xmin, xmax, ypred_min, ypred_max, ID = 1:length(longlinedata[, 2]))
-    createSL <- function(x) {
-        mat <- matrix(as.numeric(x[1:4]), 2, 2)
-        id <- as.numeric(x[5])
-        return(Lines(list(Line(mat)), id))
-    }
-    mylinelist <- apply(mydf, 1, createSL)
-    mylines <- SpatialLines(mylinelist, proj4string = CRS(proj4string(inLakeMorpho$lake)))
-    myInter <- gIntersection(mylines[gCrosses(mylines, inLakeMorpho$lake, byid = TRUE), ], inLakeMorpho$lake, 
-        byid = TRUE)
-    lineInter <- unlist(lapply(myInter@lines, function(x) slot(x, "Lines")))
-    myInter2 <- list()
-    for (i in 1:length(lineInter)) {
-        myInter2 <- c(myInter2, Lines(lineInter[i], i))
-    }
-    myInter2Lines <- SpatialLines(myInter2, proj4string = CRS(proj4string(inLakeMorpho$lake)))
-    if(intersect){
-      myInter2Lines<-myInter2Lines[gIntersects(myInter2Lines,inLakeMorpho$maxLengthLine,byid = TRUE),]
-    } 
+    
+    mydf <- data.frame(rep(xmin, length(ypred_min)), 
+                       rep(xmax, length(ypred_max)), 
+                       ypred_min, ypred_max)#, ID = 1:length(longlinedata[, 2]))
+    mydf <- split(mydf, 1:nrow(mydf))
+    #createSL <- function(x) {
+    #    mat <- matrix(as.numeric(x[1:4]), 2, 2)
+    #    id <- as.numeric(x[5])
+    #    return(Lines(list(Line(mat)), id))
+    #}
+    mylinelist <- lapply(mydf, function(x) sf::st_linestring(matrix(as.numeric(x), 2, 2)))
+    #mylines <- SpatialLines(mylinelist, proj4string = CRS(proj4string(inLakeMorpho$lake)))
+    mylines <- sf::st_sfc(mylinelist, crs = st_crs(inLakeMorpho$lake))
+    #myInter <- gIntersection(mylines[gCrosses(mylines, inLakeMorpho$lake, byid = TRUE), ], inLakeMorpho$lake, 
+    #    byid = TRUE)
+    myInter <- sf::st_intersection(mylines[sf::st_crosses(mylines, inLakeMorpho$lake, sparse = FALSE)], inLakeMorpho$lake)
+    #lineInter <- unlist(lapply(myInter@lines, function(x) slot(x, "Lines")))
+    #myInter2 <- list()
+    #for (i in 1:length(lineInter)) {
+    #    myInter2 <- c(myInter2, Lines(lineInter[i], i))
+    #}
+    #myInter2Lines <- SpatialLines(myInter2, proj4string = CRS(proj4string(inLakeMorpho$lake)))
+    #if(intersect){
+    #  myInter2Lines<-myInter2Lines[gIntersects(myInter2Lines,inLakeMorpho$maxLengthLine,byid = TRUE),]
+    #} 
     
     if(capabilities("long.double")){
-      maxWidthLine <- myInter2Lines[gLength(myInter2Lines, byid = TRUE) == 
-                                      max(gLength(myInter2Lines, byid = TRUE)),]
+      maxWidthLine <- myInter[sf::st_length(myInter) == 
+                                      max(sf::st_length(myInter))]
     } else {
-      maxWidthLine <- myInter2Lines[round(gLength(myInter2Lines, byid = TRUE),8) == 
-                                      round(max(gLength(myInter2Lines, byid = TRUE)),8),]
+      maxWidthLine <- myInter[round(sf::st_length(myInter),8) == 
+                                      round(max(sf::st_length(myInter)),8),]
     }
+    
     if (addLine) {
-        
-        inLakeMorpho$maxWidthLine <- NULL
-        inLakeMorpho <- c(inLakeMorpho, maxWidthLine = maxWidthLine)
-        class(inLakeMorpho) <- "lakeMorpho"
-        assign(myName, inLakeMorpho, envir = parent.frame())
+      inLakeMorpho$maxWidthLine <- NULL
+      inLakeMorpho$maxWidthLine <- maxWidthLine
+      class(inLakeMorpho) <- "lakeMorpho"
+      assign(myName, inLakeMorpho, envir = parent.frame())
     }
-    return(round(gLength(maxWidthLine), 4))
+    return(round(as.numeric(sf::st_length(maxWidthLine)), 4))
 } 

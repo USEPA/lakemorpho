@@ -1,5 +1,10 @@
-lakemorpho 1.2.1 (2022-04-25)
+lakemorpho 1.99.0 (2023-09-XX)
 ==========================
+
+## Major Changes
+- dropping rgdal and rgeos, switching all vector to sf, coerces sp to sf.
+- removed travis and appveyor
+
 
 ## Bug fixes
 - @aarohall caught a bug with user supplied catchment returning a Null 
