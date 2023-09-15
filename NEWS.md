@@ -1,4 +1,4 @@
-lakemorpho 1.99.0 (2023-09-XX)
+lakemorpho 1.99.0 (2023-09-15)
 ==========================
 
 ## Major Changes
