@@ -70,6 +70,13 @@ jobs:
           # conflicts with gfortran from r-lib/actions when linking gcc
           # rm '/usr/local/bin/gfortran'
           brew install pkg-config gdal proj geos sqlite3
+          
+      - name: "Install spatial libraries on macOS M1"
+        if: runner.os == 'osx'
+        run: |
+          # conflicts with gfortran from r-lib/actions when linking gcc
+          # rm '/usr/local/bin/gfortran'
+          brew install pkg-config gdal proj geos sqlite3
       
       - name: Install dependencies on windows and mac
         if: runner.os != 'Linux'
