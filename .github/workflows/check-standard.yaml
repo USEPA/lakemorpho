@@ -15,13 +15,13 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - {os: osx-arm64, r: 'release'}
-          #- {os: windows-latest, r: 'release'}
-          #- {os: windows-latest, r: 'oldrel'}
-          #- {os: macos-latest, r: 'release'}
-          #- {os: ubuntu-20.04, r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-          #- {os: ubuntu-latest, r: 'devel', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-          #- {os: ubuntu-20.04, r: 'oldrel', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          #- {os: osx-arm64, r: 'release'}
+          - {os: windows-latest, r: 'release'}
+          - {os: windows-latest, r: 'oldrel'}
+          - {os: macos-latest, r: 'release'}
+          - {os: ubuntu-20.04, r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-latest, r: 'devel', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-20.04, r: 'oldrel', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
 
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
@@ -66,13 +66,6 @@ jobs:
         
       - name: "Install spatial libraries on macOS"
         if: runner.os == 'macOS'
-        run: |
-          # conflicts with gfortran from r-lib/actions when linking gcc
-          # rm '/usr/local/bin/gfortran'
-          brew install pkg-config gdal proj geos sqlite3
-          
-      - name: "Install spatial libraries on macOS M1"
-        if: runner.os == 'osx'
         run: |
           # conflicts with gfortran from r-lib/actions when linking gcc
           # rm '/usr/local/bin/gfortran'
