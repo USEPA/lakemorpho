@@ -131,7 +131,7 @@ lakeMaxWidth <- function(inLakeMorpho, pointDens, intersect = FALSE,
                                       max(sf::st_length(myInter))]
     } else {
       maxWidthLine <- myInter[round(sf::st_length(myInter),8) == 
-                                      round(max(sf::st_length(myInter)),8),]
+                                      round(max(sf::st_length(myInter)),8)]
     }
     
     if (addLine) {
