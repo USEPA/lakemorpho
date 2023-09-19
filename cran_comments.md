@@ -1,5 +1,5 @@
 ## Comments
-Release 1.3.1 fixes error on macOS M1 
+Release 1.3.1 fixes error on macOS M1.   
 
 ## Test Environments
 - Github Actions, Ubuntu 20.04.6 LTS, R version 4.3.1
@@ -8,6 +8,7 @@ Release 1.3.1 fixes error on macOS M1
 - Github Actions, Microsoft Windows Server 2022, R Version 4.3.1
 - Github Actions, Microsoft Windows Server 2022, R Version 4.2.3
 - Github Actions, Mac OS 12.6.8, R Version 4.3.1
+- R Project, macOS builder
 - Local, Windows 10 x64 (build 22000), R version 4.2.2 (2022-10-31 ucrt)
 
 ## R CMD check results
