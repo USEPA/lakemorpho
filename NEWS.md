@@ -1,4 +1,10 @@
-lakemorpho 1.99.0 (2023-09-15)
+lakemorpho 1.3.1 (2023-09-15)
+==========================
+
+## CRAN Error fix
+- fixes bug causing noLD and macOS M1 error.
+
+lakemorpho 1.3.0 (2023-09-15)
 ==========================
 
 ## Major Changes

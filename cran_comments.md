@@ -1,5 +1,5 @@
 ## Comments
-Release 1.3.0 removes rgdal and rgeos dependencies prior to their retirement in October.  Full list of changes are in <https://github.com/jhollist/lakemorpho/blob/main/NEWS.md>.  
+Release 1.3.1 fixes error on macOS M1 
 
 ## Test Environments
 - Github Actions, Ubuntu 20.04.6 LTS, R version 4.3.1
