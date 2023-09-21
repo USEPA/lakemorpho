@@ -25,7 +25,6 @@
 #' @export
 #' 
 #' @examples
-#' library(sf)
 #' data(lakes)
 #' lakeFetch(inputLM,45)
 
