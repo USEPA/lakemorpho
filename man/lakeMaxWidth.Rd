@@ -38,7 +38,7 @@ of those lines.
 library(lakemorpho)
 data(lakes)
 inputLM <- lakeSurroundTopo(exampleLake, exampleElev)
-lakeMaxWidth(inputLM,50)
+lakeMaxWidth(inputLM,25)
 }
 \references{
 Florida LAKEWATCH (2001). A Beginner's guide to water management

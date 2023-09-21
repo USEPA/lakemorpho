@@ -32,8 +32,7 @@
 #' @examples
 #' library(lakemorpho)
 #' data(lakes)
-#' inputLM <- lakeSurroundTopo(exampleLake, exampleElev)
-#' lakeMaxWidth(inputLM,50)
+#' lakeMaxWidth(inputLM,25)
 
 
 lakeMaxWidth <- function(inLakeMorpho, pointDens, intersect = FALSE, 

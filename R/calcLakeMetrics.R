@@ -43,7 +43,7 @@
 #' @examples
 #' \donttest{
 #' data(lakes)
-#' calcLakeMetrics(inputLM, bearing = 45, pointDens = 250)
+#' calcLakeMetrics(inputLM, bearing = 45, pointDens = 25)
 #' }
 
 calcLakeMetrics <- function(inLakeMorpho, bearing, pointDens, slope_quant=0.5, 

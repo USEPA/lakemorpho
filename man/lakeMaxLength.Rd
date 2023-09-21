@@ -39,7 +39,7 @@ in the estimates.
 library(lakemorpho)
 data(lakes)
 inputLM <- lakeSurroundTopo(exampleLake, exampleElev)  
-lakeMaxLength(inputLM,50)
+lakeMaxLength(inputLM,25)
 }
 \references{
 Florida LAKEWATCH (2001). A Beginner's guide to water management

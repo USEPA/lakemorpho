@@ -34,8 +34,7 @@
 #' @examples
 #' library(lakemorpho)
 #' data(lakes)
-#' inputLM <- lakeSurroundTopo(exampleLake, exampleElev)  
-#' lakeMaxLength(inputLM,50)
+#' lakeMaxLength(inputLM,25)
 
 
 lakeMaxLength <- function(inLakeMorpho, pointDens, addLine = TRUE) {

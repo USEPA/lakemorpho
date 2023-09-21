@@ -1,5 +1,5 @@
 ## Comments
-Release 1.3.1 fixes error on macOS M1.   
+Release 1.3.2 fixes slow running examples 
 
 ## Test Environments
 - Github Actions, Ubuntu 20.04.6 LTS, R version 4.3.1

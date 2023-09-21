@@ -1,3 +1,9 @@
+lakemorpho 1.3.2 (2023-09-15)
+==========================
+
+## CRAN Submission issues.
+- fixed slow running examples
+
 lakemorpho 1.3.1 (2023-09-15)
 ==========================
 
