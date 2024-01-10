@@ -1,3 +1,8 @@
+lakemorpho 1.3.3 (2024-XX-xx)
+=============================
+## Bug Fixes
+- Bug on very skinny polys for lakeMajorAxis and lakeMinorAxis.  Checks for matrix and returns NA if not.
+
 lakemorpho 1.3.2 (2023-09-15)
 ==========================
 

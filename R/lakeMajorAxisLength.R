@@ -25,7 +25,7 @@
 
 
 lakeMajorAxisLength <- function(inLakeMorpho, addLine = TRUE) {
-
+  
   if (!inherits(inLakeMorpho, "lakeMorpho")) {
     stop("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo or lakeMorphoClass first.")
   }
@@ -46,7 +46,7 @@ lakeMajorAxisLength <- function(inLakeMorpho, addLine = TRUE) {
   } else {
     myLine.max <- elpshull[round(dist2center,8) == round(max(dist2center),8),]
   }
-  
+  if(!is.matrix(myLine.max)){return(NA)}
   myLine <- st_sfc(sf::st_linestring(myLine.max), crs = sf::st_crs(inLakeMorpho$lake))
 
   

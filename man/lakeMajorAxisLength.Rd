@@ -23,7 +23,6 @@ of a lake.
 }
 \examples{
 data(lakes)
-inputLM <- lakeSurroundTopo(exampleLake, exampleElev)
 lakeMajorAxisLength(inputLM)
 }
 \references{

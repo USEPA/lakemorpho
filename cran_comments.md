@@ -9,6 +9,7 @@ Release 1.3.2 fixes slow running examples
 - Github Actions, Microsoft Windows Server 2022, R Version 4.2.3
 - Github Actions, Mac OS 12.6.8, R Version 4.3.1
 - R Project, macOS builder
+- rhub::check_on_debian(), no example runtime notes
 - Local, Windows 10 x64 (build 22000), R version 4.2.2 (2022-10-31 ucrt)
 
 ## R CMD check results

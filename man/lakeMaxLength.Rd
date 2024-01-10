@@ -38,7 +38,6 @@ in the estimates.
 \examples{
 library(lakemorpho)
 data(lakes)
-inputLM <- lakeSurroundTopo(exampleLake, exampleElev)  
 lakeMaxLength(inputLM,25)
 }
 \references{

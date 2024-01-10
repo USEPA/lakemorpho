@@ -43,7 +43,7 @@ lakeMinorAxisLength <- function(inLakeMorpho, addLine = TRUE) {
   } else {
     myLine.min <- rbind(elpshull.center, elpshull[round(dist2center,8) == round(min(dist2center),8),])
   }
-  
+  if(!is.matrix(myLine.min)){return(NA)}
   myLine <- st_sfc(sf::st_linestring(myLine.min), crs = sf::st_crs(inLakeMorpho$lake))
   
   result <- as.numeric(sf::st_length(myLine))

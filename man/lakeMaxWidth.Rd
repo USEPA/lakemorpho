@@ -37,7 +37,6 @@ of those lines.
 \examples{
 library(lakemorpho)
 data(lakes)
-inputLM <- lakeSurroundTopo(exampleLake, exampleElev)
 lakeMaxWidth(inputLM,25)
 }
 \references{
