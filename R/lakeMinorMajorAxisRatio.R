@@ -32,7 +32,12 @@ lakeMinorMajorRatio <- function(inLakeMorpho, addLine = TRUE) {
     
     assign(myName, inLakeMorpho, envir = parent.frame())
   }
-
+  
+  if(is.null(inLakeMorpho$majoraxisLengthLine) |
+     is.null(inLakeMorpho$minoraxisLengthLine)){
+    return(NA)
+  }
+  
   result <- as.numeric(sf::st_length(inLakeMorpho$minoraxisLengthLine) /
             sf::st_length(inLakeMorpho$majoraxisLengthLine))
   

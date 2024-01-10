@@ -51,6 +51,7 @@ calcLakeMetrics <- function(inLakeMorpho, bearing, pointDens, slope_quant=0.5,
     if (!inherits(inLakeMorpho, "lakeMorpho")) {
         return(warning("Input data is not of class 'lakeMorpho'.  Run lakeSurround Topo first."))
     }
+    
     allMet <- list(surfaceArea = lakeSurfaceArea(inLakeMorpho), 
                    shorelineLength = lakeShorelineLength(inLakeMorpho), 
                    shorelineDevelopment = lakeShorelineDevelopment(inLakeMorpho), 
